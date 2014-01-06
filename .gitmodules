@@ -1,9 +1,0 @@
-[submodule "libs/z"]
-	path = libs/z
-	url = git://github.com/rupa/z.git
-[submodule "libs/git-extras"]
-        path = libs/git-extras
-        url = git://github.com/visionmedia/git-extras.git
-[submodule "libs/ack"]
-        path = libs/ack
-        url = git://github.com/petdance/ack2.git
