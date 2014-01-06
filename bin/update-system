@@ -1,4 +1,7 @@
-$DOTFILES/osx/osx
+#!/usr/bin/env bash
+
+caskfile=$DOTFILES/brew/Caskfile
+brewfile=$DOTFILES/brew/Brewfile
 
 # Upgrade homebrew
 brew update
@@ -6,5 +9,6 @@ brew update
 # Update homebrew formulas
 brew upgrade
 
-brew bundle "Caskfile"
-brew bundle "Brewfile"
+# Install formulas
+brew bundle $Caskfile
+brew bundle $Brewfile

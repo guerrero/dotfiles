@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Make sure we have the latest files.
-echo "Updating dotfiles"
-cd ~/.dotfiles
+echo "Updating dotfiles..."
+cd $DOTFILES
 git pull
 git submodule update --init --recursive --quiet
 
