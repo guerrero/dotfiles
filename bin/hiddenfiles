@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Hide or show OS X hidden files
+
 if [ `defaults read com.apple.finder AppleShowAllFiles` == 0 ]; then
 	echo "Hidden files are now visible"
 	defaults write com.apple.finder AppleShowAllFiles -bool true
