@@ -25,6 +25,7 @@ install ack
 install tree
 install hub
 install z
+install git-extras
 
 # Remove outdated versions from the cellar
 cleanup
