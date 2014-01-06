@@ -1,0 +1,49 @@
+# Make vim the default editor
+export EDITOR="vim"
+
+# Larger bash history (allow 32³ entries; default is 500)
+export HISTSIZE=32768
+export HISTFILESIZE=$HISTSIZE
+export HISTCONTROL=ignoredups
+# Make some commands not show up in history
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+
+# Prefer US English and use UTF-8
+export LANG="en_US"
+export LC_ALL="en_US.UTF-8"
+
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md="$ORANGE"
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+
+# Always enable colored `grep` output
+export GREP_OPTIONS="--color=auto"
+
+# IMPORTANT
+# Link Homebrew casks in `/Applications` rather than `~/Applications`
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+export MATHPATH="$MANPATH:/usr/local/texlive/2007/texmf/doc/man"
+export INFOPATH="$INFOPATH:/usr/local/texlive/2007/texmf/doc/info"
+export PATH="$PATH:/usr/local/texlive/2007/bin/i386-linux"
+export RI="--format ansi"
+
+declare -U path
+
+#export LANG=en_US
+export PAGER=most
+#}}}]
+
+# path, the 0 in the filename causes this to load first
+export PATH=$PATH:$HOME/.yadr/bin:$HOME/.yadr/bin/yadr
+
+export PATH="./bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/local/sbin:$HOME/.sfs:$ZSH/bin:$PATH"
+
+export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+
+
+# APPLE, put /usr/bin before /usr/local/bin?!
+PATH=/usr/local/bin:$(path_remove /usr/local/bin)
+export PATH

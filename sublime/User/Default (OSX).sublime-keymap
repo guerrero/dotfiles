@@ -1,0 +1,4 @@
+[
+	{ "keys": ["f3"], "command": "reindent", "args": {"single_line": false} }
+]
+

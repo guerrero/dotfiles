@@ -1,0 +1,10 @@
+$DOTFILES/osx/osx
+
+# Upgrade homebrew
+brew update
+
+# Update homebrew formulas
+brew upgrade
+
+brew bundle "Caskfile"
+brew bundle "Brewfile"

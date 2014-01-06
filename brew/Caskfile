@@ -1,0 +1,51 @@
+# TODO: Check if Homebrew is installed
+
+#Update Homebrew and Homebrew cask
+update
+
+# Install Homebrew Cask
+tap phinze/homebrew-cask
+install brew-cask
+
+# Install applications
+cask install --appdir="/Applications" alfred
+cask install --appdir="/Applications" arduino
+cask install --appdir="/Applications" cheatsheet
+cask install --appdir="/Applications" clamxav
+cask install --appdir="/Applications" cleanmymac
+cask install --appdir="/Applications" codekit
+cask install --appdir="/Applications" cyberduck
+cask install --appdir="/Applications" dropbox
+cask install --appdir="/Applications" f-lux
+cask install --appdir="/Applications" firefox
+cask install --appdir="/Applications" google-chrome
+cask install --appdir="/Applications" imagealpha
+cask install --appdir="/Applications" imageoptim
+cask install --appdir="/Applications" iterm2
+cask install --appdir="/Applications" mou
+cask install --appdir="/Applications" mplayerx
+cask install --appdir="/Applications" processing
+cask install --appdir="/Applications" skype
+cask install --appdir="/Applications" slate
+cask install --appdir="/Applications" spotify
+cask install --appdir="/Applications" sublime-text
+cask install --appdir="/Applications" tor-browser
+cask install --appdir="/Applications" transmission
+cask install --appdir="/Applications" vienna-rss
+cask install --appdir="/Applications" virtual-box
+cask install logitech-control-center
+cask install logitech-unifying
+
+# Add Caskroom to alfred search paths
+cask alfred link
+
+# Install Quick Look plugins
+cask install qlcolorcode
+cask install qlmarkdown
+qlmanage -r
+
+# Upgrade any already-installed formulae
+upgrade
+
+# Remove outdated versions from the cellar
+cleanup

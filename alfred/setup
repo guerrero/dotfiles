@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+if [ "$(uname -s)" == "Darwin" ]; then
+
+	# Alfred paths
+	alfred_settings_dir=~/Library/Application\ Support/Alfred\ 2
+	alfred_license_path=~/.private/alfred-license.plist
+
+	# Check if Alfred app is installed
+	if [ -e /opt/homebrew-cask/Caskroom/alfred/**/Alfred\ 2.app ]; then
+
+		# Quit Alfred if open
+		if ps ax | grep -v grep | grep "Alfred 2" > /dev/null; then
+			osascript -e 'tell application "Alfred 2" to quit'
+			echo "Exit Alfred app"
+		fi
+
+		# Copy the license if there isn't a license file
+		if [ -e "$alfred_license_path" ];then
+			echo "Copying Alfred License..."
+			mkdir -p "$alfred_settings_dir" && cp "$alfred_license_path" "$_/license.plist"
+		else
+			echo "There isn't an Alfred license"
+		fi
+
+		# Set sync folder path if exists
+		if [ -e "$HOME/dotfiles/alfred/Alfred.alfredpreferences" ]; then
+			defaults write com.runningwithcrayons.Alfred-2 syncfolder -string "~/dotfiles/alfred"
+			echo "Synchronized Alfred preferences"
+		else
+			echo "There is no sync folder path in dotfiles directory"
+		fi
+
+		# Open Alfred application
+		open -a "Alfred 2"
+		echo "Opening Alfred..."
+	else
+		echo "Error trying to activate and sync Alfred"
+	fi
+fi
