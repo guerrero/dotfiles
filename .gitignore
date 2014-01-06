@@ -1,0 +1,24 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Sensitive data
+.private/
+private/
+license.plist
+.ssh/
+id_rsa
+id_rsa.pub
+
+# Folder view configuration files
+Desktop.ini
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
