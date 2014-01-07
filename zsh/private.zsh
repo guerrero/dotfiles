@@ -1,3 +1,1 @@
-if [ -e ~/.private ]; then
-  source ~/.private
-fi
+[ -e ~/.private ] && source ~/.private

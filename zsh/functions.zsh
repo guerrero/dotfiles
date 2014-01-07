@@ -135,5 +135,176 @@ gifify() {
   fi
 }
 
+# Show how much RAM application uses.
+# $ ram safari
+# # => safari uses 154.69 MBs of RAM.
+function ram() {
+  local sum
+  local items
+  local app="$1"
+  if [ -z "$app" ]; then
+    echo "First argument - pattern to grep from processes"
+  else
+    sum=0
+    for i in `ps aux | grep -i "$app" | grep -v "grep" | awk '{print $6}'`; do
+      sum=$(($i + $sum))
+    done
+    sum=$(echo "scale=2; $sum / 1024.0" | bc)
+    if [[ $sum != "0" ]]; then
+      echo "${fg[blue]}${app}${reset_color} uses ${fg[green]}${sum}${reset_color} MBs of RAM."
+    else
+      echo "There are no processes with pattern '${fg[blue]}${app}${reset_color}' are running."
+    fi
+  fi
+}
+
+# Count code lines in some directory.
+# $ loc py js css
+# # => Lines of code for .py: 3781
+# # => Lines of code for .js: 3354
+# # => Lines of code for .css: 2970
+# # => Total lines of code: 10105
+function loc() {
+  local total
+  local firstletter
+  local ext
+  local lines
+  total=0
+  for ext in $@; do
+    firstletter=$(echo $ext | cut -c1-1)
+    if [[ firstletter != "." ]]; then
+      ext=".$ext"
+    fi
+    lines=`find-exec "*$ext" cat | wc -l`
+    lines=${lines// /}
+    total=$(($total + $lines))
+    echo "Lines of code for ${fg[blue]}$ext${reset_color}: ${fg[green]}$lines${reset_color}"
+  done
+  echo "${fg[blue]}Total${reset_color} lines of code: ${fg[green]}$total${reset_color}"
+}
+
+# Shortens GitHub URLs.
+# By Sorin Ionescu <sorin.ionescu@gmail.com>
+function gitio() {
+  local url="$1"
+  local code="$2"
+
+  [[ -z "$url" ]] && print "usage: $0 url code" >&2 && exit
+  [[ -z "$code" ]] && print "usage: $0 url code" >&2 && exit
+
+  curl -s -i 'http://git.io' -F "url=$url" -F "code=$code"
+}
+
+# Pack files with zip and password.
+function zip-pass() {
+  zip -e $(basename $PWD).zip $@
+}
+
+# Execute commands for each file in current directory.
+function each() {
+  for dir in *; do
+    echo "${dir}:"
+    cd $dir
+    $@
+    cd ..
+  done
+}
+
+# Opens file in EDITOR.
+function edit() {
+  local dir=$1
+  [[ -z "$dir" ]] && dir='.'
+  $EDITOR $dir
+}
+alias e=edit
+
+# Find files and exec commands at them.
+# $ find-exec .coffee cat | wc -l
+# # => 9762
+function find-exec() {
+  find . -type f -iname "*${1:-}*" -exec "${2:-file}" '{}' \;
+}
+
+function size() {
+  du -sh "$@" 2>&1 | grep -v '^du:'
+}
+
+
+function lack() {
+    # The +k clears the screen (it tries to scroll up but there's nowhere to
+    # go)
+    ack --group --color $* | less -r +k
+}
+function mcd() { mkdir -p $1 && cd $1 }
+function cdf() { cd *$1*/ } # stolen from @topfunky
+function das() {
+    cd ~/proj/destroyallsoftware.com/destroyallsoftware.com
+    pwd
+    export RUBY_HEAP_MIN_SLOTS=1000000
+    export RUBY_HEAP_SLOTS_INCREMENT=1000000
+    export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+    export RUBY_GC_MALLOC_LIMIT=1000000000
+    export RUBY_HEAP_FREE_MIN=500000
+    . /Volumes/misc/filing/business/destroy\ all\ software\ llc/s3.sh
+    . /Volumes/misc/filing/business/destroy\ all\ software\ llc/braintree.sh
+}
+
+function m() {
+    if [[ "$1" == "das" ]]; then
+        mutt -F ~/.mutt/das.muttrc
+    else
+        ~/proj/thelongpoll/thelongpoll/thelongpoll client -F ~/.mutt/$1.muttrc
+    fi
+}
+
+
+# Activate the closest virtualenv by looking in parent directories.
+activate_virtualenv() {
+    if [ -f env/bin/activate ]; then . env/bin/activate;
+    elif [ -f ../env/bin/activate ]; then . ../env/bin/activate;
+    elif [ -f ../../env/bin/activate ]; then . ../../env/bin/activate;
+    elif [ -f ../../../env/bin/activate ]; then . ../../../env/bin/activate;
+    fi
+}
+
+# Find the directory of the named Python module.
+python_module_dir () {
+    echo "$(python -c "import os.path as _, ${1}; \
+        print _.dirname(_.realpath(${1}.__file__[:-1]))"
+        )"
+}
+
+# By @ieure; copied from https://gist.github.com/1474072
+#
+# It finds a file, looking up through parent directories until it finds one.
+# Use it like this:
+#
+#   $ ls .tmux.conf
+#   ls: .tmux.conf: No such file or directory
+#
+#   $ ls `up .tmux.conf`
+#   /Users/grb/.tmux.conf
+#
+#   $ cat `up .tmux.conf`
+#   set -g default-terminal "screen-256color"
+#
+function up()
+{
+    local DIR=$PWD
+    local TARGET=$1
+    while [ ! -e $DIR/$TARGET -a $DIR != "/" ]; do
+        DIR=$(dirname $DIR)
+    done
+    test $DIR != "/" && echo $DIR/$TARGET
+}
+
+# Test
+t() {
+    if [ -e script/test ]; then
+        script/test $*
+    else
+        rspec --color spec
+    fi
+}
 
 

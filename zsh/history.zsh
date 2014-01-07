@@ -5,6 +5,13 @@ fi
 HISTSIZE=10000
 SAVEHIST=10000
 
+# Erase duplicates in history
+export HISTCONTROL=erasedups
+# Store 10k history entries
+export HISTSIZE=10000
+# Append to the history file when exiting instead of overwriting it
+shopt -s histappend
+
 setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
@@ -75,3 +82,12 @@ export HISTFILESIZE=10000
 # Easily re-execute the last history command.
 alias r="fc -s"
 
+# Nicer history
+export HISTSIZE=100000
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
+
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
