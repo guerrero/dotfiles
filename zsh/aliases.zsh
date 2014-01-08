@@ -1,14 +1,11 @@
 ### Aliases
 
 # Quicker navigation
+alias --="cd -"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias --="cd -"
-alias ---="cd -2"
-alias ----="cd -3"
-alias -----="cd -4"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
