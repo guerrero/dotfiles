@@ -1,12 +1,5 @@
-# Make vim the default editor
+# Make Sublime Text the default editor
 export EDITOR="subl"
-
-# Larger bash history (allow 32³ entries; default is 500)
-export HISTSIZE=32768
-export HISTFILESIZE=$HISTSIZE
-export HISTCONTROL=ignoredups
-# Make some commands not show up in history
-export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
 # Prefer US English and use UTF-8
 export LANG="en_US"
