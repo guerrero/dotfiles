@@ -36,6 +36,9 @@ alias week='date +%V'
 # History
 alias history='fc -l 1'
 
+# Easily re-execute the last history command.
+alias r="fc -s"
+
 #List aliases
 alias lsdir='ls -lF ${colorflag} | grep "^d"'
 alias ll='ls -alGh'
