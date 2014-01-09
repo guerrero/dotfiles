@@ -119,7 +119,9 @@ fi
 
 # Git aliases
 # You must install Git first
-# alias g="git" 
+# alias g="git"
+# alias gundo='git reset --hard HEAD~1' Ref: http://stackoverflow.com/a/6376039/2968891
+# alias grvrt='git revert HEAD'
 # alias gco='git checkout'
 # alias grm='git remote'
 # alias ga='git add'
