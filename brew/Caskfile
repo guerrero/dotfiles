@@ -5,6 +5,10 @@ update
 tap phinze/homebrew-cask
 install brew-cask
 
+# Add support for alternate versions of Casks
+tap caskroom/versions
+
+
 # Install applications
 cask install --appdir="/Applications" alfred
 cask install --appdir="/Applications" arduino
