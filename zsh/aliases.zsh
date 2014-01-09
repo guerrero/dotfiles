@@ -7,8 +7,9 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
+# Super user
+alias _='sudo'
+alias please='sudo'
 
 # Reload zsh config
 alias reload!='source ~/.zshrc'
@@ -42,6 +43,7 @@ alias ll='ls -alGh'
 alias ls='ls -Gh'
 alias df='df -h'
 alias du='du -h -d 2'
+alias sl=ls # often screw this up
 if $(gls &>/dev/null)
 then
   alias ls="gls -F --color"
