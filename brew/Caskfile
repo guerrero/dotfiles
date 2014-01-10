@@ -10,31 +10,32 @@ tap caskroom/versions
 
 
 # Install applications
-cask install --appdir="/Applications" alfred
-cask install --appdir="/Applications" arduino
-cask install --appdir="/Applications" cheatsheet
-cask install --appdir="/Applications" clamxav
-cask install --appdir="/Applications" cleanmymac
-cask install --appdir="/Applications" codekit
-cask install --appdir="/Applications" cyberduck
-cask install --appdir="/Applications" dropbox
-cask install --appdir="/Applications" f-lux
-cask install --appdir="/Applications" firefox
-cask install --appdir="/Applications" google-chrome
-cask install --appdir="/Applications" imagealpha
-cask install --appdir="/Applications" imageoptim
-cask install --appdir="/Applications" iterm2
-cask install --appdir="/Applications" mou
-cask install --appdir="/Applications" mplayerx
-cask install --appdir="/Applications" processing
-cask install --appdir="/Applications" skype
-cask install --appdir="/Applications" slate
-cask install --appdir="/Applications" spotify
-cask install --appdir="/Applications" sublime-text
-cask install --appdir="/Applications" tor-browser
-cask install --appdir="/Applications" transmission
-cask install --appdir="/Applications" vienna-rss
-cask install --appdir="/Applications" virtual-box
+cask install --appdir="/applications" alfred
+cask install --appdir="/applications" arduino
+cask install --appdir="/applications" cheatsheet
+cask install --appdir="/applications" clamxav
+cask install --appdir="/applications" cleanmymac
+cask install --appdir="/applications" codekit
+cask install --appdir="/applications" cyberduck
+cask install --appdir="/applications" dropbox
+cask install --appdir="/applications" f-lux
+cask install --appdir="/applications" firefox
+cask install --appdir="/applications" google-chrome
+cask install --appdir="/applications" imagealpha
+cask install --appdir="/applications" imageoptim
+cask install --appdir="/applications" iterm2
+cask install --appdir="/applications" light-table
+cask install --appdir="/applications" mou
+cask install --appdir="/applications" mplayerx
+cask install --appdir="/applications" processing
+cask install --appdir="/applications" skype
+cask install --appdir="/applications" slate
+cask install --appdir="/applications" spotify
+cask install --appdir="/applications" sublime-text
+cask install --appdir="/applications" tor-browser
+cask install --appdir="/applications" transmission
+cask install --appdir="/applications" vienna-rss
+cask install --appdir="/applications" virtual-box
 cask install logitech-control-center
 cask install logitech-unifying
 
