@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>0F138D9D-067F-45AE-B2E6-AF374388B325</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>ud</string>
+			<key>plusSpaces</key>
+			<false/>
+			<key>text</key>
+			<string>Search Urban Dictionary for '{query}'</string>
+			<key>url</key>
+			<string>http://www.urbandictionary.com/define.php?term={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>1A24C78B-3B9D-41C8-9386-D4AE16A8633C</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>go</string>
+			<key>plusSpaces</key>
+			<true/>
+			<key>text</key>
+			<string>Go to '{query}'</string>
+			<key>url</key>
+			<string>https://duckduckgo.com/?q=%5C{query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>B37D46DC-03F7-4376-83F6-3D2CA8A73608</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>news</string>
+			<key>plusSpaces</key>
+			<false/>
+			<key>text</key>
+			<string>Search Google News for '{query}'</string>
+			<key>url</key>
+			<string>https://www.google.com/news/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>B9DBB775-9B2E-45A7-A95C-FA8F5A6B8A98</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>ft</string>
+			<key>plusSpaces</key>
+			<false/>
+			<key>text</key>
+			<string>Search FilesTube for '{query}'</string>
+			<key>url</key>
+			<string>http://www.filestube.com/search.html?q={query}&amp;amp;select=All&amp;amp;Submit=Search</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>onlyShowEnabledInPrefs</key>
+	<true/>
+</dict>
+</plist>
