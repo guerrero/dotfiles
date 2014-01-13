@@ -24,6 +24,7 @@ cask install --appdir="/applications" google-chrome
 cask install --appdir="/applications" imagealpha
 cask install --appdir="/applications" imageoptim
 cask install --appdir="/applications" iterm2
+cask install --appdir="/applications" licecap
 cask install --appdir="/applications" light-table
 cask install --appdir="/applications" mou
 cask install --appdir="/applications" mplayerx
