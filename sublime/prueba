@@ -1,0 +1,16 @@
+sublime_settings_dir=~/Library/Application\ Support/Sublime\ Text\ 3
+sublime_app_dir=/Applications/Sublime\ Text\ 2.app
+sublime_theme_dir=~/Dev/dotfiles/sublime/Theme\ -\ User
+sublime_color_scheme_dir=~/Dev/dotfiles/sublime/Color\ Scheme\ -\ User
+
+DOTFILES="$HOME/Dev/dotfiles"
+# for package in $DOTFILES/sublime/*-package; do
+# 	echo "Creating symbolic link for $(basename "$package")..."
+# done
+
+[ -e "$DOTFILES/sublime/User-package/Package Control.sublime-settings" ] \
+&& echo "Please after open Sublime Text don't close it unless packages installation is complete"
+
+
+# for package in ~/Dev/dotfiles/sublime/*-package; do
+# done

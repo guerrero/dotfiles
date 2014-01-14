@@ -1,92 +1,66 @@
 #!/bin/env bash
 
-# TODO: Try to use only move instead of rm and mv: line 36
-# TODO: Improve variables with find command instead of cd and echo: line 35
+# TODO: I need this???
+DOTFILES="$HOME/Dev/dotfiles"
+
+# TODO: Check where sublime projects are stored to know if i need to include it in dotfiles
 
 # Check where Sublime settings have been installed
 if [ `uname -s` = "Darwin" ]; then
-	sublime_settings_dir=~/Library/Application\ Support/Sublime\ Text\ 2
-	sublime_app_dir=/Applications/Sublime\ Text\ 2.app
-	sublime_theme_dir=~/Dev/dotfiles/sublime/Theme\ -\ User
-	sublime_color_scheme_dir=~/Dev/dotfiles/sublime/Color\ Scheme\ -\ User
+	sublime_app_dir=/Applications/Sublime\ Text.app
+	sublime_settings_dir=~/Library/Application\ Support/Sublime\ Text\ 3
+
 elif [ `uname -s` = "Linux" ]; then
-	sublime_settings_dir=~/.config/sublime-text-2/
-	sublime_app_dir=/usr/lib/sublime-text-2 
-	sublime_theme_dir=~/Dev/dotfiles/sublime/Theme\ -\ User
-	sublime_color_scheme_dir=~/Dev/dotfiles/sublime/Color\ Scheme\ -\ User
+	sublime_app_dir=/usr/lib/sublime-text-3
+	sublime_settings_dir=~/.config/sublime-text-3/
 else
-	echo "ERROR: Unknown operating system"
-	exit
+	echo "ERROR: Unknown operating system"; exit
 fi
 
 if [ -e "$sublime_app_dir" ]; then
 
-	# Quit Sublime Text if open
-	if ps ax | grep -v grep | grep "Sublime Text 2" > /dev/null; then
-		osascript -e "Sublime Text 2"
+	# Close Sublime Text if it's running
+	if ps ax | grep -v grep | grep "Sublime Text" > /dev/null; then
+		echo "Exiting Sublime Text application..."
+		osascript -e 'tell app "Sublime Text" to quit'
 	fi
 
-	# Create Sublime Application Support if doesn't exists
-	mkdir -p $sublime_settings_dir
-	
-	if [ -d "$HOME/Dev/dotfiles/sublime/User" ] && [ ! "$(readlink $sublime_settings_dir/Packages/User)" = "$HOME/Dev/dotfiles/sublime/User" ] ; then
+	# Create Sublime folders if they don't exist
+	mkdir -p "$sublime_settings_dir"/{Packages,Installed\ Packages}
 
-		# Remove some Package Control cache files from User folder
-		cd $HOME/Dev/dotfiles/sublime/User
-		find . -maxdepth 1 -name "Package Control*" -not -name "Package Control.sublime-settings" -exec rm -rf {} \;
-		cd -
+	#Create symlinks to dotfiles and backup the previous packages with the same name if exists
+	if [ -d "$DOTFILES" ]; then
+		for package in $DOTFILES/sublime/*-package; do
+			echo "Creating symbolic link for $(basename "$package")..."
+			if [ ! "`readlink \"$sublime_settings_dir/Packages/$(basename "$package" -package)\"`" = "$package" ]; then
 
-		if [ -d "$sublime_settings_dir/Packages/User" ]; then
+				if [ "$package" = "$DOTFILES/sublime/User-package" ]; then
+					echo "Removing Package Control caches..."
+					find "$package" -maxdepth 1 -name "Package Control*" -not -name "Package Control.sublime-settings" -exec rm -rf {} \;
+				fi
 
-			cd $sublime_settings_dir/Packages/User
+				# TODO: Choose behaviour to rm or mv packages .backup
+				rm -rf "$sublime_settings_dir/Packages/$(basename "$package" -package)".backup
+				mv "$sublime_settings_dir/Packages/$(basename "$package" -package)"{,.backup}
+				ln -s "$package" "$sublime_settings_dir/Packages/$(basename "$package" -package)"
 
-			# Remove User.backup if both User and User.backup directories previusly exists
-			rm -rf User.backup
-
-			# Rename User folder with User.backup
-			mv User User.backup
-
-			cd -
-		fi
-		# Create a symlink in ST from User folder in dotfiles
-		ln -s ~/Dev/dotfiles/sublime/User "$sublime_settings_dir/Packages/User"
-	fi
-
-	# Check if exists a theme for sublime in dotfiles
-	if [ -d "$sublime_theme_dir" ]; then
-
-		# Remove the previous theme if exists
-		rm -rf "$sublime_settings_dir/Packages/Theme - User"
-
-		# Create a symlink in ST from Theme folder in dotfiles
-		ln -s "$sublime_theme_dir" "$sublime_settings_dir/Packages/"
+			else
+				echo "$(basename "$package") is already linked into Sublime folder"
+			fi
+		done
 	else
-		echo "There is no theme into dotfiles folder"
-	fi
-
-	# Check if exists a color scheme for sublime in dotfiles
-	if [ -d "$sublime_color_scheme_dir" ]; then
-
-		# Remove the previous Color Scheme if exists
-		rm -rf "$sublime_settings_dir/Packages/Color Scheme - User"
-
-		# Create a symlink in ST2 from color scheme folder in dotfiles
-		ln -s "$sublime_color_scheme_dir" "$sublime_settings_dir/Packages/"
-	else
-		echo "There is no color scheme into dotfiles folder"
+		echo "Dotfiles folder doesn't exists or '$DOTFILES' global is set to an unknown path"
 	fi
 
 	# Install Package Control if not installed
 	if [ ! -f "$sublime_settings_dir/Installed Packages/Package Control.sublime-package" ]; then
-
-		# If Installed Packages folder doesn't exist create it
-		mkdir -p "$sublime_settings_dir/Installed Packages"
-
-		# Install Package Control through curl command
 		curl -ssl https://sublime.wbond.net/Package%20Control.sublime-package > "$sublime_settings_dir/Installed Packages/Package Control.sublime-package"
+	
+		[ -e "$DOTFILES/sublime/User-package/Package Control.sublime-settings" ] \
+		&& echo "Please after open Sublime Text don't close it unless packages installation is complete"
 	else
 		echo "Package Control already exists"
 	fi
 else
-	echo "Sublime Text 2 isn't installed or settings folder doesn't exist"
+	echo "Sublime Text isn't installed or settings folder doesn't exist"; exit
 fi
