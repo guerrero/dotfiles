@@ -22,3 +22,8 @@ Desktop.ini
 *.log
 *.sql
 *.sqlite
+
+# Package control cache
+Package\ Control.last-run
+Package\ Control.cache
+Package\ Control.system-ca-bundle
