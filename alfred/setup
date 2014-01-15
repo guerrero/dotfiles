@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+DOTFILES="$HOME/Dev/dotfiles"
+
 if [ "$(uname -s)" == "Darwin" ]; then
 
 	# Alfred paths
@@ -6,7 +9,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
 	alfred_license_path=~/.private/alfred-license.plist
 
 	# Check if Alfred app is installed
-	if [ -e /opt/homebrew-cask/Caskroom/alfred/**/Alfred\ 2.app ]; then
+	if [ -e /Applications/Alfred\ 2.app ]; then
 
 		# Quit Alfred if open
 		if ps ax | grep -v grep | grep "Alfred 2" > /dev/null; then
@@ -23,7 +26,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
 		fi
 
 		# Set sync folder path if exists
-		if [ -e "$HOME/dotfiles/alfred/Alfred.alfredpreferences" ]; then
+		if [ -e "$DOTFILES/alfred/Alfred.alfredpreferences" ]; then
 			defaults write com.runningwithcrayons.Alfred-2 syncfolder -string "~/dotfiles/alfred"
 			echo "Synchronized Alfred preferences"
 		else
