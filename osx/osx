@@ -29,14 +29,13 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic"
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool true
 
 # Menu bar hide the Time Machine, Volume, User, Bluetooth, and Airport icons by default
-# Thanks to @KevinSuttle and @mathiasbynens 
+# Thanks to @KevinSuttle, @mathiasbynens and @junkblocker 
 # https://github.com/mathiasbynens/dotfiles/issues/305#issuecomment-31317847
-for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.* ; do
-		defaults write $domain dontAutoLoad -array \
-	"/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-	"/System/Library/CoreServices/Menu Extras/Volume.menu" \
-	"/System/Library/CoreServices/Menu Extras/User.menu" \
-	"/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
+for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+  	defaults write "${domain}" dontAutoLoad -array \
+    	"/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+    	"/System/Library/CoreServices/Menu Extras/Volume.menu" \
+    	"/System/Library/CoreServices/Menu Extras/User.menu"
 done
 
 # Expand save and print panels by default
