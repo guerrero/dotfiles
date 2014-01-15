@@ -1,6 +1,3 @@
 [submodule "zsh"]
 	path = zsh
 	url = https://github.com/Aloge/prezto
-[submodule "sublime/Theme - Spacegray-package"]
-	path = sublime/Theme - Spacegray-package
-	url = https://github.com/Aloge/spacegray.git
