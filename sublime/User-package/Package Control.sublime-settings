@@ -1,7 +1,13 @@
 {
 	"installed_packages":
 	[
+		"AdvancedNewFile",
+		"Autoprefixer",
+		"Dotfiles Syntax Highlighting",
 		"Emmet",
-		"Sass"
+		"LiveStyle",
+		"Package Control",
+		"Sass",
+		"SublimeLinter"
 	]
 }
