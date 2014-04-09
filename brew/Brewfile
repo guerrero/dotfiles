@@ -1,3 +1,6 @@
+# Install command-line tools using Homebrew
+# Usage: `brew bundle Brewfile`
+
 # Make sure we're using the latest Homebrew
 update
 
@@ -5,6 +8,8 @@ update
 upgrade
 
 # Install GNU utilities (without prefixes)
+# Those that come with OS X are outdated
+# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 install coreutils --default-names
 install findutils --default-names
 
@@ -13,19 +18,17 @@ install wget --enable-iri
 
 # Install more recent versions of some OS X tools
 tap homebrew/dupes
-install homebrew/dupes/grep
-install homebrew/dupes/rsync
-
+# install homebrew/dupes/rsync
 
 # Install everything else
+install ack
+install fasd
 install git
+install git-extras
 install node
 install rename
-install ack
 install tree
-install hub
-install z
-install git-extras
+# install hub (try this)
 
 # Remove outdated versions from the cellar
 cleanup
