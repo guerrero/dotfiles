@@ -34,6 +34,21 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>4F7554EA-4647-4368-ACFA-9D5C67A5E577</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>bmn</string>
+			<key>plusSpaces</key>
+			<false/>
+			<key>text</key>
+			<string>Search BugMeNot for '{query}'</string>
+			<key>url</key>
+			<string>http://bugmenot.com/view/{query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
 		<key>B37D46DC-03F7-4376-83F6-3D2CA8A73608</key>
 		<dict>
 			<key>enabled</key>
@@ -61,6 +76,36 @@
 			<string>Search FilesTube for '{query}'</string>
 			<key>url</key>
 			<string>http://www.filestube.com/search.html?q={query}&amp;amp;select=All&amp;amp;Submit=Search</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>D95E0D27-13EC-4907-8761-CB5C3E742CA6</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gh</string>
+			<key>plusSpaces</key>
+			<false/>
+			<key>text</key>
+			<string>Search GitHub for '{query}'</string>
+			<key>url</key>
+			<string>https://github.com/search?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>EED7D79B-92DC-4B75-AED4-33C99E923C47</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>at</string>
+			<key>plusSpaces</key>
+			<false/>
+			<key>text</key>
+			<string>Search AlternativeTo for '{query}'</string>
+			<key>url</key>
+			<string>http://alternativeto.net/SearchResult.aspx?search={query}</string>
 			<key>utf8</key>
 			<true/>
 		</dict>

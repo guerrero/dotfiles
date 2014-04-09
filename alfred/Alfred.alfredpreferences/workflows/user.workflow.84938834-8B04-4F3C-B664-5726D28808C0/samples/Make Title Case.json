@@ -1,0 +1,12 @@
+[
+ {
+  "node_action": {
+   "text": "", 
+   "choices": {
+    "case": "title"
+   }
+  }, 
+  "type": "node_convertcase", 
+  "id": "7e9446c7-d629-4c54-9983-d6bddc86156f"
+ }
+]

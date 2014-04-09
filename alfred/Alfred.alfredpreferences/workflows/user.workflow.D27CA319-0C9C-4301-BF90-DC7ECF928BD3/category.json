@@ -1,0 +1,252 @@
+[
+  {
+    "id": 100,
+    "name": "Audio",
+    "in": "All"
+  },
+  {
+    "id": 101,
+    "name": "Music",
+    "in": "Audio"
+  },
+  {
+    "id": 102,
+    "name": "Audio books",
+    "in": "Audio"
+  },
+  {
+    "id": 103,
+    "name": "Sound clips",
+    "in": "Audio"
+  },
+  {
+    "id": 104,
+    "name": "FLAC",
+    "in": "Audio"
+  },
+  {
+    "id": 199,
+    "name": "Other",
+    "in": "Audio"
+  },
+  {
+    "id": 200,
+    "name": "Video",
+    "in": "All"
+  },
+  {
+    "id": 201,
+    "name": "Movies",
+    "in": "Video"
+  },
+  {
+    "id": 202,
+    "name": "Movies DVDR",
+    "in": "Video"
+  },
+  {
+    "id": 203,
+    "name": "Music videos",
+    "in": "Video"
+  },
+  {
+    "id": 204,
+    "name": "Movie clips",
+    "in": "Video"
+  },
+  {
+    "id": 205,
+    "name": "TV shows",
+    "in": "Video"
+  },
+  {
+    "id": 206,
+    "name": "Handheld",
+    "in": "Video"
+  },
+  {
+    "id": 207,
+    "name": "HD - Movies",
+    "in": "Video"
+  },
+  {
+    "id": 208,
+    "name": "HD - TV shows",
+    "in": "Video"
+  },
+  {
+    "id": 209,
+    "name": "3D",
+    "in": "Video"
+  },
+  {
+    "id": 299,
+    "name": "Other",
+    "in": "Video"
+  },
+  {
+    "id": 300,
+    "name": "Applications",
+    "in": "All"
+  },
+  {
+    "id": 301,
+    "name": "Windows",
+    "in": "Applications"
+  },
+  {
+    "id": 302,
+    "name": "Mac",
+    "in": "Applications"
+  },
+  {
+    "id": 303,
+    "name": "UNIX",
+    "in": "Applications"
+  },
+  {
+    "id": 304,
+    "name": "Handheld",
+    "in": "Applications"
+  },
+  {
+    "id": 305,
+    "name": "IOS (iPad/iPhone)",
+    "in": "Applications"
+  },
+  {
+    "id": 306,
+    "name": "Android",
+    "in": "Applications"
+  },
+  {
+    "id": 399,
+    "name": "Other OS",
+    "in": "Applications"
+  },
+  {
+    "id": 400,
+    "name": "Games",
+    "in": "All"
+  },
+  {
+    "id": 401,
+    "name": "PC",
+    "in": "Games"
+  },
+  {
+    "id": 402,
+    "name": "Mac",
+    "in": "Games"
+  },
+  {
+    "id": 403,
+    "name": "PSx",
+    "in": "Games"
+  },
+  {
+    "id": 404,
+    "name": "XBOX360",
+    "in": "Games"
+  },
+  {
+    "id": 405,
+    "name": "Wii",
+    "in": "Games"
+  },
+  {
+    "id": 406,
+    "name": "Handheld",
+    "in": "Games"
+  },
+  {
+    "id": 407,
+    "name": "IOS (iPad/iPhone)",
+    "in": "Games"
+  },
+  {
+    "id": 408,
+    "name": "Android",
+    "in": "Games"
+  },
+  {
+    "id": 499,
+    "name": "Other",
+    "in": "Games"
+  },
+  {
+    "id": 500,
+    "name": "Porn",
+    "in": "All"
+  },
+  {
+    "id": 501,
+    "name": "Movies",
+    "in": "Porn"
+  },
+  {
+    "id": 502,
+    "name": "Movies DVDR",
+    "in": "Porn"
+  },
+  {
+    "id": 503,
+    "name": "Pictures",
+    "in": "Porn"
+  },
+  {
+    "id": 504,
+    "name": "Games",
+    "in": "Porn"
+  },
+  {
+    "id": 505,
+    "name": "HD - Movies",
+    "in": "Porn"
+  },
+  {
+    "id": 506,
+    "name": "Movie clips",
+    "in": "Porn"
+  },
+  {
+    "id": 599,
+    "name": "Other",
+    "in": "Porn"
+  },
+  {
+    "id": 600,
+    "name": "Other",
+    "in": "All"
+  },
+  {
+    "id": 601,
+    "name": "E-books",
+    "in": "Other"
+  },
+  {
+    "id": 602,
+    "name": "Comics",
+    "in": "Other"
+  },
+  {
+    "id": 603,
+    "name": "Pictures",
+    "in": "Other"
+  },
+  {
+    "id": 604,
+    "name": "Covers",
+    "in": "Other"
+  },
+  {
+    "id": 605,
+    "name": "Physibles",
+    "in": "Other"
+  },
+  {
+    "id": 699,
+    "name": "Other",
+    "in": "Other"
+  }
+]

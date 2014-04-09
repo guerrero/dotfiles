@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>dk.simonbs.Alfred.YouTube</string>
+	<key>connections</key>
+	<dict>
+		<key>42379407-B126-42F0-A2D3-01E0037344B5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F1DF3F7C-1904-4F07-AA2C-F235DE9C56C0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>986D4B18-2B25-44D9-AB82-59B3C350FA91</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2BB6EB13-3582-43AD-8330-D52EE317087D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>BE57A1DA-0301-42B6-B748-A4CD8C813547</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2BB6EB13-3582-43AD-8330-D52EE317087D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>EDDFF129-2BB4-4022-BC21-1917D987657B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>42379407-B126-42F0-A2D3-01E0037344B5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Simon Støvring (@simonbs)</string>
+	<key>description</key>
+	<string>Search for YouTube videos</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>YouTube</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>youtube</string>
+				<key>script</key>
+				<string>from youtube import search_videos
+
+# Use Googles default max results and order by relevance
+print(search_videos("{query}", 0, "relevance"))</string>
+				<key>subtext</key>
+				<string>Search YouTube for '{query}'</string>
+				<key>title</key>
+				<string>YouTube</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>986D4B18-2B25-44D9-AB82-59B3C350FA91</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>plusspaces</key>
+				<false/>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>2BB6EB13-3582-43AD-8330-D52EE317087D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>yt</string>
+				<key>script</key>
+				<string>from youtube_helper import youtube_helper
+
+print(youtube_helper("{query}"))</string>
+				<key>title</key>
+				<string>YouTube</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>BE57A1DA-0301-42B6-B748-A4CD8C813547</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>yd</string>
+				<key>subtext</key>
+				<string>Download Youtube video at URL</string>
+				<key>text</key>
+				<string>Download Youtube video</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>EDDFF129-2BB4-4022-BC21-1917D987657B</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>uhome=$(printf "$HOME");
+url="{query}";
+if [ -z $url ]; then
+	echo "No url provided";
+else
+	./youtube-dl -q -o "$uhome/Desktop/%(title)s.%(ext)s" "$url"; echo "Completed";
+fi</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>42379407-B126-42F0-A2D3-01E0037344B5</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>Download complete.</string>
+				<key>title</key>
+				<string>Youtube Download</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>F1DF3F7C-1904-4F07-AA2C-F235DE9C56C0</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>uidata</key>
+	<dict>
+		<key>2BB6EB13-3582-43AD-8330-D52EE317087D</key>
+		<dict>
+			<key>ypos</key>
+			<real>80</real>
+		</dict>
+		<key>42379407-B126-42F0-A2D3-01E0037344B5</key>
+		<dict>
+			<key>ypos</key>
+			<real>320</real>
+		</dict>
+		<key>986D4B18-2B25-44D9-AB82-59B3C350FA91</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>BE57A1DA-0301-42B6-B748-A4CD8C813547</key>
+		<dict>
+			<key>ypos</key>
+			<real>150</real>
+		</dict>
+		<key>EDDFF129-2BB4-4022-BC21-1917D987657B</key>
+		<dict>
+			<key>ypos</key>
+			<real>320</real>
+		</dict>
+		<key>F1DF3F7C-1904-4F07-AA2C-F235DE9C56C0</key>
+		<dict>
+			<key>ypos</key>
+			<real>320</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://simonbs.dk/</string>
+</dict>
+</plist>

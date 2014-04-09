@@ -1,0 +1,23 @@
+[
+ {
+  "node_action": {
+   "text": "_seq", 
+   "choices": {
+    "at": "end"
+   }
+  }, 
+  "type": "node_text", 
+  "id": "3d426a38-48c9-4adb-95cf-f3c3e0910522"
+ }, 
+ {
+  "node_action": {
+   "text": "", 
+   "choices": {
+    "at": "end", 
+    "f": "1"
+   }
+  }, 
+  "type": "node_number", 
+  "id": "7db64332-4ceb-4964-8375-f93bf957e490"
+ }
+]

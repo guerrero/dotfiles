@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.mcskrzypczak.myip</string>
+	<key>connections</key>
+	<dict>
+		<key>3289708A-0526-480B-85C9-4503345A75C5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>367CC02C-9C53-4E1E-9870-2C10E402C866</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>2BDE0BFD-7B13-47C4-AE88-689F8598D8D9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>6C68D0BB-A89A-4FDD-BB99-B5A5B460646E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>367CC02C-9C53-4E1E-9870-2C10E402C866</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>2BDE0BFD-7B13-47C4-AE88-689F8598D8D9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Maciej Skrzypczak</string>
+	<key>description</key>
+	<string>Show your external IP address</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>MyIP</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>myip</string>
+				<key>runningsubtext</key>
+				<string>Receiving IP address…</string>
+				<key>script</key>
+				<string>GETIP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+
+
+echo '&lt;?xml version="1.0"?&gt;
+&lt;items&gt;
+	&lt;item uid="" arg="'$GETIP'"&gt;
+		&lt;title&gt;'$GETIP'&lt;/title&gt;
+		&lt;subtitle&gt;Your external IP address&lt;/subtitle&gt;
+		&lt;icon&gt;ext.png&lt;/icon&gt;
+	&lt;/item&gt;
+&lt;/items&gt;'</string>
+				<key>title</key>
+				<string>Show your external IP address</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>6C68D0BB-A89A-4FDD-BB99-B5A5B460646E</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>IP copied to clipboard</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>367CC02C-9C53-4E1E-9870-2C10E402C866</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>2BDE0BFD-7B13-47C4-AE88-689F8598D8D9</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>myip</string>
+				<key>runningsubtext</key>
+				<string>Receiving IP address…</string>
+				<key>script</key>
+				<string>LOCIP=$(ipconfig getifaddr en0)
+
+echo '&lt;?xml version="1.0"?&gt;
+&lt;items&gt;
+	&lt;item uid="" arg="'$LOCIP'"&gt;
+		&lt;title&gt;'$LOCIP'&lt;/title&gt;
+		&lt;subtitle&gt;Your local IP address&lt;/subtitle&gt;
+		&lt;icon&gt;loc.png&lt;/icon&gt;
+	&lt;/item&gt;
+&lt;/items&gt;'</string>
+				<key>title</key>
+				<string>Show your local IP address</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>3289708A-0526-480B-85C9-4503345A75C5</string>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>2BDE0BFD-7B13-47C4-AE88-689F8598D8D9</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>3289708A-0526-480B-85C9-4503345A75C5</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>367CC02C-9C53-4E1E-9870-2C10E402C866</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>6C68D0BB-A89A-4FDD-BB99-B5A5B460646E</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>imagazine.pl</string>
+</dict>
+</plist>

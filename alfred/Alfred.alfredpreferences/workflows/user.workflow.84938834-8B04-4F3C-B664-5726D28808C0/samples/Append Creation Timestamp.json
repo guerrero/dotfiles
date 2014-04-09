@@ -1,0 +1,23 @@
+[
+ {
+  "node_action": {
+   "text": "_", 
+   "choices": {
+    "at": "end"
+   }
+  }, 
+  "type": "node_text", 
+  "id": "de045da7-7347-4715-879c-2249b0a51680"
+ }, 
+ {
+  "node_action": {
+   "text": "YYYYMMDD_hhmmss", 
+   "choices": {
+    "at": "end", 
+    "t": "created"
+   }
+  }, 
+  "type": "node_date", 
+  "id": "1eb058ce-4795-4ff9-9035-019a0f48c0d3"
+ }
+]

@@ -118,7 +118,7 @@ echo '&lt;?xml version="1.0"?&gt;&lt;items&gt;
   &lt;item uid="translation" arg="'$TEXT'"&gt;
 	&lt;title&gt;'$TEXT'&lt;/title&gt;
 	&lt;icon&gt;icon.png&lt;/icon&gt;
-	&lt;subtitle&gt;in French&lt;/subtitle&gt;
+	&lt;subtitle&gt;in Spanish&lt;/subtitle&gt;
   &lt;/item&gt;
 &lt;/items&gt;'</string>
 				<key>title</key>
@@ -157,6 +157,21 @@ echo '&lt;?xml version="1.0"?&gt;&lt;items&gt;
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>D4855B2C-E8F1-455A-A032-ACB430E8D19C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>ED1B356F-E40E-4AD4-AC0D-FE134A039F8E</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -205,21 +220,6 @@ echo '&lt;?xml version="1.0"?&gt;&lt;items&gt;
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>5F216323-FD34-4C9D-A775-C00FC11C1860</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>ED1B356F-E40E-4AD4-AC0D-FE134A039F8E</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
