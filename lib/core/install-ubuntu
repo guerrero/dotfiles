@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+elif [ "$(uname -s)" == "Linux" ]; then
+
+  # TODO: Linux stuff
+
+fi
