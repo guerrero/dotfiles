@@ -6,6 +6,9 @@
 GIT_CONFIG_PATH="$DOTFILES/git/.gitconfig"
 GIT_IGNOREGLOBAL_FILE_PATH="$DOTFILES/git/.gitignore-global"
 
+# Aliases
+alias gitundo='git reset --hard HEAD~1'
+
 git() {
 
 	# Dependencies
