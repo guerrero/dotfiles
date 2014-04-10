@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
+# Local aliases
+
+# Global aliases
+
 alfred() {
+
+	# Dependencies
+	dot_check_system "Mac"
+	dot_check_app "Alfred"
+
+	# Options
 	case "$1" in
 		setup)
 			alfred_setup
@@ -45,11 +55,7 @@ alfred_setup() {
 		# Check if Alfred app is installed
 		if [ -e /Applications/Alfred\ 2.app ]; then
 
-			# Quit Alfred if open
-			if ps ax | grep -v grep | grep "Alfred 2" > /dev/null; then
-				osascript -e 'tell application "Alfred 2" to quit'
-				echo "Exit Alfred app"
-			fi
+			dot_close_app "Alfred 2"
 
 			# Set sync folder path if exists
 			if [ -e "$DOTFILES/alfred/Alfred.alfredpreferences" ]; then

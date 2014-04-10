@@ -5,27 +5,43 @@ DOTFILES="$HOME/Dev/dotfiles"
 
 # TODO: Check where sublime projects are stored to know if i need to include it in dotfiles
 
-function sublime() {
+sublime() {
 	case "$1" in
 		setup)
 			sublime_setup
 		;;
 
 		pkgcontrol)
-			sublime_package_control "$2"
+			sublime_package_control
 		;;
 
 		import)
+			import_sublime_settings
 		;;
 
-		export)
+		link)
+			link_sublime_settings
 		;;
 	esac
 }
 
+sublime_setup() {
+	set_sublime_path
+	if [ -e "$sublime_app_dir" ]; then
+		dot_close_app
 
+		# Create Sublime settings folders if they don't exist
+		mkdir -p "$sublime_settings_dir"/{Packages,Installed\ Packages}
 
+		link_sublime_settings
 
+		sublime_package_control
+
+	else
+		echo "Sublime Text isn't installed or settings folder doesn't exist"
+	fi
+
+}
 
 # Check where Sublime settings have been installed
 set_sublime_path() {
@@ -41,26 +57,7 @@ set_sublime_path() {
 	fi
 }
 
-check_sublime() {
-	if [ -e "$sublime_app_dir" ]; then
-		return true
-	else
-		return false
-		echo "Sublime Text isn't installed or settings folder doesn't exist"
-		exit
-	fi
-}
-
-
-	# Close Sublime Text if it's running
-	if ps ax | grep -v grep | grep "Sublime Text" > /dev/null; then
-		echo "Exiting Sublime Text application..."
-		osascript -e 'tell app "Sublime Text" to quit'
-	fi
-
-	# Create Sublime folders if they don't exist
-	mkdir -p "$sublime_settings_dir"/{Packages,Installed\ Packages}
-
+link_sublime_settings() {
 	#Create symlinks to dotfiles and backup the previous packages with the same name if exists
 	if [ -d "$DOTFILES" ]; then
 		for package in $DOTFILES/sublime/*-package; do
@@ -82,8 +79,9 @@ check_sublime() {
 			fi
 		done
 	else
-		echo "Dotfiles folder doesn't exists or '$DOTFILES' global is set to an unknown path"
+		echo "Ups, dotfiles folder doesn't exists or '$DOTFILES' global is set to an unknown path"
 	fi
+}
 
 
 sublime_install_package_control() {
@@ -95,4 +93,8 @@ sublime_install_package_control() {
 	else
 		echo "Package Control already exists"
 	fi
+}
+
+import_sublime_settings() {
+ link_sublime_settings
 }
