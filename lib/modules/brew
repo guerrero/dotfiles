@@ -3,8 +3,8 @@
 # Local aliases
 
 # Global aliases
-BREWFILE_PATH=
-CASKFILE_PATH=
+BREWFILE_PATH="$DOTFILES/brew/Brewfile"
+CASKFILE_PATH="$DOTFILES/brew/Caskfile"
 
 brew() {
 
@@ -14,6 +14,10 @@ brew() {
 
 	# Options
 	case "$1" in
+		setup)
+			brew_setup
+		;;
+
 		install)
 			brew_install "$@"
 		;;
@@ -36,7 +40,7 @@ brew_help() {
 	echo "Homebrew help"
 }
 
-brew_install() {
+brew_setup() {
 
 	DOTFILES="$HOME/Dev/dotfiles"
 
@@ -70,14 +74,29 @@ brew_install() {
 	fi
 }
 
-alfred_cask() {
-	if ["$1" == "status"]; then
+brew_install() {
+	brew install "$1"
+	echo "install "
+}
+
+brew_uninstall() {
+	#statements
+}
+
+brew_cask() {
+	if ["$1" == "install"]; then
 		brew cask alfred status
-	elif ["$1" == "link"]; then
+	elif ["$1" == "uninstall"]; then
 		brew cask alfred link
-	elif ["$1" == "unlink"]; then
-		brew cask alfred unlink
 	else
 		echo "Ups, the command you've introduced isn't valid."
 	fi
+}
+
+brew_cask_install() {
+
+}
+
+brew_cask_uninstall() {
+
 }
