@@ -40,8 +40,10 @@ cask install flash
 cask alfred link
 
 # Install Quick Look plugins
-cask install qlcolorcode
-cask install qlmarkdown
+cask install qlcolorcode # Preview source code files with syntax highlighting
+cask install qlstephen # Preview plain text files without a file extension
+cask install qlmarkdown # Preview Markdown files
+cask install quicklook-json # Preview json files
 qlmanage -r
 
 # Upgrade any already-installed formulae
