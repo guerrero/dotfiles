@@ -55,3 +55,4 @@ Desktop.ini
 
 # NPM
 .npmignore
+node_modules/
