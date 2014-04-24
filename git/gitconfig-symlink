@@ -1,9 +1,12 @@
 [user]
-    name = Aloge
     email = alexguerrero1092@gmail.com
+    name = Alex Guerrero
 
 [credential]
     helper = osxkeychain
+
+[push]
+    default = simple
 
 [color]
     diff = auto
@@ -24,19 +27,3 @@
 [core]
     excludesfile = ~/.dotfiles/git/gitignore-global
     editor = subl
-
-[apply]
-    whitespace = nowarn
-
-[mergetool]
-    keepBackup = false
-
-[difftool]
-    prompt = false
-
-[help]
-    autocorrect = 1
-
-[rerere]
-    enabled = 1
-
