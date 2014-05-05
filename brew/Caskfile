@@ -2,7 +2,7 @@
 update
 
 # Install Homebrew Cask
-tap phinze/homebrew-cask
+tap caskroom/cask
 install brew-cask
 
 # Add support for alternate versions of Casks
