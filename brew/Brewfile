@@ -20,12 +20,16 @@ install wget --enable-iri
 tap homebrew/dupes
 # install homebrew/dupes/rsync
 
+# Install a newer version of vim (native OSX version is outdated)
+# override system vim version
+install vim --override-system-vi
+
 # Install everything else
 install ack
 install fasd
 install git
 install git-extras
-install node
+install node --with-npm
 install rename
 install tree
 # install hub (try this)
