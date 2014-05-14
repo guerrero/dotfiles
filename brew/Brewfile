@@ -29,7 +29,7 @@ install ack
 install fasd
 install git
 install git-extras
-install node --with-npm
+install node
 install rename
 install tree
 # install hub (try this)
