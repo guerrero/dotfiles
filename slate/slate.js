@@ -1,4 +1,3 @@
-// TODO: Transform to do it compatible with symlink script
 // TODO: Customize
 
 // Configs
