@@ -25,6 +25,7 @@ tap homebrew/dupes
 install vim --override-system-vi
 
 # Install everything else
+install tmux
 install ack
 install fasd
 install git
@@ -39,3 +40,7 @@ cleanup
 
 # Check if installation is successfully
 doctor
+
+#install tmate to share terminal sessions
+tap nviennot/tmate
+install tmate
