@@ -23,12 +23,10 @@ cask install --appdir="/Applications" imageoptim
 cask install --appdir="/Applications" iterm2
 cask install --appdir="/Applications" licecap
 cask install --appdir="/Applications" mactracker
-cask install --appdir="/Applications" mou
 cask install --appdir="/Applications" processing
 cask install --appdir="/Applications" skype
 cask install --appdir="/Applications" slate
 cask install --appdir="/Applications" spotify
-cask install --appdir="/Applications" sublime-text3
 cask install --appdir="/Applications" tor-browser
 cask install --appdir="/Applications" transmission
 cask install --appdir="/Applications" vienna-rss
@@ -40,11 +38,11 @@ cask install flash
 cask alfred link
 
 # Install Quick Look plugins
-cask install qlcolorcode # Preview source code files with syntax highlighting
-cask install qlstephen # Preview plain text files without a file extension
+cask install qlcolorcode # Enable syntax highlighting in source files
+cask install qlstephen # Preview plain text files without extension
 cask install qlmarkdown # Preview Markdown files
 cask install quicklook-json # Preview json files
-qlmanage -r
+qlmanage -r # reset Quick Look extension manager
 
 # Upgrade any already-installed formulae
 upgrade
