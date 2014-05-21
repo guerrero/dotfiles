@@ -35,7 +35,7 @@ install rename
 install tree
 # install hub (try this)
 
-#install tmate to share terminal sessions
+# Install tmate to share terminal sessions
 tap nviennot/tmate
 install tmate
 

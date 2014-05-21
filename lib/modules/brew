@@ -100,3 +100,15 @@ brew_cask_install() {
 brew_cask_uninstall() {
 
 }
+
+alfred_cask() {
+	if ["$1" == "status"]; then
+		brew cask alfred status
+	elif ["$1" == "link"]; then
+		brew cask alfred link
+	elif ["$1" == "unlink"]; then
+		brew cask alfred unlink
+	else
+		echo "Ups, the command you've introduced isn't valid."
+	fi
+}
