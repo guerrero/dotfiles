@@ -13,9 +13,9 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # General UI/UX
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Set highlight color to blue
 defaults write -g AppleHighlightColor -string "0.709800 0.835300 1.000000"
@@ -23,9 +23,6 @@ defaults write -g AppleHighlightColor -string "0.709800 0.835300 1.000000"
 # Automatic show scrollbars
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 defaults write -g AppleShowScrollBars -string "Automatic"
-
-# Menu bar: show remaining battery time (on pre-10.8); hide percentage
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 # Enable menu bar transparency
 defaults write -g AppleEnableMenuBarTransparency -bool true
@@ -36,21 +33,23 @@ defaults write -g AppleEnableMenuBarTransparency -bool true
 ## 1st command
 defaults write ~/Library/Preferences/ByHost/com.apple.systemuiserver.* dontAutoLoad -array \
   "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-  "/System/Library/CoreServices/Menu Extras/Volume.menu" \
   "/System/Library/CoreServices/Menu Extras/User.menu" \
   "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-  "/System/Library/CoreServices/Menu Extras/AirPort.menu"
 ## 2nd command
 defaults write com.apple.systemuiserver menuExtras -array \
   "/System/Library/CoreServices/Menu Extras/Battery.menu" \
-  "/System/Library/CoreServices/Menu Extras/Clock.menu"
+  "/System/Library/CoreServices/Menu Extras/Volume.menu" \
+  "/System/Library/CoreServices/Menu Extras/Clock.menu" \
+  "/System/Library/CoreServices/Menu Extras/AirPort.menu"
 
 # Set sidebar icon size to medium
 defaults write -g NSTableViewDefaultSizeMode -int 2
 
 # Expand save and print panels by default
 defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
+defaults write -g NSNavPanelExpandedStateForSaveMode2 -bool true
 defaults write -g PMPrintingExpandedStateForPrint -bool true
+defaults write -g PMPrintingExpandedStateForPrint2 -bool true
 
 # Save to disk (not to iCloud) by default
 defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
@@ -60,9 +59,6 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable prompt for save documents changes
 defaults write -g NSCloseAlwaysConfirmsChanges -bool false
-
-# Disable opening and closing window animations
-defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 
 # Disable Resume system-wide
 defaults write -g NSQuitAlwaysKeepsWindows -bool false
@@ -85,14 +81,9 @@ defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable smart dashes as they’re annoying when typing code
 defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
 
-# Set wallpaper (no worries, `DefaultDesktop.jpg` is already a symlink and all wallpapers are in `/Library/Desktop Pictures/` (Default: `Wave.jpg`))
-# rm -rf "~/Library/Application Support/Dock/desktoppicture.db"
-# sudo rm -rf "/System/Library/CoreServices/DefaultDesktop.jpg"
-# sudo ln -s /your/image/path /System/Library/CoreServices/DefaultDesktop.jpg
-
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Security
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Enable Firewall. Possible values:
 # 0 = off
@@ -120,16 +111,13 @@ sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerStat
 sudo launchctl unload /System/Library/LaunchDaemons/com.apple.blued.plist
 sudo launchctl load /System/Library/LaunchDaemons/com.apple.blued.plist
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Power management settings
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Manipulate power management settings with pmset command
 # Reference: https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/pmset.1.html)
 
-# This disable Sudden Motion Sensor to park disk heads on sudden changes in G force
-# If you use an HDD instead of a SSD you should comment this
-sudo pmset -a sms 0
 # Set display sleep
 sudo pmset -a displaysleep 5
 # Set system sleep timer
@@ -145,9 +133,9 @@ sudo pmset -a hibernatemode 0
 # TODO: Check this
 # sudo pmset -a standbydelay 86400
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Mouse, trackpad, keyboard, Bluetooth accessories, and input
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Disable natural scrolling (Lion OSX style)
 defaults write -g com.apple.swipescrolldirection -bool false
@@ -194,11 +182,11 @@ defaults write -g WebAutomaticSpellingCorrectionEnabled -bool false
 defaults write -g CheckSpellingWhileTyping -bool true
 defaults write -g WebContinuousSpellCheckingEnabled -bool false
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Screen
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
-# Require password 2 minute after sleep or screen saver begins (probar)
+# Require password 2 minute after sleep or screen saver begins TODO: test
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 120
 
@@ -217,9 +205,13 @@ defaults write -g AppleFontSmoothing -int 2
 # Enable HiDPI display modes (requires restart)
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # SSD-specific tweaks #
-# ------------------------------------------------------------------------------
+# ==============================================================================
+
+# This disable Sudden Motion Sensor to park disk heads on sudden changes in G force
+# If you use an HDD instead of a SSD you should comment this
+sudo pmset -a sms 0
 
 # Disable local Time Machine snapshots
 sudo tmutil disablelocal
@@ -231,9 +223,9 @@ sudo touch /Private/var/vm/sleepimage
 # …and make sure it can’t be rewritten
 sudo chflags uchg /Private/var/vm/sleepimage
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Finder
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
@@ -286,6 +278,11 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
+# Add iOS Simulator symlink to /Applications folder
+sudo ln -sf \
+"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app" \
+"/Applications/iOS Simulator.app"
+
 # Expand certain File Info panes:
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
   Comments -bool false \
@@ -294,15 +291,18 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
   MetaData -bool false \
   Name -bool false
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Dock and Dashboard
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Prevent changes to Dock size
 defaults write com.apple.dock size-immutable -bool true
 
 # Set the icon size of Dock items to 50 pixels
 defaults write com.apple.dock tilesize -int 50
+
+# Minimize windows into their application's icon
+defaults write com.apple.dock minimize-to-application -bool true
 
 # Enable spring loading for all Dock items
 defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
@@ -325,9 +325,6 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
-# Minimize windows into application icon
-defaults write com.apple.dock minimize-to-application -bool true
-
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
@@ -340,9 +337,9 @@ defaults write com.apple.dock autohide-time-modifier -float 0.7
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Safari & WebKit
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Set Safari’s home page to `about:blank` for faster loading
 defaults write com.apple.Safari HomePage -string "about:blank"
@@ -355,9 +352,6 @@ defaults write com.apple.Safari ShowFavoritesBar -bool false
 
 # Disable Safari’s thumbnail cache for History and Top Sites
 defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
-
-# Enable Safari’s debug menu
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 
 # Enable the Develop menu and the Web Inspector in Safari
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
@@ -376,9 +370,9 @@ defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
 # Remove useless icons from Safari’s bookmarks bar
 defaults write com.apple.Safari ProxiesInBookmarksBar "()"
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Mail
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Disable send and reply animations in Mail.app
 defaults write com.apple.mail DisableReplyAnimations -bool true
@@ -401,9 +395,9 @@ defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreade
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Spotlight
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Change indexing order and disable some file types
 defaults write com.apple.spotlight orderedItems -array \
@@ -426,23 +420,23 @@ defaults write com.apple.spotlight orderedItems -array \
 
 # Load new settings before rebuilding the index
 killall mds > /dev/null 2>&1
-
+ \
 # Make sure indexing is enabled for the main volume
 sudo mdutil -i on / > /dev/null
 
 # Rebuild the index from scratch
 sudo mdutil -E / > /dev/null
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # iTerm2
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Set iTerm preferences sync folder
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/Dev/dotfiles/etc"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/Dev/dotfiles/iterm"
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Time Machine
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
@@ -450,15 +444,9 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Disable local Time Machine backups
 hash tmutil &> /dev/null && sudo tmutil disablelocal
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Address Book, iBooks Dashboard, iCal, TextEdit, and Disk Utility
-# ------------------------------------------------------------------------------
-
-# Enable the debug menu in Address Book
-defaults write com.apple.addressbook ABShowDebugMenu -bool true
-
-# Enable the debug menu in iCal (pre-10.8)
-defaults write com.apple.iCal IncludeDebugMenu -bool true
+# ==============================================================================
 
 # Use plain text mode for new TextEdit documents
 defaults write com.apple.TextEdit RichText -int 0
@@ -476,9 +464,9 @@ defaults write com.apple.DiskUtility DUShowEveryPartition -bool true
 # Show debug menu in iBooks
 defaults write com.apple.iBooksX BKShowDebugMenu -bool true
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Mac App Store
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Set Mac App Store Country
 defaults write com.apple.storeagent Storefront -string "143441-8,13"
@@ -489,9 +477,9 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 # Enable Debug Menu in the Mac App Store
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Messages
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Disable automatic emoji substitution
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
@@ -502,9 +490,9 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # Disable continuous spell checking
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Transmission.app
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 # Trash original torrent files
 defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
@@ -522,9 +510,9 @@ defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Do
 # Don’t prompt for confirmation before downloading
 defaults write org.m0k.transmission DownloadAsk -bool false
 
-# ------------------------------------------------------------------------------
+# ==============================================================================
 # Kill affected applications
-# ------------------------------------------------------------------------------
+# ==============================================================================
 
 for app in "Dock" "Finder" "iBooks" "Mail" "Messages" "Safari" "SystemUIServer" "Terminal" "Xcode" "Transmission" "cfprefsd"; do
   killall "$app" > /dev/null 2>&1
