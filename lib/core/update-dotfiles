@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Make sure we have the latest files.
+echo "Updating dotfiles..."
+cd $DOTFILES
+git pull
+git submodule update --init --recursive --quiet
+
+# Copy some individual files
+curl https://raw.github.com/stephenway/monokai.terminal/master/Monokai.terminal > etc/Monokai.terminal
+
+# Ask if user wants to export Localization.prefPane text substitution rules to /etc path
+echo "Do you want to export your text substitution rules from Localization.prefPane?"
+
+# TODO: Do stuff
+
+cd -
