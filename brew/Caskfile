@@ -1,36 +1,35 @@
-#Update Homebrew and Homebrew cask
+#Update Homebrew
 update
 
 # Install Homebrew Cask
-tap caskroom/cask
-install brew-cask
+install caskroom/cask/brew-cask
 
 # Add support for alternate versions of Casks
 tap caskroom/versions
 
 # Install applications
-cask install --appdir="/Applications" alfred
-cask install --appdir="/Applications" arduino
-cask install --appdir="/Applications" clamxav
-cask install --appdir="/Applications" cleanmymac
-cask install --appdir="/Applications" evasi0n
-cask install --appdir="/Applications" f-lux
-cask install --appdir="/Applications" firefox
-cask install --appdir="/Applications" google-chrome
-cask install --appdir="/Applications" hydra
-cask install --appdir="/Applications" iterm2
-cask install --appdir="/Applications" licecap
-cask install --appdir="/Applications" mactracker
-cask install --appdir="/Applications" processing
-cask install --appdir="/Applications" skype
-cask install --appdir="/Applications" slate
-cask install --appdir="/Applications" spotify
-cask install --appdir="/Applications" torbrowser
-cask install --appdir="/Applications" transmission
-cask install --appdir="/Applications" vienna-rss
-cask install --appdir="/Applications" virtualbox
-cask install --appdir="/Applications" vlc
+cask install alfred
+cask install arduino
+cask install clamxav
+cask install cleanmymac
+cask install evasi0n
+cask install flux
+cask install firefox
 cask install flash
+cask install google-chrome
+cask install hydra
+cask install iterm2
+cask install licecap
+cask install mactracker
+cask install processing
+cask install skype
+cask install slate
+cask install spotify
+cask install torbrowser
+cask install transmission
+cask install vienna-rss
+cask install virtualbox
+cask install vlc
 
 # Add Caskroom to alfred search paths
 cask alfred link
@@ -47,3 +46,5 @@ upgrade
 
 # Remove outdated versions from the cellar
 cleanup
+cask cleanup
+cask install mou
