@@ -47,4 +47,3 @@ upgrade
 # Remove outdated versions from the cellar
 cleanup
 cask cleanup
-cask install mou
