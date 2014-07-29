@@ -3,112 +3,136 @@
 # Local aliases
 
 # Global aliases
-BREWFILE_PATH="$DOTFILES/brew/Brewfile"
-CASKFILE_PATH="$DOTFILES/brew/Caskfile"
+DOT_BREWFILE_PATH="$DOTFILES/brew/Brewfile"
 
-brew() {
+cask() {
 
-	# Dependencies
-	dot_check_system "Mac"
-	dot_check_app "Alfred"
+  # Dependencies
 
-	# Options
+  # Options
 	case "$1" in
-		setup)
-			brew_setup
-		;;
+    setup)
+      brew_setup
+    ;;
 
-		install)
-			brew_install "$@"
-		;;
+    install)
+      brew_install "$@"
+    ;;
 
-		uninstall)
-			brew_uninstall	"$@"
-		;;
+    uninstall)
+      brew_uninstall "$@"
+    ;;
 
-		cask)
-			brew_cask "$@"
-		;;
+    bundle)
+      brew bundle "$DOT_BREWFILE_PATH"
+    ;;
 
-		*)
-			brew_help
-		;;
-	esac
+    help)
+      brew_help "$@"
+    ;;
+
+    *)
+      brew "$@"
+    ;;
+  esac
 }
 
 brew_help() {
-	echo "Homebrew help"
+	echo "Homebrew cask help"
 }
 
 brew_setup() {
 
-	DOTFILES="$HOME/Dev/dotfiles"
+  # Generate Caskfile if it doesn't exists
+  if [ ! -s "$DOT_BREWFILE_PATH" ]; then
+    mkdir -p "$( dirname "$DOT_BREWFILE_PATH" )"
+    touch "$DOT_BREWFILE_PATH"
 
-	if [ "$(uname -s)" == "Darwin" ]; then
+    # Add some text to Caskfile
+    cat <<EOF > "$DOT_BREWFILE_PATH"
+# Update Homebrew
+update
 
-		# Alfred paths
-		alfred_settings_dir=~/Library/Application\ Support/Alfred\ 2
-		alfred_license_path=~/.private/alfred-license.plist
-
-		# Check if Alfred app is installed
-		if [ -e /Applications/Alfred\ 2.app ]; then
-
-			dot_close_app "Alfred 2"
-
-			# Set sync folder path if exists
-			if [ -e "$DOTFILES/alfred/Alfred.alfredpreferences" ]; then
-				defaults write com.runningwithcrayons.Alfred-2 syncfolder -string "~/dotfiles/alfred"
-				echo "Synchronized Alfred preferences"
-			else
-				echo "There is no sync folder path in dotfiles directory"
-			fi
-
-			# Open Alfred application
-			open -a "Alfred 2"
-			echo "Opening Alfred..."
-		else
-			echo "Ups, it seems that Alfred app is not installed or is installed in an alternative path"
-		fi
-	else
-		echo "Your system is different from OS X"
-	fi
+# Install Homebrew Cask
+install caskroom/cask/brew-cask
+EOF
+  else
+    echo "There is already a Caskfile into $DOT_BREWFILE_PATH"
+  fi
 }
 
 brew_install() {
-	brew install "$1"
-	echo "install "
+
+  shift
+
+  formulas=()
+  saveformula=true
+
+  for var in "$@"; do
+    case $var in
+      "--app-dir="*)
+        appdir="${var}"
+      ;;
+      "-n")
+        savecask=false
+      ;;
+      *)
+        casks+=("$var")
+      ;;
+    esac
+  done
+  echo "$casks"
+  for var in "$casks"; do
+    echo "$var"
+    if [ "$(brew cask search $var)" == "No cask found for \"$var\"." ]; then
+      echo "No cask found for $var."
+    else
+      if [ $savecask ]; then
+        if grep -q "$var" "$DOT_BREWFILE_PATH"; then
+          echo "$var is already place into Caskfile"
+        else
+          echo -n -e "\nbrew install $var" >> "$DOT_BREWFILE_PATH"
+        fi
+      fi
+    fi
+    brew cask install "$var"
+  done
+
+  unset casks
+  unset savecask
+  unset appdir
 }
 
 brew_uninstall() {
-	#statements
-}
 
-brew_cask() {
-	if ["$1" == "install"]; then
-		brew cask alfred status
-	elif ["$1" == "uninstall"]; then
-		brew cask alfred link
-	else
-		echo "Ups, the command you've introduced isn't valid."
-	fi
-}
+  shift
 
-brew_cask_install() {
+  casks=()
+  removecask=true
 
-}
+  for var in "$@"; do
+    case $var in
+      "-m")
+        removecask=false
+      ;;
+      *)
+        casks+=("$var")
+      ;;
+    esac
+  done
+  echo "$casks"
+  for var in "$casks"; do
+    echo "$var"
+    if [ $removecask ]; then
+      if grep -q "$var" "$DOT_BREWFILE_PATH"; then
+        echo -n -e "\ncask install $var" >> "$DOT_BREWFILE_PATH"
+      else
+        echo "$var is not place into Caskfile"
+      fi
+    fi
+    brew cask uninstall "$var"
+  done
 
-brew_cask_uninstall() {
-
-}
-
-alfred_cask() {
-	if ["$1" == "status"]; then
-		brew cask alfred status
-	elif ["$1" == "link"]; then
-		brew cask alfred link
-	elif ["$1" == "unlink"]; then
-		brew cask alfred unlink
-	else
-		echo "Ups, the command you've introduced isn't valid."
-	fi
+  unset removecask
+  unset casks
 }
