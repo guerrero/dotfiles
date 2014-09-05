@@ -1,2 +1,0 @@
-# Find setups and run them iteratively
-find $DOTFILES_ROOT -maxdepth 2 -name setup | while read setup; do sh -c "${setup}"; done

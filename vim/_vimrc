@@ -6,14 +6,11 @@ version 7.0
 " Disable Vi compatibility, must be at top
 set nocompatible
 
-" Use zshell instead of bash
-set shell=/bin/zsh
-
 " Use UTF-8 without BOM
 set encoding=utf8 nobomb
 
-" Use the OS clipboard by default (on versions with `+clipboard`)
-set clipboard=unnamed
+" Use zshell instead of bash
+set shell=/bin/zsh
 
 " Disable error bells
 set noerrorbells
@@ -26,6 +23,9 @@ set shortmess=atI
 
 " Reload file in Vim if it has been changed outside
 set autoread
+
+" Use the OS clipboard by default (on versions with `+clipboard`)
+set clipboard=unnamed "
 
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
@@ -48,7 +48,6 @@ set textwidth=80
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set smarttab
 
 " Use backspace for all
 set backspace=indent,eol,start
@@ -73,8 +72,10 @@ set complete=.,w,t
 set list listchars=tab:..,trail:·
 
 " Don’t add empty newlines at the end of files
-set binary
 set noeol
+
+" Uncomment this to enable binary files edition in Vim
+" set binary
 
 " UI settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -95,6 +96,11 @@ set ruler
 " Always show status line
 set laststatus=2
 
+" Don't show 'Thanks for flying with Vim' message
+set title
+set titleold=""
+set titlestring=VIM:\ %F
+
 " Vim directories
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -108,6 +114,8 @@ set backup
 " Keybindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F5> :setlocal spell! spelllang=en_us<CR>
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
 
 " Vundle config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -123,15 +131,21 @@ call vundle#begin('~/.vim/bundle/')
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Ctrlp utility
+" Ctrlp utility like sublime text
 Plugin 'kien/ctrlp.vim'
-let g:indentLine_char = "⋮"
-let g:indentLine_noConcealCursor = 1
+
+" Autocompletion for vim code
+Plugin 'Valloric/YouCompleteMe'
+
+" Insert or delete brackets, parens, quotes in pair
+Plugin 'jiangmiao/auto-pairs'
 
 " Display an indent line
 Plugin 'Yggdroot/indentLine'
+let g:indentLine_char = "⋮"
+let g:indentLine_noConcealCursor = 1
 
- " ds/cs/ys for deleting or changing surrounding chars
+" ds/cs/ys for deleting or changing surrounding chars
 Plugin 'tpope/vim-surround'
 
 " Enable Sublime's multiple cursors feature
@@ -142,10 +156,12 @@ Plugin 'bling/vim-airline'
 
 " Syntax plugins
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'fatih/vim-go'
 Plugin 'pangloss/vim-javascript'
+Plugin 'briancollins/vim-jst'
 Plugin 'plasticboy/vim-markdown'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
