@@ -1,11 +1,12 @@
-# OS generated files
+# OSX system files
 .DS_Store
-.DS_Store?
+.AppleDouble
+.LSOverride
 ._*
+
+# Files that might appear on external disk
 .Spotlight-V100
 .Trashes
-ehthumbs.db
-Thumbs.db
 
 # Sensitive data
 .private/
@@ -15,44 +16,11 @@ license.plist
 id_rsa
 id_rsa.pub
 
-# Folder view configuration files
-Desktop.ini
-
-# Logs and databases
-*.log
-*.sql
-*.sqlite
-
-# Compiled source
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-
-# Packages
-*.7z
-*.jar
-*.rar
-*.zip
-*.gz
-*.bzip
-*.xz
-*.lzma
-
-#packing-only formats
-*.iso
-*.tar
-
-#package management formats
-*.dmg
-*.xpi
-*.gem
-*.egg
-*.deb
-*.rpm
-
-# NPM
-.npmignore
-node_modules/
+# Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+*.swp

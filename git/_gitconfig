@@ -25,5 +25,5 @@
     remote = magenta
 
 [core]
-    excludesfile = ~/.dotfiles/git/gitignore-global
-    editor = subl
+    excludesfile = ~/.dotfiles/git/gitignore
+    editor = vim
