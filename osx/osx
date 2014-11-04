@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Sets OS X defaults
+# Set OS X defaults
 
 # Original idea grabbed from @mathiasbynens:
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
@@ -24,8 +24,8 @@ defaults write -g AppleHighlightColor -string "0.709800 0.835300 1.000000"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 defaults write -g AppleShowScrollBars -string "Automatic"
 
-# Enable menu bar transparency
-defaults write -g AppleEnableMenuBarTransparency -bool true
+# Disable transparency in the menu bar and elsewhere on Yosemite
+defaults write com.apple.universalaccess reduceTransparency -bool true
 
 # Menu bar hide the Time Machine, Volume, User, Bluetooth, and Airport icons by default
 # Thanks to @KevinSuttle, @mathiasbynens and @junkblocker
@@ -61,7 +61,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write -g NSCloseAlwaysConfirmsChanges -bool false
 
 # Disable Resume system-wide
-defaults write -g NSQuitAlwaysKeepsWindows -bool false
+defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Disable automatic termination of inactive apps
 defaults write -g NSDisableAutomaticTermination -bool true
@@ -150,6 +150,9 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
 defaults write -g com.apple.mouse.tapBehavior -int 1
 
+# Trackpad: disable the Launchpad gesture (pinch with thumb and three fingers)
++#defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
+
 # Enable full keyboard access for all controls (e.g. modal dialogs)
 defaults write -g AppleKeyboardUIMode -int 3
 
@@ -171,8 +174,8 @@ defaults write -g AppleLocale -string "es_ES@currency=EUR"
 defaults write -g AppleMeasurementUnits -string "Centimeters"
 defaults write -g AppleMetricUnits -bool true
 
-# Set the timezone; see `systemsetup -listtimezones` for other values
-systemsetup -settimezone "Europe/Madrid" > /dev/null
+# Set the timezone; see `sudo systemsetup -listtimezones` for other values
+sudo systemsetup -settimezone "Europe/Madrid" > /dev/null
 
 # Disable auto-correct
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
@@ -235,7 +238,7 @@ defaults write com.apple.finder NewWindowTarget -string "PfLo"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
 # Show hidden files by default
-defaults write com.apple.finder AppleShowAllFiles -bool true
+# defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
@@ -245,6 +248,9 @@ defaults write com.apple.finder DisableAllAnimations -bool true
 
 # Finder: allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# Finder: Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
++/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
 # When performing a search, search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
@@ -279,9 +285,9 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 chflags nohidden ~/Library
 
 # Add iOS Simulator symlink to /Applications folder
-sudo ln -sf \
-"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app" \
-"/Applications/iOS Simulator.app"
+# sudo ln -sf \
+# "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app" \
+# "/Applications/iOS Simulator.app"
 
 # Expand certain File Info panes:
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
@@ -290,6 +296,11 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
   OpenWith -bool true \
   MetaData -bool false \
   Name -bool false
+
+# TODO: test if it works and check out http://superuser.com/a/273770/273315
+# Set default app for particular file types
+# defaults write com.apple.LaunchServices LSHandlers -array-add \
+#   '{ LSHandlerContentType = "net.daringfireball.markdown"; LSHandlerRoleAll = "com.sublimetext.3"; }'
 
 # ==============================================================================
 # Dock and Dashboard
@@ -341,6 +352,16 @@ defaults write com.apple.dock showhidden -bool true
 # Safari & WebKit
 # ==============================================================================
 
+# Privacy: don’t send search queries to Apple
+defaults write com.apple.Safari UniversalSearchEnabled -bool false
+
+# Press Tab to highlight each item on a web page
+defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
+
+# Show the full URL in the address bar (note: this still hides the scheme)
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
 # Set Safari’s home page to `about:blank` for faster loading
 defaults write com.apple.Safari HomePage -string "about:blank"
 
@@ -369,6 +390,22 @@ defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
 
 # Remove useless icons from Safari’s bookmarks bar
 defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+
+# ==============================================================================
+# Chrome
+# ==============================================================================
+
+# Use the system-native print preview dialog
+defaults write com.google.Chrome DisablePrintPreview -bool true
+defaults write com.google.Chrome.canary DisablePrintPreview -bool true
+
+# Hide details in print preview dialog
+defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool false
+defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool false
+
+# Disable the all too sensitive backswipe
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
 
 # ==============================================================================
 # Mail
@@ -433,6 +470,20 @@ sudo mdutil -E / > /dev/null
 
 # Set iTerm preferences sync folder
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/Dev/dotfiles/iterm"
+
+# ==============================================================================
+# Terminal
+# ==============================================================================
+
+# Use a modified version of the Pro theme by default in Terminal.app
+# TERM_PROFILE='Mathias';
+# CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
+# if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
+#  open "${HOME}/init/${TERM_PROFILE}.terminal";
+#  sleep 1; # Wait a bit to make sure the theme is loaded
+#  defaults write com.apple.terminal 'Default Window Settings' -string "${TERM_PROFILE}";
+#  defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
+# fi;
 
 # ==============================================================================
 # Time Machine
