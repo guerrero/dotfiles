@@ -121,8 +121,8 @@ imap <C-s> <esc>:w<CR>
 call plug#begin('~/.vim/plugged')
 
 " Auto-completion and snippet solution
+Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/context_filetype.vim'
 
 " Ctrlp utility like sublime text
@@ -178,8 +178,11 @@ let g:neocomplete#enable_auto_select = 1
 " Disable default snippets in neosnippet
 let g:neosnippet#disable_runtime_snippets = { '_' : 1 }
 
-" Enable the preview window feature in neocomplete
+" Enable the preview window feature in neocomplete for neosnippets
 let g:neosnippet#enable_preview = 1
+
+" Set snippets directory for neosnippets
+let g:neosnippet#snippets_directory = "$HOME/.vim/snippets/"
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
