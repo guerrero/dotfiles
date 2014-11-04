@@ -25,13 +25,10 @@ set shortmess=atI
 set autoread
 
 " Use the OS clipboard by default (on versions with `+clipboard`)
-set clipboard=unnamed "
+" set clipboard+=unnamed
 
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
-
-" Highlight current line
-set cursorline
 
 " Highlight searches dynamically as pattern is typed
 set hlsearch
@@ -82,6 +79,7 @@ set noeol
 
 " Enable syntax highlighting and use custom color scheme
 syntax enable
+set term=xterm-256color
 colorscheme scheme
 
 " Show line number
@@ -117,51 +115,40 @@ map <F5> :setlocal spell! spelllang=en_us<CR>
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 
-" Vundle config
+" Vim-Plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-
-" Path where Vundle should install plugins
-call vundle#begin('~/.vim/bundle/')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Ctrlp utility like sublime text
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 
 " Autocompletion for vim code
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 " Insert or delete brackets, parens, quotes in pair
-Plugin 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 " Display an indent line
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 let g:indentLine_char = "⋮"
 let g:indentLine_noConcealCursor = 1
 
 " ds/cs/ys for deleting or changing surrounding chars
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Enable Sublime's multiple cursors feature
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
 " Improve status line  style
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
 " Syntax plugins
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'fatih/vim-go'
-Plugin 'pangloss/vim-javascript'
-Plugin 'briancollins/vim-jst'
-Plugin 'plasticboy/vim-markdown'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'fatih/vim-go'
+Plug 'pangloss/vim-javascript'
+Plug 'briancollins/vim-jst'
+Plug 'plasticboy/vim-markdown'
+Plug 'sophacles/vim-processing'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
