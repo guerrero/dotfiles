@@ -1,46 +1,45 @@
-# Install command-line tools using Homebrew
-# Usage: `brew bundle Brewfile`
+#!/usr/bin/env bash
+
+# Install binary packages using Homebrew (http://brew.sh)
+
+# Ask for the administrator password upfront.
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.osx` has finished.
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Make sure we're using the latest Homebrew
-update
+brew update
 
 # Upgrade any already-installed formulae
-upgrade
+brew upgrade
 
-# Install GNU utilities (without prefixes)
-# Those that come with OS X are outdated
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-install coreutils --default-names
-install findutils --default-names
+# Replace outdated GNU utilities that come with OS X
+# Add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`
+# to use them without prefixes
+brew install coreutils --default-names
+brew install findutils --default-names
 
 # Install wget with IRI support
-install wget --enable-iri
+brew install wget --enable-iri
 
 # Install more recent versions of some OS X tools
-tap homebrew/dupes
-# install homebrew/dupes/rsync
-
-# Install a newer version of vim (native OSX version is outdated)
-# override system vim version
-install vim --override-system-vi
+brew install vim --with-lua --override-system-vi
+brew install homebrew/dupes/grep
 
 # Install everything else
-install tmux
-install ack
-install fasd
-install git
-install git-extras
-install node
-install rename
-install tree
-# install hub (try this)
-
-# Install tmate to share terminal sessions
-tap nviennot/tmate
-install tmate
+brew install tmux
+brew install fasd
+brew install git
+brew install git-extras
+brew install node
+brew install rename
+brew install tree
+brew install go
+# brew install hub
 
 # Remove outdated versions from the cellar
-cleanup
+brew cleanup
 
 # Check if installation is successfully
-doctor
+brew doctor
