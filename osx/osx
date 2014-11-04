@@ -137,8 +137,8 @@ sudo pmset -a hibernatemode 0
 # Mouse, trackpad, keyboard, Bluetooth accessories, and input
 # ==============================================================================
 
-# Disable natural scrolling (Lion OSX style)
-defaults write -g com.apple.swipescrolldirection -bool false
+# Enable natural scrolling (Lion OSX style)
+defaults write -g com.apple.swipescrolldirection -bool true
 
 # Set mouse speed
 defaults write -g com.apple.mouse.scaling -float 0.6875
