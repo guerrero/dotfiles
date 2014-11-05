@@ -179,7 +179,7 @@ let g:neocomplete#enable_auto_select = 1
 let g:neosnippet#disable_runtime_snippets = { '_' : 1 }
 
 " Enable the preview window feature in neocomplete for neosnippets
-let g:neosnippet#enable_preview = 1
+" let g:neosnippet#enable_preview = 1
 
 " Set snippets directory for neosnippets
 let g:neosnippet#snippets_directory = "$HOME/.vim/snippets/"
