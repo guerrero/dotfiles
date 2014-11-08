@@ -145,6 +145,10 @@ Plug 'terryma/vim-multiple-cursors'
 " Improve status line  style
 Plug 'bling/vim-airline'
 
+" Compile and deploy arduino files from vim
+Plug 'jplaut/vim-arduino-ino'
+let g:vim_arduino_auto_open_serial = 1
+
 " Syntax plugins
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'fatih/vim-go'
@@ -152,6 +156,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'briancollins/vim-jst'
 Plug 'plasticboy/vim-markdown'
 Plug 'sophacles/vim-processing'
+Plug 'sudar/vim-arduino-syntax'
 
 call plug#end()
 

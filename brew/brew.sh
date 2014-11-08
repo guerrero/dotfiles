@@ -36,6 +36,7 @@ brew install node
 brew install rename
 brew install tree
 brew install go
+brew install ino
 # brew install hub
 
 # Remove outdated versions from the cellar
