@@ -37,6 +37,7 @@ brew install rename
 brew install tree
 brew install go
 brew install ino
+brew install python3
 # brew install hub
 
 # Remove outdated versions from the cellar
