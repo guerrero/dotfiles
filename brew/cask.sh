@@ -17,6 +17,9 @@ brew install caskroom/cask/brew-cask
 # Add support for alternate versions of Casks
 brew tap caskroom/versions
 
+# Add support for fonts
+brew tap caskroom/fonts
+
 # Install applications
 brew cask install alfred
 brew cask install arduino
@@ -48,6 +51,9 @@ brew cask install qlstephen       # Plain text files preview
 brew cask install qlmarkdown      # Markdown files preview
 brew cask install quicklook-json  # JSON files preview
 qlmanage -r                       # reset QL extension manager
+
+# Install fonts
+
 
 # Remove outdated versions from the cellar
 brew cleanup
