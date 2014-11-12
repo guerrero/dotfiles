@@ -276,13 +276,13 @@
 	<key>HotKeyTogglesWindow</key>
 	<false/>
 	<key>Hotkey</key>
-	<false/>
+	<true/>
 	<key>HotkeyChar</key>
-	<integer>0</integer>
+	<integer>32</integer>
 	<key>HotkeyCode</key>
-	<integer>0</integer>
+	<integer>49</integer>
 	<key>HotkeyModifiers</key>
-	<integer>0</integer>
+	<integer>262401</integer>
 	<key>IRMemory</key>
 	<integer>4</integer>
 	<key>JobName</key>
@@ -298,7 +298,7 @@
 	<key>NSColorPanelMode</key>
 	<string>0</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Dev/dotfiles/iterm</string>
+	<string>~/Downloads</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -325,11 +325,11 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>738 240 214 309 0 0 1440 878 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>410 154 924 485 0 0 1440 878 </string>
+	<string>516 215 924 485 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1 19 1438 859 0 0 1440 878 </string>
+	<string>710 339 585 451 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>352 427 570 451 0 0 1440 878 </string>
+	<string>642 69 585 473 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>204 45 570 451 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -1135,7 +1135,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-05-20T05:20:35Z</date>
+	<date>2014-11-08T13:48:42Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -1158,6 +1158,10 @@
 	<false/>
 	<key>TmuxDashboardLimit</key>
 	<integer>10</integer>
+	<key>ToolbeltTools</key>
+	<array>
+		<string>Profiles</string>
+	</array>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>
 	<key>URLHandlersByGuid</key>
@@ -1179,6 +1183,6 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>1.0.0.20140421</string>
+	<string>2.0.0.20141103</string>
 </dict>
 </plist>
