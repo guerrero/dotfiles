@@ -5,11 +5,14 @@
 # Ask for the administrator password upfront.
 sudo -v
 
-# Keep-alive: update existing `sudo` time stamp until `.osx` has finished.
+# Keep-alive: update existing `sudo` time stamp until `cask.sh` has finished.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 #Update Homebrew
 brew update && brew upgrade
+
+# Set /Applications as default dir for install apps with Cask
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # Install Homebrew Cask
 brew install caskroom/cask/brew-cask
@@ -36,6 +39,7 @@ brew cask install mactracker
 brew cask install processing
 brew cask install skype
 brew cask install slate
+brew cask install sublime-text3
 brew cask install spotify
 brew cask install torbrowser
 brew cask install transmission
