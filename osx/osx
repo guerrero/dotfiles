@@ -104,8 +104,8 @@ sudo pmset -a displaysleep 4
 sudo pmset -b displaysleep 3
 
 # Security: Disable wake on ethernet magic packet and modem ring
-pmset -a womp 0
-pmset -a ring 0
+sudo pmset -a womp 0
+sudo pmset -a ring 0
 
 # Set system sleep timer (in minutes)
 sudo pmset -a sleep 10
