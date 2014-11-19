@@ -482,7 +482,7 @@ defaults write org.m0k.transmission DownloadAsk -bool false
 #
 
 # Set iTerm preferences sync folder
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.dotfiles/iterm"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${HOME}/.dotfiles/iterm"
 
 #
 # Xcode
@@ -508,7 +508,7 @@ sudo tmutil disablelocal
 # Kill affected applications
 #
 
-for app in "Dock" "Finder" "iBooks" "Mail" "Messages" "Safari" "SystemUIServer" "Terminal" "Transmission" "cfprefsd" "iTerm2" "Xcode" ; do
+for app in "Dock" "Finder" "iBooks" "Mail" "Messages" "Safari" "SystemUIServer" "Terminal" "Transmission" "cfprefsd" "iTerm" "Xcode" ; do
   killall "$app" > /dev/null 2>&1
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
