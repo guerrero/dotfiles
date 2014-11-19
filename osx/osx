@@ -482,7 +482,7 @@ defaults write org.m0k.transmission DownloadAsk -bool false
 #
 
 # Set iTerm preferences sync folder
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/Dev/dotfiles/iterm"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.dotfiles/iterm"
 
 #
 # Xcode
