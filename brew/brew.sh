@@ -28,7 +28,6 @@ brew install vim --with-lua --override-system-vi
 brew install homebrew/dupes/grep
 
 # Install everything else
-brew install duti
 brew install fasd
 brew install git
 brew install git-extras
