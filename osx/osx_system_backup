@@ -1,0 +1,126 @@
+# OS X defaults backup settings
+defaults delete -g AppleShowScrollBars 
+defaults delete com.apple.universalaccess reduceTransparency 
+defaults delete -g NSTableViewDefaultSizeMode 
+defaults delete -g NSNavPanelExpandedStateForSaveMode 
+defaults delete -g NSNavPanelExpandedStateForSaveMode2 
+defaults delete -g PMPrintingExpandedStateForPrint 
+defaults delete -g PMPrintingExpandedStateForPrint2 
+defaults delete com.apple.LaunchServices LSQuarantine 
+defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows  -boolean 0
+defaults delete -g NSDisableAutomaticTermination 
+defaults delete com.apple.CrashReporter DialogType 
+defaults delete com.apple.SoftwareUpdate ScheduleFrequency 
+defaults delete com.apple.print.PrintingPrefs "Quit When Finished" 
+defaults delete -g NSAutomaticQuoteSubstitutionEnabled 
+defaults delete -g NSAutomaticDashSubstitutionEnabled 
+defaults write com.apple.screensaver askForPassword  -integer 1
+defaults write com.apple.screensaver askForPasswordDelay  -float 300
+sudo defaults write /Library/Preferences/com.apple.alf globalstate  -integer 0
+sudo defaults write /Library/Preferences/com.apple.alf stealthenabled  -integer 0
+sudo defaults write /Library/Preferences/com.apple.alf loggingenabled  -integer 1
+sudo defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEnabled  -boolean 1
+sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState  -boolean 1
+defaults delete -g com.apple.swipescrolldirection 
+defaults delete -g com.apple.mouse.scaling 
+defaults delete -g com.apple.scrollwheel.scaling 
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking  -integer 0
+defaults -currentHost delete -g com.apple.mouse.tapBehavior 
+defaults delete -g com.apple.mouse.tapBehavior 
+defaults delete com.apple.dock showLaunchpadGestureEnabled 
+defaults delete -g AppleKeyboardUIMode 
+defaults delete com.apple.universalaccess closeViewScrollWheelToggle 
+defaults delete com.apple.universalaccess HIDScrollZoomModifierMask 
+defaults delete com.apple.universalaccess closeViewZoomFollowsFocus 
+defaults delete -g ApplePressAndHoldEnabled 
+defaults delete -g KeyRepeat 
+defaults write -g AppleLanguages  -array (     es,     en )
+defaults write -g AppleLocale  -string es_ES
+defaults delete -g AppleMeasurementUnits 
+defaults delete -g AppleMetricUnits 
+defaults write com.apple.menuextra.clock DateFormat  -string EEE H:mm
+defaults delete -g NSAutomaticSpellingCorrectionEnabled 
+defaults delete -g WebAutomaticSpellingCorrectionEnabled 
+defaults delete -g CheckSpellingWhileTyping 
+defaults delete -g WebContinuousSpellCheckingEnabled 
+defaults delete com.apple.screencapture location 
+defaults delete com.apple.screencapture type 
+defaults delete com.apple.screencapture disable-shadow 
+defaults delete -g AppleFontSmoothing 
+sudo defaults delete /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled 
+defaults delete com.apple.finder NewWindowTarget 
+defaults delete com.apple.finder NewWindowTargetPath 
+defaults delete com.apple.finder ShowPathbar 
+defaults delete com.apple.finder QLEnableTextSelection 
+defaults delete com.apple.finder FXDefaultSearchScope 
+defaults delete com.apple.finder FXEnableExtensionChangeWarning 
+defaults write -g com.apple.springing.enabled  -boolean 1
+defaults write -g com.apple.springing.delay  -float 0.5
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop  -boolean 1
+defaults delete com.apple.desktopservices DSDontWriteNetworkStores 
+defaults delete com.apple.frameworks.diskimages skip
+defaults delete com.apple.frameworks.diskimages skip
+defaults delete com.apple.frameworks.diskimages skip
+defaults delete com.apple.frameworks.diskimages auto-open-ro-root 
+defaults delete com.apple.frameworks.diskimages auto-open-rw-root 
+defaults delete com.apple.finder OpenWindowForNewRemovableDisk 
+defaults delete com.apple.finder FXPreferredViewStyle 
+defaults write com.apple.dock autohide  -boolean 1
+defaults write com.apple.dock autohide -boolean 1
+defaults delete com.apple.dock autohide-time
+defaults delete com.apple.dock showhidden 
+defaults delete com.apple.dock magnification 
+defaults delete com.apple.dock size
+defaults delete com.apple.dock tilesize 
+defaults delete com.apple.dock minimize-to
+defaults delete com.apple.dock enable-spring
+defaults delete com.apple.dock show
+defaults delete com.apple.dock launchanim 
+defaults delete com.apple.dock expose
+defaults delete com.apple.dashboard mcx
+defaults delete com.apple.dock mru-spaces 
+defaults delete com.apple.TextEdit RichText 
+defaults delete com.apple.TextEdit PlainTextEncoding 
+defaults delete com.apple.TextEdit PlainTextEncodingForWrite 
+defaults delete com.apple.DiskUtility DUDebugMenuEnabled 
+defaults delete com.apple.DiskUtility advanced
+defaults delete com.apple.DiskUtility DUShowEveryPartition 
+defaults delete com.apple.storeagent Storefront 
+defaults delete com.apple.appstore WebKitDeveloperExtras 
+defaults delete com.apple.appstore ShowDebugMenu 
+defaults delete com.apple.mail DisableReplyAnimations 
+defaults delete com.apple.mail DisableSendAnimations 
+defaults delete com.apple.mail AddressesIncludeNameOnPasteboard 
+defaults delete com.apple.mail NSUserKeyEquivalents 
+defaults delete com.apple.mail DisableInlineAttachmentViewing 
+defaults delete com.apple.mail SendWindowsFriendlyAttachments 
+defaults delete com.apple.mail DraftsViewerAttributes 
+defaults delete com.apple.mail DraftsViewerAttributes 
+defaults delete com.apple.mail DraftsViewerAttributes 
+defaults delete com.google.Chrome DisablePrintPreview 
+defaults delete com.google.Chrome.canary DisablePrintPreview 
+defaults delete com.google.Chrome PMPrintingExpandedStateForPrint2 
+defaults delete com.google.Chrome.canary PMPrintingExpandedStateForPrint2 
+defaults delete com.google.Chrome AppleEnableSwipeNavigateWithScrolls 
+defaults delete com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls 
+defaults delete com.apple.Safari UniversalSearchEnabled 
+defaults delete com.apple.Safari WebKitTabToLinksPreferenceKey 
+defaults delete com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks 
+defaults delete com.apple.Safari ShowFullURLInSmartSearchField 
+defaults delete com.apple.Safari HomePage 
+defaults delete com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled 
+defaults delete com.apple.Safari IncludeDevelopMenu 
+defaults delete com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey 
+defaults delete com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled 
+defaults delete -g WebKitDeveloperExtras 
+defaults delete com.apple.messageshelper.MessageController SOInputLineSettings 
+defaults delete com.apple.messageshelper.MessageController SOInputLineSettings 
+defaults delete com.apple.messageshelper.MessageController SOInputLineSettings 
+defaults delete org.m0k.transmission DeleteOriginalTorrent 
+defaults delete org.m0k.transmission WarningDonate 
+defaults delete org.m0k.transmission WarningLegal 
+defaults delete org.m0k.transmission UseIncompleteDownloadFolder 
+defaults delete org.m0k.transmission IncompleteDownloadFolder 
+defaults delete org.m0k.transmission DownloadAsk 
+defaults delete com.googlecode.iterm2 PrefsCustomFolder 
+defaults delete com.apple.TimeMachine DoNotOfferNewDisksForBackup 
