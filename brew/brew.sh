@@ -17,8 +17,8 @@ brew upgrade
 # Replace outdated GNU utilities that come with OS X
 # Add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`
 # to use them without prefixes
-brew install coreutils --default-names
-brew install findutils --with-default-names
+brew install coreutils
+brew install findutils 
 
 # Install wget with IRI support
 brew install wget --with-iri
