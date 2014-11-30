@@ -508,7 +508,7 @@ sudo tmutil disablelocal
 # Kill affected applications
 #
 
-for app in "Dock" "Finder" "iBooks" "Mail" "Messages" "Safari" "SystemUIServer" "Terminal" "Transmission" "cfprefsd" "iTerm" "Xcode" ; do
+for app in "Dock" "Finder" "iBooks" "Mail" "Messages" "Safari" "SystemUIServer" "Transmission" "cfprefsd" "iTerm" "Xcode" ; do
   killall "$app" > /dev/null 2>&1
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
