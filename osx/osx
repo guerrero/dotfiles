@@ -310,7 +310,7 @@ defaults write com.apple.dock mru-spaces -bool false
 
 # Change indexing order and disable some file types
 # Privacy: disable Spotlight and web search suggestions to stop sending info to Apple
-defaults write com.apple.spotlight orderedItems -array \
+defaults write com.apple.Spotlight orderedItems -array \
   '{"enabled" = 1;"name" = "APPLICATIONS";}' \
   '{"enabled" = 1;"name" = "MENU_DEFINITION";}' \
   '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
