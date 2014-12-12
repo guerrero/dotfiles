@@ -28,3 +28,5 @@
     attributesfile = ~/.dotfiles/git/gitattributes
     excludesfile = ~/.dotfiles/git/gitignore
     editor = vim
+[hub]
+	protocol = https
