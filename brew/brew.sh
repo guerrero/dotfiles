@@ -36,7 +36,7 @@ brew install node
 brew install python3
 brew install rename
 brew install tree
-# brew install hub
+brew install hub
 
 # Check if installation is successfully
 brew doctor
