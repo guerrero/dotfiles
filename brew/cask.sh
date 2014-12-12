@@ -57,7 +57,13 @@ brew cask install quicklook-json  # JSON files preview
 qlmanage -r                       # reset QL extension manager
 
 # Install fonts
-
+brew cask install font-fira-sans
+brew cask install font-roboto
+brew cask install font-fontawesome
+brew cask install font-open-sans
+brew cask install font-source-sans-pro
+brew cask install font-pt-sans
+brew cask install font-league-gothic
 
 # Remove outdated versions from the cellar
 brew cleanup
