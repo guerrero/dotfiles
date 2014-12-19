@@ -34,6 +34,7 @@ brew cask install firefox
 brew cask install flash
 brew cask install google-chrome
 brew cask install iterm2
+brew cask install imageoptim
 brew cask install licecap
 brew cask install mactracker
 brew cask install processing
