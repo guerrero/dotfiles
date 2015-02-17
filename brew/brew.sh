@@ -38,6 +38,9 @@ brew install rename
 brew install tree
 brew install hub
 
+# Install OpenCV
+brew install homebrew/science/opencv
+
 # Check if installation is successfully
 brew doctor
 
