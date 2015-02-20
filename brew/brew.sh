@@ -37,6 +37,7 @@ brew install python3
 brew install rename
 brew install tree
 brew install hub
+brew install pkg-config
 
 # Install OpenCV
 brew install homebrew/science/opencv
