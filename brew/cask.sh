@@ -26,6 +26,7 @@ brew cask install arduino
 brew cask install clamxav
 brew cask install cleanmymac
 brew cask install cyberduck
+brew cask install dash
 brew cask install flux
 brew cask install firefox
 brew cask install flash
