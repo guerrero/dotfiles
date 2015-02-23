@@ -495,6 +495,13 @@ sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulat
 # Time Machine
 #
 
+#
+# Dash
+#
+
+# Change Dash snippet library location to dotfiles dash folder
+defaults write com.kapeli.dash snippetSQLPath -string "${HOME}/dotfiles/dash/library.dash"
+
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
