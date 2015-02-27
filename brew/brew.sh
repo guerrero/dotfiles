@@ -33,6 +33,7 @@ brew install git
 brew install git-extras
 brew install go
 brew install node
+brew install iojs
 brew install python3
 brew install rename
 brew install tree
