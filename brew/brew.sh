@@ -30,6 +30,7 @@ brew install homebrew/dupes/grep
 # Install everything else
 brew install fasd
 brew install git
+brew install gist
 brew install git-extras
 brew install go
 brew install node
@@ -39,6 +40,7 @@ brew install rename
 brew install tree
 brew install hub
 brew install pkg-config
+brew install ag
 
 # Install OpenCV
 brew install homebrew/science/opencv
