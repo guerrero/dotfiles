@@ -8,17 +8,12 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `cask.sh` has finished.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-#Update Homebrew
-brew update 
-
-# Install Homebrew Cask
-brew install caskroom/cask/brew-cask
-
-# Add support for alternate versions of Casks
-brew tap caskroom/versions
+# Changes the path where symlinks to the cask applications will be generated
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # Install applications
 brew cask install alfred
+brew cask install atom
 brew cask install clamxav
 brew cask install cleanmymac
 brew cask install cyberduck
@@ -32,6 +27,7 @@ brew cask install imageoptim
 brew cask install licecap
 brew cask install mactracker
 brew cask install skype
+brew cask install slack
 brew cask install slate
 brew cask install sublime-text3
 brew cask install spotify
@@ -39,28 +35,6 @@ brew cask install torbrowser
 brew cask install transmission
 brew cask install virtualbox
 brew cask install vlc
-
-# Install Quick Look plugins
-brew cask install qlcolorcode     # Syntax highlighting in source files
-brew cask install qlstephen       # Plain text files preview
-brew cask install qlmarkdown      # Markdown files preview
-brew cask install quicklook-json  # JSON files preview
-qlmanage -r                       # reset QL extension manager
-
-# Add support for fonts
-brew tap caskroom/fonts
-
-# Install fonts
-brew cask install font-fira-sans
-brew cask install font-roboto
-brew cask install font-fontawesome
-brew cask install font-open-sans
-brew cask install font-source-sans-pro
-brew cask install font-pt-sans
-brew cask install font-league-gothic
-
-# Add Caskroom to alfred search paths
-brew cask alfred link
 
 # Remove outdated versions from the cellar
 brew cleanup
