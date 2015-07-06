@@ -8,6 +8,9 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `cask.sh` has finished.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+# Intall Homebrew Cask
+brew install caskroom/cask/brew-cask
+
 # Changes the path where symlinks to the cask applications will be generated
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
