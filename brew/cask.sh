@@ -14,6 +14,9 @@ brew install caskroom/cask/brew-cask
 # Changes the path where symlinks to the cask applications will be generated
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
+# Tap homebrew cask versions to enable installation of alternate Cask versions
+brew tap caskroom/versions
+
 # Install applications
 brew cask install alfred
 brew cask install atom
