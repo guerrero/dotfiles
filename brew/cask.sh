@@ -17,8 +17,8 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # Tap homebrew cask versions to enable installation of alternate Cask versions
 brew tap caskroom/versions
 
-# Install Java required by another apps
-brew cask install java
+# Install Java 6 required by some apps
+brew cask install java6
 
 # Install applications
 brew cask install alfred
