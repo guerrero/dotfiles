@@ -45,6 +45,19 @@ brew cask install transmission
 brew cask install virtualbox
 brew cask install vlc
 
+# Tap homebrew cask fonts to enable installation of binary font files
+brew tap caskroom/fonts
+
+# Install fonts
+brew cask install font-fira-sans
+brew cask install font-open-sans
+brew cask install font-pt-sans
+brew cask install font-pt-serif
+brew cask install font-roboto
+brew cask install font-source-sans-pro
+brew cask install font-source-serif-pro
+
+
 # Remove outdated versions from the cellar
 brew cleanup
 brew cask cleanup
