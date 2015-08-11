@@ -43,9 +43,6 @@ defaults write -g NSDisableAutomaticTermination -bool true
 # Disable the crash reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
 
-# Automatically quit printer app once the print jobs complete
-defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
-
 # Disable smart quotes and dashes as they’re annoying when typing code
 defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
@@ -223,9 +220,6 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write -g com.apple.springing.enabled -bool true
 defaults write -g com.apple.springing.delay -float 0.4
 
-# Disable icons for hard drives, servers, and removable media on the desktop
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
-
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
@@ -341,10 +335,6 @@ defaults write com.apple.storeagent Storefront -string "143441-8,13"
 #
 # Mail
 #
-
-# Disable send and reply animations in Mail.app
-defaults write com.apple.mail DisableReplyAnimations -bool true
-defaults write com.apple.mail DisableSendAnimations -bool true
 
 # Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
@@ -463,13 +453,6 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 # Disable local Time Machine snapshots
 sudo tmutil disablelocal
-
-#
-# Dash
-#
-
-# Change Dash snippet library location to dotfiles dash folder
-defaults write com.kapeli.dash snippetSQLPath -string "${HOME}/dotfiles/dash/library.dash"
 
 #
 # Kill affected applications
