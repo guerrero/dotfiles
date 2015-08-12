@@ -101,15 +101,12 @@ sudo pmset -b displaysleep 3
 sudo pmset -a womp 0
 sudo pmset -a ring 0
 
+# Security: Destroy File Vault Key when going to standby mode
+destroyfvkeyonstandby
+
 # Set system sleep timer (in minutes)
 sudo pmset -a sleep 10
 sudo pmset -b sleep 8
-
-# Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
-# TODO: Check this
-# sudo pmset -a standbydelay 86400
-# sudo pmset -a destroyfvkeyonstandby 1
 
 #
 # Mouse, trackpad, keyboard, Bluetooth accessories, and input
@@ -190,11 +187,6 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 # Disable the sudden motion sensor and disk spindown as it’s not useful for SSDs
 sudo pmset -a sms 0
 sudo pmset -a disksleep 0
-
-# Replace the sleep image file with a read-only zero-byte file to save disk space
-sudo rm /Private/var/vm/sleepimage
-sudo touch /Private/var/vm/sleepimage
-sudo chflags uchg /Private/var/vm/sleepimage
 
 #
 # Finder
