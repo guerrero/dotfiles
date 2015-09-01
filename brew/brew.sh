@@ -21,6 +21,7 @@ brew install gist
 brew install go
 brew install node
 brew install mongodb
+brew install postgresql
 brew install iojs
 brew install tree
 brew install hub
