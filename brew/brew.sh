@@ -19,7 +19,6 @@ brew install fasd
 brew install git
 brew install gist
 brew install go
-brew install node
 brew install mongodb
 brew install postgresql
 brew install iojs
