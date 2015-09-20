@@ -8,25 +8,10 @@
 [push]
     default = simple
 
-[color]
-    diff = auto
-    status = auto
-    branch = auto
-    ui = auto
-
-[color "status"]
-    added = green
-    changed = yellow
-    untracked = magenta
-
-[color "branch"]
-    current = green
-    local = yellow
-    remote = magenta
-
 [core]
     attributesfile = ~/.dotfiles/git/gitattributes
     excludesfile = ~/.dotfiles/git/gitignore
-    editor = vim
+    editor = subl --wait
+    
 [hub]
 	protocol = https
