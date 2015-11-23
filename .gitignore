@@ -15,13 +15,11 @@ license.plist
 id_rsa
 id_rsa.pub
 
-# Folder view configuration files
-Desktop.ini
+#OS X defaults backup
+osx/osx_backup
 
-# Logs and databases
+# Logs
 *.log
-*.sql
-*.sqlite
 
 # Package control cache
 Package\ Control.last-run
