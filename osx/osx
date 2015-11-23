@@ -22,9 +22,6 @@ defaults write -g AppleShowScrollBars -string "Automatic"
 # Disable transparency in the menu bar and elsewhere on Yosemite
 defaults write com.apple.universalaccess reduceTransparency -bool true
 
-# Set sidebar icon size to medium
-defaults write -g NSTableViewDefaultSizeMode -int 2
-
 # Expand save and print panels by default
 defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
 defaults write -g NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -205,6 +202,9 @@ defaults write com.apple.finder QLEnableTextSelection -bool true
 # When performing a search, search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
+# Finder: show all filename extensions
+defaults write -g AppleShowAllExtensions -bool true
+
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
@@ -310,19 +310,8 @@ sudo mdutil -E / > /dev/null
 # Address Book, TextEdit, and Disk Utility
 #
 
-# Enable the debug menu in Disk Utility
-defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
-defaults write com.apple.DiskUtility advanced-image-options -bool true
-
 # Show hidden partitions in Disk Utility
 defaults write com.apple.DiskUtility DUShowEveryPartition -bool true
-
-#
-# Mac App Store
-#
-
-# Set Mac App Store Country
-defaults write com.apple.storeagent Storefront -string "143441-8,13"
 
 #
 # Mail
@@ -333,9 +322,6 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 # Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
 defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
-
-# Disable inline attachments (just show the icons)
-# defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
 # Send Windows friendly attachments
 defaults write com.apple.mail SendWindowsFriendlyAttachments -bool true
