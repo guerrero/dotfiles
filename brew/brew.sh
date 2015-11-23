@@ -5,9 +5,6 @@
 # Make sure we're using the latest Homebrew
 brew update
 
-# Upgrade any already-installed formulae
-brew upgrade --all
-
 # Install wget with IRI support
 brew install wget --with-iri
 
@@ -21,9 +18,10 @@ brew install gist
 brew install go
 brew install mongodb
 brew install postgresql
-brew install iojs
+brew install node
 brew install tree
 brew install hub
+brew install unrar
 
 # Install OpenCV
 brew install homebrew/science/opencv
