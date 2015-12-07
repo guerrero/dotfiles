@@ -1,27 +1,7 @@
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
 # Sensitive data
-.private/
-private/
+.private
+private
 license.plist
-.ssh/
+.ssh
 id_rsa
 id_rsa.pub
-
-#OS X defaults backup
-osx/osx_backup
-
-# Logs
-*.log
-
-# Package control cache
-Package\ Control.last-run
-Package\ Control.cache
-Package\ Control.system-ca-bundle

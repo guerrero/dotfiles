@@ -1,18 +1,16 @@
-# OSX system files
+# OS generated files
 .DS_Store
-.AppleDouble
-.LSOverride
+.DS_Store?
 ._*
-
-# Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+ehthumbs.db
+Thumbs.db
 
 # Sensitive data
-.private/
-private/
+.private
 license.plist
-.ssh/
+.ssh
 id_rsa
 id_rsa.pub
 
@@ -24,6 +22,3 @@ Session.vim
 .netrwhist
 *~
 *.swp
-
-# Node.js
-npm-debug.log
