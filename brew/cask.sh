@@ -42,6 +42,7 @@ brew cask install imageoptim
 brew cask install iterm2
 brew cask install licecap
 brew cask install mactracker
+brew cask install sketch
 brew cask install skype
 brew cask install slack
 brew cask install slate
