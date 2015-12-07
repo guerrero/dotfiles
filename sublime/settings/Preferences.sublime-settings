@@ -1,0 +1,8 @@
+{
+	"font_size": 15,
+	"ignored_packages":
+	[
+		"Markdown",
+		"Vintage"
+	]
+}
