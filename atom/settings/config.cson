@@ -1,0 +1,18 @@
+"*":
+  welcome:
+    showOnStartup: false
+  core:
+    disabledPackages: [
+      "metrics"
+      "language-mustache"
+      "language-todo"
+      "language-php"
+      "language-perl"
+      "language-objective-c"
+      "autoflow"
+      "exception-reporting"
+    ]
+  editor:
+    invisibles: {}
+    autoIndent: false
+  linter: {}
