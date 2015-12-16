@@ -311,6 +311,13 @@ sudo mdutil -E / > /dev/null
 defaults write com.apple.DiskUtility DUShowEveryPartition -bool true
 
 #
+# Photos
+#
+
+# Disable Photos show up when devices are plugged (OS X 10.11 and earlier)
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+#
 # Mail
 #
 
