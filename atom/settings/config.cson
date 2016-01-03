@@ -12,6 +12,10 @@
       "autoflow"
       "exception-reporting"
     ]
+    customFileTypes:
+      "source.javascript": [
+        "cocoascript"
+      ]
   editor:
     invisibles: {}
     autoIndent: false
