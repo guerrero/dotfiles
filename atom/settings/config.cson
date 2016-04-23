@@ -1,22 +1,23 @@
 "*":
-  welcome:
-    showOnStartup: false
   core:
+    customFileTypes:
+      "source.javascript": [
+        "cocoascript"
+      ]
     disabledPackages: [
       "metrics"
       "language-mustache"
       "language-todo"
-      "language-php"
       "language-perl"
       "language-objective-c"
       "autoflow"
       "exception-reporting"
     ]
-    customFileTypes:
-      "source.javascript": [
-        "cocoascript"
-      ]
   editor:
-    invisibles: {}
     autoIndent: false
+    invisibles: {}
   linter: {}
+  "linter-eslint":
+    globalNodePath: "/usr/local"
+  welcome:
+    showOnStartup: false
