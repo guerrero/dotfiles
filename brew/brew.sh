@@ -23,6 +23,7 @@ brew install node
 brew install postgresql
 brew install tree
 brew install unrar
+brew install zsh
 
 # Install OpenCV
 brew install homebrew/science/opencv
