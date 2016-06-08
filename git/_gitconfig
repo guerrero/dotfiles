@@ -12,6 +12,6 @@
     attributesfile = ~/.dotfiles/git/gitattributes
     excludesfile = ~/.dotfiles/git/gitignore
     editor = subl --wait
-    
+
 [hub]
 	protocol = https
