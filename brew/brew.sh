@@ -14,12 +14,14 @@ brew install vim --with-lua --override-system-vi
 # Install everything else
 brew install duti
 brew install fasd
+brew install fish
 brew install gist
 brew install git
 brew install go
 brew install hub
 brew install mongodb
 brew install node
+brew install nvm
 brew install postgresql
 brew install tree
 brew install unrar
