@@ -13,7 +13,7 @@ SET fish_color_comment:a8a8a8
 SET fish_color_cwd:green
 SET fish_color_cwd_root:red
 SET fish_color_end:ffaf87
-SET fish_color_error:ff5f5f
+SET fish_color_error:red
 SET fish_color_escape:cyan
 SET fish_color_history_current:cyan
 SET fish_color_host:normal
@@ -23,8 +23,8 @@ SET fish_color_operator:cyan
 SET fish_color_param:87afff
 SET fish_color_quote:ffd787
 SET fish_color_redirection:af87ff
-SET fish_color_search_match:\x2d\x2dbackground\x3dpurple
-SET fish_color_selection:\x2d\x2dbackground\x3dpurple
+SET fish_color_search_match:\x2d\x2dbackground\x3d3f4c67
+SET fish_color_selection:\x2d\x2dbackground\x3d3f4c67
 SET fish_color_status:red
 SET fish_color_user:green
 SET fish_color_valid_path:\x2d\x2dunderline
