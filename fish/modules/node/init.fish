@@ -1,17 +1,19 @@
 #
-# Loads the Node Version Manager and enables npm completion.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#   Zeh Rizzatti <zehrizzatti@gmail.com>
+# Loads the Node Version Manager
 #
 
 # Return if requirements are not found.
-if type -q node
+if not type -q node
   exit
 end
 
 # Load package manager installed NVM into the shell session.
-if type -q brew and type -q nvm
-  source (brew --prefix nvm)/nvm.sh
+if type -q brew; and test -f (brew --prefix nvm)/nvm.sh
+
+  mkdir -p "$HOME/.nvm"
+  and set -x NVM_DIR "$HOME/.nvm"
+
+  function nvm
+    bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
+  end
 end
