@@ -3,10 +3,14 @@
 #
 
 # Avoid config if requirements are not found.
-if type -q go and test (uname) = 'Darwin' and not test -d "$HOME/.golang"
+if not type -q go; or test (uname) != 'Darwin'; or not test -d "$HOME/.golang"
   exit
 end
 
-# Set GOPATH to my workspace location and append Go binaries to PATH
+# Set GOPATH to my workspace location
 set -x GOPATH "$HOME/.golang"
-set -x PATH $PATH "$GOPATH/bin"
+
+# Append Go binaries to PATH
+if test -d "$GOPATH/bin"
+  set -x PATH $PATH "$GOPATH/bin"
+end

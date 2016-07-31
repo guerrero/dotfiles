@@ -10,7 +10,14 @@ end
 # Editors
 #
 
-set -U EDITOR 'vim'
+if type -q atom
+  set -U EDITOR 'atom'
+else if type -q subl
+  set -U EDITOR 'subl'
+else
+  set -U EDITOR 'vim'
+end
+
 set -U VISUAL 'vim'
 set -U PAGER 'less'
 
