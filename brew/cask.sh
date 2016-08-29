@@ -11,78 +11,87 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Update Homebrew to ensure we are using the latest Homebrew-cask version
 brew update
 
-# Intall Homebrew Cask
-brew tap caskroom/cask
+declare -a repositories=(
+  caskroom/cask # Repository for applications
+  caskroom/versions # Repository for alternate app versions
+  caskroom/fonts # Repository for binary font files
+)
 
-# Tap homebrew cask versions to enable installation of alternate Cask versions
-brew tap caskroom/versions
+declare -a casks=(
+  java6 # Install Java 6 required by some apps
+  silverlight # Install Silverlight required by Netflix
 
-install() {
-  for cask in $@; do
+  alfred
+  atom
+  chromium
+  clamxav
+  cleanmymac
+  cyberduck
+  dash
+  firefox
+  google-chrome
+  google-hangouts
+  hammerspoon
+  imageoptim
+  iterm2
+  licecap
+  mactracker
+  screenhero
+  sketch
+  skype
+  slack
+  spotify
+  sublime-text
+  telegram
+  torbrowser
+  transmission
+  virtualbox
+  vlc
+  zeplin
+
+  font-cabin
+  font-fira-sans
+  font-lato
+  font-merriweather
+  font-merriweather-sans
+  font-montserrat
+  font-open-sans
+  font-oxygen
+  font-pt-sans
+  font-pt-serif
+  font-quattrocento-sans
+  font-roboto
+  font-source-sans-pro
+  font-source-serif-pro
+  font-varela
+  font-varela-round
+  font-inconsolata
+)
+
+# Add repositories to Homebrew
+for repository in "${repositories[@]}"; do
+  repository_name="${repository##*/}"
+
+  if ! brew tap | grep -q $repository_name; then
+    echo -e "\e[32m==>\e[0m Adding ${repository_name} to Homebrew..."
+    brew tap $repository
+  else
+    echo -e "\e[33m\e[4mWarning\e[0m: Repository ${repository_name} has been added previously."
+  fi
+done
+
+# Install apps from Casks
+for cask in "${casks[@]}"; do
+  if ! brew cask list | grep -q $cask; then
+    echo -e "\e[32m==>\e[0m Installing ${cask}..."
     brew cask install $cask
-  done
-}
-
-# Install Java 6 required by some apps
-install java6
-
-# Install Silverlight required by Netflix
-install silverlight
-
-# Install applications
-install alfred
-install atom
-install clamxav
-install cleanmymac
-install cyberduck
-install dash
-install firefox
-install flux
-install google-chrome
-install chromium
-install google-hangouts
-install imageoptim
-install iterm2
-install licecap
-install mactracker
-install sketch
-install skype
-install slack
-install hammerspoon
-install spotify
-install sublime-text3
-install telegram
-install torbrowser
-install transmission
-install virtualbox
-install vlc
-install zeplin
-install screenhero
-
-# Tap homebrew cask fonts to enable installation of binary font files
-brew tap caskroom/fonts
-
-# Install fonts
-install font-cabin
-install font-fira-sans
-install font-lato
-install font-merriweather
-install font-merriweather-sans
-install font-montserrat
-install font-open-sans
-install font-oxygen
-install font-pt-sans
-install font-pt-serif
-install font-quattrocento-sans
-install font-roboto
-install font-source-sans-pro
-install font-source-serif-pro
-install font-varela
-install font-varela-round
-install font-inconsolata
+  else
+    echo -e "\e[33m\e[4mWarning\e[0m: A Cask for ${cask} is already installed."
+  fi
+done
 
 # Remove outdated versions from the cellar
 brew cleanup
 brew cask cleanup
 
-unset -f install
+unset repositories casks

@@ -5,30 +5,46 @@
 # Make sure we're using the latest Homebrew
 brew update
 
-# Install wget with IRI support
-brew install wget --with-iri
+declare -a formulas=(
+  duti
+  elixir
+  elm
+  erlang
+  fasd
+  fish
+  gist
+  git
+  go
+  homebrew/science/opencv
+  hub
+  lua
+  mongodb
+  node
+  nvm
+  postgresql
+  python
+  rust
+  tree
+  unrar
+  "vim --with-lua --override-system-vi" # recent version of vim
+  "wget --with-iri" # Install wget with IRI support
+  youtube-dl
+)
 
-# Install more recent version of vim
-brew install vim --with-lua --override-system-vi
+# Install binaries from Homebrew formulas
+for formula in "${formulas[@]}"; do
+  formula_wo_spaces="${formula%% *}"
+  formula_name="${formula_wo_spaces##*/}"
 
-# Install everything else
-brew install duti
-brew install fasd
-brew install fish
-brew install gist
-brew install git
-brew install go
-brew install hub
-brew install mongodb
-brew install node
-brew install nvm
-brew install postgresql
-brew install tree
-brew install unrar
-brew install zsh
-
-# Install OpenCV
-brew install homebrew/science/opencv
+  if ! brew list | grep -q "$formula_name"; then
+    echo -e "\e[32m==>\e[0m Installing $formula_name..."
+    brew install $formula
+  else
+    echo -e "\e[33m\e[4mWarning\e[0m: A formula for $formula_name is already installed."
+  fi
+done
 
 # Remove outdated versions from the cellar
 brew cleanup
+
+unset formulas formula_name
