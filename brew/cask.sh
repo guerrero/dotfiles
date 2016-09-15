@@ -68,25 +68,29 @@ declare -a casks=(
   font-inconsolata
 )
 
+# Store list of installed apps and repos for performance
+declare -a added_repositories=( $(brew tap) )
+declare -a installed_casks=( $(brew cask list) )
+
 # Add repositories to Homebrew
 for repository in "${repositories[@]}"; do
   repository_name="${repository##*/}"
 
-  if ! brew tap | grep -q $repository_name; then
+  if [[ " ${added_repositories[@]} " =~ " ${repository} " ]]; then
+    echo -e "\e[33m\e[4mWarning\e[0m: Repository ${repository_name} has been added previously."
+  else
     echo -e "\e[32m==>\e[0m Adding ${repository_name} to Homebrew..."
     brew tap $repository
-  else
-    echo -e "\e[33m\e[4mWarning\e[0m: Repository ${repository_name} has been added previously."
   fi
 done
 
 # Install apps from Casks
 for cask in "${casks[@]}"; do
-  if ! brew cask list | grep -q $cask; then
+  if [[ " ${installed_casks[@]} " =~ " ${cask} " ]]; then
+    echo -e "\e[33m\e[4mWarning\e[0m: A Cask for ${cask} is already installed."
+  else
     echo -e "\e[32m==>\e[0m Installing ${cask}..."
     brew cask install $cask
-  else
-    echo -e "\e[33m\e[4mWarning\e[0m: A Cask for ${cask} is already installed."
   fi
 done
 
@@ -94,4 +98,4 @@ done
 brew cleanup
 brew cask cleanup
 
-unset repositories casks
+unset repositories casks added_repositories installed_casks

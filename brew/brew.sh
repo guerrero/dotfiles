@@ -31,20 +31,23 @@ declare -a formulas=(
   youtube-dl
 )
 
+# Store list of installed Homebrew formulas for performance
+declare -a installed_formulas=( $(brew list) )
+
 # Install binaries from Homebrew formulas
 for formula in "${formulas[@]}"; do
   formula_wo_spaces="${formula%% *}"
   formula_name="${formula_wo_spaces##*/}"
 
-  if ! brew list | grep -q "$formula_name"; then
+  if [[ " ${installed_formulas[@]} " =~ " ${formula_name} " ]]; then
+    echo -e "\e[33m\e[4mWarning\e[0m: A formula for $formula_name is already installed."
+  else
     echo -e "\e[32m==>\e[0m Installing $formula_name..."
     brew install $formula
-  else
-    echo -e "\e[33m\e[4mWarning\e[0m: A formula for $formula_name is already installed."
   fi
 done
 
 # Remove outdated versions from the cellar
 brew cleanup
 
-unset formulas formula_name
+unset formulas installed_formulas formula_name
