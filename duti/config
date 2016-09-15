@@ -24,9 +24,9 @@
 # shell   app can execute the item.
 # none    app cannot open the item, but provides an icon for the given UTI.
 
-com.sublimetext.3 net.daringfireball.markdown all
-com.sublimetext.3 public.plain-text all
-com.sublimetext.2 public.source-code  all
+com.github.atom net.daringfireball.markdown all
+com.github.atom public.plain-text all
+com.github.atom public.source-code  all
 
 org.videolan.vlc .avi all
 org.videolan.vlc .mkv all
