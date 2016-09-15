@@ -3,7 +3,7 @@
 #
 
 # Return if requirements are not found.
-if not type -q node
+if not type -q node; and not brew list | grep -q "nvm"
   exit
 end
 
