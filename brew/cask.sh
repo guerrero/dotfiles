@@ -41,14 +41,12 @@ declare -a casks=(
   skype
   slack
   spotify
-  sublime-text
   telegram
   torbrowser
   transmission
   virtualbox
   vlc
   zeplin
-
   font-cabin
   font-fira-sans
   font-lato
