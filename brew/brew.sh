@@ -24,6 +24,7 @@ declare -a formulas=(
   postgresql
   python
   rust
+  tccutil
   tree
   unrar
   "vim --with-lua --override-system-vi" # recent version of vim
