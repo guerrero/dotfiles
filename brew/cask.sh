@@ -31,7 +31,6 @@ declare -a casks=(
   firefox
   google-chrome
   google-hangouts
-  hammerspoon
   imageoptim
   iterm2
   licecap

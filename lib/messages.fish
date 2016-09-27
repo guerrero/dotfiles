@@ -12,7 +12,6 @@ end
 function print_error
   set_color red; echo -n 'ERROR'
   set_color normal; echo ':' $argv
-  exit 1
 end
 
 function print_warning
