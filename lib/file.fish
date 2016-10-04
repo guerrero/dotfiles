@@ -1,6 +1,6 @@
-set current_dir (dirname (status -f))
+set -l current_dir (dirname (status -f))
 
-source (dirname (status -f))"/messages.fish"
+source "$current_dir/messages.fish"
 
 function symlink -a source_path target_path
   test -L $target_path; and test (readlink $target_path) = $source_path

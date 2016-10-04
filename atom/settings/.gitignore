@@ -1,8 +1,8 @@
-.apm/
+.apm
 .node-gyp
 .npm
 blob-store
 compile-cache
 dev
-packages/
+packages
 storage

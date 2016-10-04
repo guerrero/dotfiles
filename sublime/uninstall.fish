@@ -1,4 +1,4 @@
-set -l parent_dir (dirname (dirname (status -f)))
+set -l parent_dir (dirname (realpath (dirname (status -f))))
 
 source "$parent_dir/lib/applications.fish"
 

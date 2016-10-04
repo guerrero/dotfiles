@@ -1,10 +1,11 @@
-set -l parent_dir (dirname (dirname (status -f)))
+set -l current_dir (realpath (dirname (status -f)))
+set -l parent_dir (dirname $current_dir)
 
 source "$parent_dir/lib/messages.fish"
 source "$parent_dir/lib/applications.fish"
 source "$parent_dir/lib/file.fish"
 
-set -l SETTINGS_DIR (dirname (status -f))/settings
+set -l SETTINGS_DIR "$current_dir/settings"
 set -l CONFIG_DIR "$HOME/Library/Application Support/Sublime Text 3/Packages/User"
 set PACKAGE_CONTROL_FILE "$HOME/Library/Application Support/Sublime Text 3/Installed Packages/Package Control.sublime-package"
 

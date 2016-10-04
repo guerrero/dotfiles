@@ -13,11 +13,15 @@
       "autoflow"
       "exception-reporting"
     ]
+    telemetryConsent: "no"
   editor:
     autoIndent: false
+    fontSize: 15
     invisibles: {}
   linter: {}
   "linter-eslint":
     globalNodePath: "/usr/local"
+  "tree-view":
+    hideVcsIgnoredFiles: false
   welcome:
     showOnStartup: false
