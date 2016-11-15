@@ -1,3 +1,4 @@
+# Package Control cache files
 Package Control.ca-bundle
 Package Control.ca-certs
 Package Control.ca-list
@@ -7,3 +8,6 @@ Package Control.merged-ca-bundle
 Package Control.system-ca-bundle
 Package Control.user-ca-bundle
 oscrypto-ca-bundle.crt
+
+# SublimeLinter theme
+Monokai\ \(SL\).tmTheme
