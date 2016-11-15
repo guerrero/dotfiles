@@ -2,6 +2,7 @@
 # Do NOT edit it directly, your changes will be overwritten.
 SET BROWSER:open
 SET EDITOR:subl
+SET LANG:en_US\x2eUTF\x2d8
 SET PAGER:less
 SET VISUAL:vim
 SET __fish_classic_git_prompt_initialized:\x1d
