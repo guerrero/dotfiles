@@ -35,6 +35,9 @@ declare -a casks=(
   iterm2
   licecap
   mactracker
+  qlcolorcode
+  qlmarkdown
+  qlstephen
   screenhero
   sketch
   skype
@@ -46,6 +49,7 @@ declare -a casks=(
   virtualbox
   vlc
   zeplin
+
   font-cabin
   font-fira-sans
   font-lato
