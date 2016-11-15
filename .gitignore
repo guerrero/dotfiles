@@ -5,6 +5,3 @@ license.plist
 .ssh
 id_rsa
 id_rsa.pub
-fish/completions/
-fish/functions/
-fish/conf.d
