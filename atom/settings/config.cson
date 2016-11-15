@@ -12,15 +12,19 @@
       "language-objective-c"
       "autoflow"
       "exception-reporting"
+      "markdown-preview"
     ]
     telemetryConsent: "no"
   editor:
     autoIndent: false
-    fontSize: 15
     invisibles: {}
-  linter: {}
+  linter:
+    errorPanelHeight: 24
+    gutterPosition: "Left"
   "linter-eslint":
     globalNodePath: "/usr/local"
+  "markdown-preview-plus":
+    useGitHubStyle: true
   "tree-view":
     hideVcsIgnoredFiles: false
   welcome:

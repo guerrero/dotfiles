@@ -1,0 +1,8 @@
+'.source.js':
+  'Strict mode':
+    'prefix': 'strict'
+    'body': '\'use strict\''
+
+  'CommonJS export method':
+    'prefix': 'expmethod'
+    'body': 'exports.${1:method} = function ${1:method}() {\n  $2\n}'
