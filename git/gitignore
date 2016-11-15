@@ -13,12 +13,3 @@ license.plist
 .ssh
 id_rsa
 id_rsa.pub
-
-# Vim
-[._]*.s[a-w][a-z]
-[._]s[a-w][a-z]
-*.un~
-Session.vim
-.netrwhist
-*~
-*.swp
