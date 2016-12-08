@@ -5,6 +5,8 @@
 	],
 	"installed_packages":
 	[
+		"Markdown Extended",
+		"Markdown Preview",
 		"Package Control",
 		"SublimeLinter"
 	]
