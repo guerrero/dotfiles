@@ -1,55 +1,30 @@
-#
-# Global config for Fish shell
-#
-
-if test (uname) = 'Darwin'
-  set -U BROWSER 'open'
-end
-
-#
-# Editors
-#
-
-if type -q subl
-  set -U EDITOR 'subl'
-else if type -q atom
-  set -U EDITOR 'atom'
-else
-  set -U EDITOR 'vim'
-end
-
-set -U VISUAL 'vim'
-set -U PAGER 'less'
-
-#
-# Language
-#
-
-if test -z "$LANG"
-  set -U LANG 'en_US.UTF-8'
-end
-
-#
-# Paths
-#
-
-# Set the list of directories
-set -x PATH /usr/local/bin $PATH
-
-#
-# Init modules
-#
+# Init fish modules
 
 set -l current_dirname (dirname (status -f))
+set -l fish_real_dir (readlink (dirname (status -f)))
+set -l dotfiles_dir (dirname $fish_real_dir)
 
-for path in ~/.dotfiles/fish/modules/*
+mkdir -p $fish_real_dir/functions
 
-  if test -e $path/init.fish
-    source $path/init.fish
+for path in $dotfiles_dir/*
+  if test $path != $fish_real_dir
+    if test -e $path/init.fish
+      source $path/init.fish
+    end
+
+    for module_function in $path/functions/*.fish
+      set -l function_name (string split -r -m1 / $module_function)[2]
+      set -l symlink_path $fish_real_dir/functions/$function_name
+      set -l symlink_reference (readlink $symlink_path)
+
+      if test -e $symlink_path
+        if test $symlink_reference != $module_function
+          set_color yellow; echo -n "Warning: "; set_color normal
+          echo "Duplicated fish function for $function_name."
+        end
+      else
+        ln -s $module_function $symlink_path
+      end
+    end
   end
-
-  for module_function in $path/functions/*
-    ln -s -f $module_function $current_dirname'/functions'
-  end
-
 end
