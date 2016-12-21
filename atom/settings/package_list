@@ -1,6 +1,8 @@
+language-fish-shell
+language-less
 linter
 linter-eslint
-language-fish-shell
+linter-stylelint
 markdown-preview-plus
 modular-snippets
 sort-lines
