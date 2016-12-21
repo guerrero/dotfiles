@@ -1,0 +1,24 @@
+duti
+elixir
+elm
+erlang
+fasd
+fish
+gist
+git
+go
+homebrew/science/opencv
+hub
+lua
+mongodb
+node
+nvm
+postgresql
+python
+rust
+tccutil
+tree
+unrar
+vim --with-lua --override-system-vi # recent version of vim
+wget --with-iri # Install wget with IRI support
+youtube-dl

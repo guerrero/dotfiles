@@ -10,12 +10,12 @@ function print_message
 end
 
 function print_error
-  set_color red; echo -n 'ERROR'
+  set_color red; echo -n 'Error'
   set_color normal; echo ':' $argv
 end
 
 function print_warning
-  set_color yellow; echo -n 'WARNING'
+  set_color yellow; echo -n 'Warning'
 
   if test $argv[1] = '-n'; or test $argv[1] = '--no-newline'
     set --erase argv[1]
