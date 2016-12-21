@@ -25,10 +25,12 @@ function install_packages -V SETTINGS_DIR
     end
   end
 
-  eval $output_error
-    and print_error "Error installing one or more Atom packages"
-  or print_message -n "Atom packages installed successfully"
-    and print_done
+  if eval $output_error
+    print_error "Error installing one or more Atom packages"
+  else
+    print_message -n "Atom packages installed successfully"
+    print_done
+  end    
 end
 
 install_app 'Atom'
