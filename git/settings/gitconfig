@@ -9,8 +9,8 @@
     default = simple
 
 [core]
-    attributesfile = ~/.dotfiles/git/gitattributes
-    excludesfile = ~/.dotfiles/git/gitignore
+    attributesfile = ~/.dotfiles/git/settings/gitattributes
+    excludesfile = ~/.dotfiles/git/settings/gitignore
     editor = subl --wait
 
 [hub]

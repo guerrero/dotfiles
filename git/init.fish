@@ -6,7 +6,7 @@
 #
 
 # Return if requirements are not found.
-if not type -q go
+if not type -q git
   exit
 end
 

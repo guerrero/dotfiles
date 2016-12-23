@@ -4,15 +4,15 @@ source "$current_dir/messages.fish"
 
 function symlink -a source_path target_path
   test -L $target_path; and test (readlink $target_path) = $source_path
-    and print_message "Settings for this app are already linked"
+    and print_warning "Symbolic link $target_path is already linked with $source_path"
     and return 0
 
   if test -e $target_path
-    print_message -n 'Replacing existing app settings by dotfiles settings...'
+    print_message -n "Replacing $target_path by symbolic link for $source_path..."
       and rm -rf $target_path
   else
     mkdir -p (dirname $target_path)
-      and print_message -n 'Linking app settings...'
+      and print_message -n "Linking $source_path to $target_path..."
   end
 
   ln -s $source_path $target_path > /dev/null
