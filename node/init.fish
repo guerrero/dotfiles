@@ -3,17 +3,19 @@
 #
 
 # Return if requirements are not found.
-if not type -q node; and not brew list | grep -q "nvm"
+if not type -q node; and not contains nvm (ls /usr/local/Cellar/)
   exit
 end
 
+set nvm_binary (echo (brew --prefix nvm)/nvm.sh)
+
 # Load package manager installed NVM into the shell session.
-if type -q brew; and test -f (brew --prefix nvm)/nvm.sh
+if type -q brew; and test -f $nvm_binary
 
   mkdir -p "$HOME/.nvm"
   and set -x NVM_DIR "$HOME/.nvm"
 
   function nvm
-    bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
+    bass source $nvm_binary --no-use ';' nvm $argv
   end
 end
