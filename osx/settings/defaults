@@ -1,15 +1,16 @@
-#!/usr/bin/env bash
+#!/usr/bin/env fish
 
 # Set OS X defaults
 
 # Original idea grabbed from Mathias Bynens:
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
 # Ask for the administrator password upfront
 sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 #
 # General UI/UX
@@ -73,37 +74,12 @@ launchctl load /System/Library/LaunchAgents/com.apple.alf.useragent.plist
 # Disable IR remote control.
 sudo defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEnabled -bool false
 
-# Turn Bluetooth off.
-sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0
-sudo launchctl unload /System/Library/LaunchDaemons/com.apple.blued.plist
-sudo launchctl load /System/Library/LaunchDaemons/com.apple.blued.plist
-
-#
-# Power management settings
-#
-
-# Manipulate power management settings with pmset command
-# Reference: https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/pmset.1.html)
-
-# -b = battery power source
-# -c = current power source
-# -u = ups current sources
-# -a = all power sources
-
-# Set display sleep
-sudo pmset -a displaysleep 4
-sudo pmset -b displaysleep 3
-
-# Security: Disable wake on ethernet magic packet and modem ring
+# Disable wake on ethernet magic packet and modem ring
 sudo pmset -a womp 0
 sudo pmset -a ring 0
 
-# Security: Destroy File Vault Key when going to standby mode
-destroyfvkeyonstandby
-
-# Set system sleep timer (in minutes)
-sudo pmset -a sleep 10
-sudo pmset -b sleep 8
+# Destroy File Vault Key when going to standby mode
+sudo pmset -a destroyfvkeyonstandby 1
 
 #
 # Mouse, trackpad, keyboard, Bluetooth accessories, and input
@@ -116,8 +92,9 @@ defaults write -g com.apple.scrollwheel.scaling -float 0.5
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write -g com.apple.mouse.tapBehavior -int 1
+defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
 
 # Enable full keyboard access for all controls (e.g. modal dialogs)
 defaults write -g AppleKeyboardUIMode -int 3
@@ -130,9 +107,9 @@ defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Disable press-and-hold for keys in favor of keys repeat
 defaults write -g ApplePressAndHoldEnabled -bool false
-
 # Set a faster keyboard repeat
 defaults write -g KeyRepeat -int 0
+defaults write NSGlobalDomain InitialKeyRepeat -int 25
 
 #
 # language, region, formats and text
@@ -178,7 +155,7 @@ defaults write -g AppleFontSmoothing -int 2
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 #
-# SSD-specific tweaks #
+# SSD-specific tweaks
 #
 
 # Disable the sudden motion sensor and disk spindown as it’s not useful for SSDs
@@ -189,9 +166,16 @@ sudo pmset -a disksleep 0
 # Finder
 #
 
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
 # Set $HOME as the default location for new Finder windows
 defaults write com.apple.finder NewWindowTarget -string "PfLo"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"
 
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
@@ -209,20 +193,30 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write -g com.apple.springing.enabled -bool true
 defaults write -g com.apple.springing.delay -float 0.4
 
-# Avoid creating .DS_Store files on network volumes
+# Avoid creating .DS_Store files on network or USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Disable disk image verification
 defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
-# Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
-
 # Show the ~/Library folder
 chflags nohidden ~/Library
+
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Expand the following File Info panes:
+# “General”, “Open with”, and “Sharing & Permissions”
+defaults write com.apple.finder FXInfoPanesExpanded -dict \
+	General -bool true \
+	OpenWith -bool true \
+	Privileges -bool true
 
 #
 # Dock and Dashboard
@@ -246,6 +240,9 @@ defaults write com.apple.dock size-immutable -bool true
 # Set the icon size of Dock items to 50 pixels
 defaults write com.apple.dock tilesize -int 50
 
+# Show only open applications in the Dock
+defaults write com.apple.dock static-only -bool true
+
 # Minimize windows into their application's icon
 defaults write com.apple.dock minimize-to-application -bool true
 
@@ -263,6 +260,9 @@ defaults write com.apple.dock expose-group-by-app -bool true
 
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
+
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
 
 #
 # Spotlight
@@ -304,7 +304,18 @@ sudo mdutil -i on / > /dev/null
 sudo mdutil -E / > /dev/null
 
 #
-# Address Book, TextEdit, and Disk Utility
+# TextEdit
+#
+
+# Use plain text mode for new TextEdit documents
+defaults write com.apple.TextEdit RichText -int 0
+
+# Open and save files as UTF-8 in TextEdit
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+#
+# Disk Utility
 #
 
 # Show hidden partitions in Disk Utility
@@ -327,6 +338,9 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 # Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
 defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
 
+# Disable inline attachments (just show the icons)
+defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
+
 # Send Windows friendly attachments
 defaults write com.apple.mail SendWindowsFriendlyAttachments -bool true
 
@@ -339,6 +353,10 @@ defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -stri
 # Chrome
 #
 
+# Disable the all too sensitive backswipe
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+
 # Use the system-native print preview dialog
 defaults write com.google.Chrome DisablePrintPreview -bool true
 defaults write com.google.Chrome.canary DisablePrintPreview -bool true
@@ -347,16 +365,16 @@ defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool false
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool false
 
-# Disable the all too sensitive backswipe
-defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
-defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
-
 #
 # Safari & WebKit
 #
 
 # Privacy: don’t send search queries to Apple
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+# Enable “Do Not Track”
+defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
 # Press Tab to highlight each item on a web page
 defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
@@ -368,9 +386,6 @@ defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 # Set Safari’s home page to `about:blank` for faster loading
 defaults write com.apple.Safari HomePage -string "about:blank"
 
-# Allow hitting the Backspace key to go to the previous page in history
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
-
 # Enable the Develop menu and the Web Inspector in Safari
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
@@ -379,12 +394,16 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Add a context menu item for showing the Web Inspector in web views
 defaults write -g WebKitDeveloperExtras -bool true
 
+# Warn about fraudulent websites
+defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
+
 #
 # Messages
 #
 
-# Disable smart quotes as it’s annoying for messages that contain code
+# Disable smart quotes and smart dashes as they’re annoying for messages that contain code
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 # Disable continuous spell checking
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
@@ -404,7 +423,7 @@ defaults write org.m0k.transmission WarningLegal -bool false
 
 # Use `~/Downloads/Torrents` to store incomplete downloads
 defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
-defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Torrents"
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "$HOME/Downloads/Torrents"
 
 # Don’t prompt for confirmation before downloading
 defaults write org.m0k.transmission DownloadAsk -bool false
@@ -414,7 +433,7 @@ defaults write org.m0k.transmission DownloadAsk -bool false
 #
 
 # Create iOS Simulator symlink into /Applications folder
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app" "/Applications/iOS Simulator.app"
+sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
 
 #
 # Time Machine
@@ -424,7 +443,7 @@ sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulat
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
+hash tmutil > /dev/null ^&1; and sudo tmutil disablelocal
 
 # Disable local Time Machine snapshots
 sudo tmutil disablelocal
@@ -433,8 +452,12 @@ sudo tmutil disablelocal
 # Kill affected applications
 #
 
-for app in "Dock" "Finder" "iBooks" "Mail" "Messages" "Safari" "SystemUIServer" "Transmission" "cfprefsd" "iTerm" "Xcode" ; do
-  killall "$app" > /dev/null 2>&1
-done
+for app in "Dock" "Finder" "Mail" "Messages" "Safari" "Google Chrome" "SystemUIServer" "Transmission" "cfprefsd" "iTerm" "Xcode"
+  killall "$app" > /dev/null ^&1
+end
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
+
+# Reveal IP address, hostname, OS version, etc. when clicking the clock
+# in the login window
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
