@@ -18,4 +18,5 @@ set -x _FASD_DATA "$HOME/.cache/fasd/data"
 # Aliases
 #
 
-alias vimf 'f -e vim' # Search files with fasd and then open them with vim
+alias ao 'fasd -a -e atom' # find files/dirs with fasd and open them in Atom
+alias so 'fasd -a -e subl' # find files/dirs with fasd and open them in Sublime
