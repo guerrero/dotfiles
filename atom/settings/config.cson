@@ -1,32 +1,30 @@
 "*":
+  "atom-beautify":
+    css:
+      indent_size: 2
+    general:
+      _analyticsUserId: "8bfc3dc2-e55f-4b45-93b6-8b516d108dab"
+    html:
+      indent_size: 2
+    js:
+      indent_size: 2
+  "atom-package-deps":
+    ignored: []
   core:
-    customFileTypes:
-      "source.javascript": [
-        "cocoascript"
-      ]
-    disabledPackages: [
-      "metrics"
-      "language-mustache"
-      "language-todo"
-      "language-perl"
-      "language-objective-c"
-      "autoflow"
-      "exception-reporting"
-      "markdown-preview"
-    ]
     telemetryConsent: "no"
   editor:
-    autoIndent: false
-    invisibles: {}
     showIndentGuide: true
-  linter:
-    errorPanelHeight: 24
-    gutterPosition: "Left"
+  "exception-reporting":
+    userId: "e2c17e7a-6562-482a-b326-cd43e0f43b75"
+  linter: {}
   "linter-eslint":
+    disableWhenNoEslintConfig: true
     globalNodePath: "/usr/local"
-  "markdown-preview-plus":
+    useGlobalEslint: false
+  "linter-ui-default":
+    panelHeight: 69
+  "markdown-preview":
     useGitHubStyle: true
-  "tree-view":
-    hideVcsIgnoredFiles: false
+  "toggle-gutter": {}
   welcome:
     showOnStartup: false

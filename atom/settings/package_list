@@ -5,3 +5,7 @@ linter-stylelint
 markdown-preview-plus
 modular-snippets
 sort-lines
+atom-beautify
+atom-live-server
+export-html
+open-in-browser
