@@ -1,1 +1,10 @@
+settings/.apm
+settings/.node-gyp
+settings/.npm
+settings/blob-store
+settings/compile-cache
+settings/dev
+settings/packages
+settings/recovery
 settings/snippets.json
+settings/storage
