@@ -16,6 +16,3 @@ defaults write com.googlecode.iterm2 PrefsCustomFolder -string $settings_folder
 
 # Set iTerm2 custom preferences folder to this module settings
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
-
-# Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
