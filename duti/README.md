@@ -1,22 +1,14 @@
 # Duti
 
-duti is a command-line utility capable of setting default applications for
-various document types on Mac OS X, using Apple's Uniform Type Identifiers. A
-UTI is a unique string describing the format of a file's content. Using duti, the
-user can change which application acts as the default handler for a given UTI.
-
+`duti` is a command-line utility capable of setting default applications for
+various document types on Mac OS X, using Apple's Uniform Type Identifiers. You can [find more info at its page](http://duti.org/)
 
 ## Contents
 
-- `setup.js`: Setup file
-- `config`: File that contains all commands that set application handlers for each UTI
-
-
-## Usage
-
-Get duti usage info executing `man duti` in your command line
-
+- `settings/handlers`: Plain text file with commands to establish which application will be used as default to open a certain type of file
+- `setup.fish`: Script that runs duti with the info from `settings/handlers`
+- `uninstall.fish`: Script to remove `duti` binary from the machine
 
 ## Dependencies
 
-- brew
+- Homebrew

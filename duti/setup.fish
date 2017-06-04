@@ -3,13 +3,18 @@ set -l parent_dir (dirname $current_dir)
 
 source "$parent_dir/lib/messages.fish"
 
-
-if not type -q duti
-  print_message "Installing binary for duti..."
-  brew install duti
+function install_duti
+  not type -q duti
+    and print_message "Installing binary for duti..."
+    and brew install duti
+    and print_done
 end
 
-type -q duti
-  and print_message -n "Setting default apps for handle files..."
-  and duti "$current_dir/settings/handlers"
-  and print_done
+function set_default_app_handlers
+  print_message -n "Setting default apps for handle files..."
+    and duti "$current_dir/settings/handlers"
+    and print_done
+end
+
+install_duti
+  and set_default_app_handlers
