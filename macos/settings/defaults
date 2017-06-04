@@ -108,8 +108,8 @@ defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 # Disable press-and-hold for keys in favor of keys repeat
 defaults write -g ApplePressAndHoldEnabled -bool false
 # Set a faster keyboard repeat
-defaults write -g KeyRepeat -int 0
-defaults write NSGlobalDomain InitialKeyRepeat -int 25
+defaults write -g KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 #
 # language, region, formats and text
