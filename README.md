@@ -1,3 +1,9 @@
-# My personal dotfiles
+# My personal dotfiles (WIP)
 
-This repo contains the personal preferences and configuration I use for my own computer systems.
+> Highly opinionated configurations and scripts I use for my own machines.
+
+## Requirements
+
+- Mac OS 10.11 or earlier
+
+## Installation
