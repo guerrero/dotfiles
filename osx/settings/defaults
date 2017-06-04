@@ -5,6 +5,8 @@
 # Original idea grabbed from Mathias Bynens:
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 
+echo "Setting up macOS preferences based on default user preferences"
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
@@ -93,11 +95,9 @@ defaults write -g com.apple.scrollwheel.scaling -float 0.5
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
-defaults write -g com.apple.mouse.tapBehavior -int 1
-defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
 
 # Enable full keyboard access for all controls (e.g. modal dialogs)
-defaults write -g AppleKeyboardUIMode -int 3
+defaults write -g AppleKeyboardUIMode -int 2
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
 defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
@@ -131,10 +131,6 @@ defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM H:mm"
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write -g WebAutomaticSpellingCorrectionEnabled -bool false
 
-# Enable continous spell checking while typing but deactivate it on the web
-defaults write -g CheckSpellingWhileTyping -bool true
-defaults write -g WebContinuousSpellCheckingEnabled -bool false
-
 #
 # Screen
 #
@@ -155,14 +151,6 @@ defaults write -g AppleFontSmoothing -int 2
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 #
-# SSD-specific tweaks
-#
-
-# Disable the sudden motion sensor and disk spindown as it’s not useful for SSDs
-sudo pmset -a sms 0
-sudo pmset -a disksleep 0
-
-#
 # Finder
 #
 
@@ -174,7 +162,7 @@ defaults write com.apple.finder _FXSortFoldersFirst -bool true
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Set $HOME as the default location for new Finder windows
-defaults write com.apple.finder NewWindowTarget -string "PfLo"
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
 defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"
 
 # Finder: show path bar
@@ -204,12 +192,6 @@ defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
-
-# Keep folders on top when sorting by name
-defaults write com.apple.finder _FXSortFoldersFirst -bool true
-
-# Disable the warning when changing a file extension
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
@@ -398,17 +380,6 @@ defaults write -g WebKitDeveloperExtras -bool true
 defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
 
 #
-# Messages
-#
-
-# Disable smart quotes and smart dashes as they’re annoying for messages that contain code
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
-# Disable continuous spell checking
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
-
-#
 # Transmission.app
 #
 
@@ -428,12 +399,6 @@ defaults write org.m0k.transmission IncompleteDownloadFolder -string "$HOME/Down
 # Don’t prompt for confirmation before downloading
 defaults write org.m0k.transmission DownloadAsk -bool false
 
-#
-# Xcode
-#
-
-# Create iOS Simulator symlink into /Applications folder
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
 
 #
 # Time Machine
@@ -452,7 +417,7 @@ sudo tmutil disablelocal
 # Kill affected applications
 #
 
-for app in "Dock" "Finder" "Mail" "Messages" "Safari" "Google Chrome" "SystemUIServer" "Transmission" "cfprefsd" "iTerm" "Xcode"
+for app in "Dock" "Finder" "Mail" "Safari" "Google Chrome" "SystemUIServer" "Transmission" "cfprefsd"
   killall "$app" > /dev/null ^&1
 end
 
