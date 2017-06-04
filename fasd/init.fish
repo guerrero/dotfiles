@@ -11,6 +11,9 @@ end
 # Tweaks
 #
 
+# Create fasd data dir if it's not already created
+mkdir -p "$HOME/.cache/fasd"
+
 # Change fasd data dir
 set -x _FASD_DATA "$HOME/.cache/fasd/data"
 
