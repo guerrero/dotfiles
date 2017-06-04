@@ -4,13 +4,11 @@ erlang
 fish
 gist
 git
-homebrew/science/opencv
 hub
 lua
 mongodb
 node
 nvm
-postgresql
 python
 rust
 tccutil
