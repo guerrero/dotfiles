@@ -4,10 +4,12 @@ set -l parent_dir (dirname $current_dir)
 source "$parent_dir/lib/messages.fish"
 source "$parent_dir/lib/file.fish"
 
-if not type -q git
-  print_message "Installing binary for git..."
-  brew install git
-    or exit 1
+function install_git
+  not type -q git
+    and print_message "Installing binary for git..."
+    and brew install git
+    and print_done
 end
 
-symlink "$current_dir/settings/gitconfig" "$HOME/.gitconfig"
+install_git
+  and symlink "$current_dir/settings/gitconfig" "$HOME/.gitconfig"
