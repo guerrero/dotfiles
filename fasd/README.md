@@ -1,14 +1,13 @@
 # Fasd
 
-[Fasd][1] is a command-line productivity booster, inspired by tools like
-[autojump][2], [z][3] and [v][4], it offers quick access to files and
-directories by keeping track of files and directories  that were previously
-accessed.
+[Fasd](https://github.com/clvv/fasd) is a command-line productivity booster, inspired by tools like [autojump](https://github.com/joelthelion/autojump), [z](https://github.com/rupa/z) and [v](https://github.com/rupa/v), it offers quick access to files and directories by keeping track of those that were previously accessed.
 
-For completion to work, this module must be loaded **after** the *completion*
-module.
+## Contents
 
-[1]: https://github.com/clvv/fasd
-[2]: https://github.com/joelthelion/autojump
-[3]: https://github.com/rupa/z
-[4]: https://github.com/rupa/v
+- `setup.fish`: script that installs `fasd`
+- `init.fish`: File executed everytime a new fish shell is launched and defines default config for `fasd`
+- `uninstall.fish`: Script to remove `fasd` binary from the machine and its cache data
+
+## Dependencies
+
+- Homebrew
