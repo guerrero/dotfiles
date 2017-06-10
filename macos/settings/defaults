@@ -425,7 +425,3 @@ for app in "Dock" "Finder" "Mail" "Safari" "Google Chrome" "SystemUIServer" "Tra
 end
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
-
-# Reveal IP address, hostname, OS version, etc. when clicking the clock
-# in the login window
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
