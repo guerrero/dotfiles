@@ -20,13 +20,15 @@ function install_package_control
     and subl --command install_package_control
     and sleep 4
     and print_done
+    and return 0
   or print_error \n"Error trying to install Sublime Text Package Control"
     and return 1
 end
 
 install_app 'Sublime Text'
-  and symlink $SETTINGS_DIR $CONFIG_DIR
   and install_package_control
+  and mkdir -p (dirname $CONFIG_DIR)
+  and symlink $SETTINGS_DIR $CONFIG_DIR
 
 set -e PACKAGE_CONTROL_FILE
 

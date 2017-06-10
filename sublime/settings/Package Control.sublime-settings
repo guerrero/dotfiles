@@ -1,13 +1,7 @@
 {
 	"bootstrapped": true,
-	"in_process_packages":
-	[
-	],
 	"installed_packages":
 	[
-		"Markdown Extended",
-		"Markdown Preview",
-		"Package Control",
-		"SublimeLinter"
+		"Package Control"
 	]
 }
