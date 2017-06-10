@@ -9,3 +9,4 @@ atom-beautify
 atom-live-server
 export-html
 open-in-browser
+language-lua
