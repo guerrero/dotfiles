@@ -11,12 +11,21 @@
   "atom-package-deps":
     ignored: []
   core:
+    disabledPackages: [
+      "metrics"
+      "welcome"
+      "language-javascript"
+      "markdown-preview"
+    ]
     telemetryConsent: "no"
   editor:
     showIndentGuide: true
   "exception-reporting":
     userId: "e2c17e7a-6562-482a-b326-cd43e0f43b75"
-  linter: {}
+  linter:
+    disabledProviders: [
+      "ESLint"
+    ]
   "linter-eslint":
     disableWhenNoEslintConfig: true
     globalNodePath: "/usr/local"
@@ -25,6 +34,11 @@
     panelHeight: 69
   "markdown-preview":
     useGitHubStyle: true
-  "toggle-gutter": {}
+  "spell-check":
+    locales: [
+      "es-ES"
+    ]
+  tabs:
+    enableVcsColoring: true
   welcome:
     showOnStartup: false
