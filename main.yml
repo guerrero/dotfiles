@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Find all available modules directories except those that starts with an underscore
+      find:
+        paths: "{{ playbook_dir }}/modules"
+        file_type: directory
+        patterns: "^[^_]*$"
+        use_regex: yes
+      register: modules
+
+    - name: Find all available command directories
+      find:
+        paths: "{{ modules.files | map(attribute='path') | list }}"
+        patterns: 'commands'
+        file_type: directory
+      register: command_dirs
+
+    - name: Find all available setup tasks
+      find:
+        paths: "{{ command_dirs.files | map(attribute='path') | list }}"
+        patterns: 'setup.yml'
+      register: setup_tasks
+
+    - name: Include tasks files from all available modules
+      include_tasks: "{{ playbook_tasks }}"
+      loop: "{{ setup_tasks.files | map(attribute='path') | list }}"
+      loop_control:
+        loop_var: playbook_tasks

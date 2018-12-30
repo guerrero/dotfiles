@@ -1,0 +1,21 @@
+---
+- name: Run task dependencies for install git
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Ensure git is installed and up to date
+      homebrew:
+        name: git
+        state: upgraded
+
+    - name: Link git dotfiles to .gitconfig
+      file:
+        src: "{{ playbook_dir }}/modules/git/settings/gitconfig"
+        dest: ~/.gitconfig
+        state: link
+  when:
+      - os_is_mac
+      - homebrew_is_installed

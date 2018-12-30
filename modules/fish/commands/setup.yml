@@ -1,0 +1,52 @@
+---
+- name: Run task dependencies for install fish binary
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Ensure fish is installed and up to date
+      homebrew:
+        name: fish
+        state: upgraded
+
+    - name: Add fish shell to /etc/shells
+      become: yes
+      lineinfile:
+        path: /etc/shells
+        line: "/usr/local/bin/fish"
+        state: present
+
+    - name: Ensure fish is the default shell for current user
+      become: yes
+      user:
+        name: "{{ ansible_env.USER }}"
+        shell: "/usr/local/bin/fish"
+
+    - name: Ensure ~/.config directory exists
+      file:
+        path: ~/.config
+        state: directory
+
+    - name: Ensure fish dotfiles config is linked into ~/.config
+      file:
+        src: "{{ playbook_dir }}/modules/fish/settings"
+        dest: ~/.config/fish
+        state: link
+        force: yes
+
+    - name: Run setup script to configure custom fish environment
+      script: "{{ playbook_dir }}/modules/fish/scripts/setup"
+
+    - name: Get fisher function to manage fish packages
+      get_url:
+        url: "https://git.io/fisher"
+        dest: "{{ playbook_dir }}/modules/fish/settings/functions"
+
+    - name: Execute fisher
+      shell: "fish -c fisher"
+
+  when:
+      - os_is_mac
+      - homebrew_is_installed

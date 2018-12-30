@@ -1,0 +1,19 @@
+---
+- name: Run task dependencies
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- name: Ensure ~/.nvm directory exists.
+  file:
+    path: ~/.nvm
+    state: directory
+
+- name: Install nvm
+  homebrew:
+    name: nvm
+    state: latest
+  when:
+    - os_is_mac
+    - homebrew_is_installed

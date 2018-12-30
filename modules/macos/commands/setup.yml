@@ -1,0 +1,10 @@
+---
+- name: Run task dependencies
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- name: Run defaults script to configure mac OS preferences
+  script: "{{ playbook_dir }}/modules/macos/scripts/defaults"
+  when: os_is_mac

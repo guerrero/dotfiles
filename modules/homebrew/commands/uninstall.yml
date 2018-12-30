@@ -1,0 +1,43 @@
+---
+- name: Run task dependencies for uninstall Homebrew binaries and apps
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Load package configuration
+      include_vars:
+        file: "{{ playbook_dir }}/modules/homebrew/config.yml"
+        name: homebrew_config
+
+    - name: Uninstall Homebrew binaries
+      homebrew_tap:
+        name: {{ item }}
+        state: absent
+      loop: "{{ homebrew_config.binaries_to_install }}"
+
+    - name: Uninstall apps
+      homebrew_cask:
+        name: {{ item }}
+        state: absent
+      loop: "{{ homebrew_config.apps_to_install }}"
+
+    - name: Uninstall fonts
+      homebrew_cask:
+        name: {{ item }}
+        state: absent
+      loop: "{{ homebrew_config.apps_to_install }}"
+
+    - name: Remove outdated versions from Homebrew's Cellar
+      command: brew cleanup
+
+    - name: Remove Homebrew repositories
+      homebrew_tap:
+        name: {{ item }}
+        state: absent
+        loop: "{{ homebrew_config.repositories_to_install }}"
+
+  when:
+      - os_is_mac
+      - homebrew_is_installed

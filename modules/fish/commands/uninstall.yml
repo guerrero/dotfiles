@@ -1,0 +1,33 @@
+---
+- name: Run task dependencies for uninstall fish binary
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Ensure the default shell for Mac is enabled
+      become: yes
+      user:
+        name: "{{ ansible_env.USER }}"
+        shell: "/bin/bash"
+
+    - name: Remove fish shell from /etc/shells
+      become: yes
+      lineinfile:
+        path: /etc/shells
+        line: "/usr/local/bin/fish"
+        state: absent
+
+    - name: Ensure absence of fish binary
+      homebrew:
+        name: fish
+        state: absent
+
+    - name: Ensure absence of fish settings folder
+      file:
+        path: ~/.config/fish
+        state: absent
+  when:
+      - os_is_mac
+      - homebrew_is_installed

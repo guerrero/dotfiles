@@ -1,0 +1,27 @@
+---
+- name: Run task dependencies for install iTerm 2
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Disable iTerm2 custom preferences folder
+      osx_defaults:
+        domain: com.googlecode.iterm2
+        key: LoadPrefsFromCustomFolder
+        state: absent
+      when: homebrew_is_installed
+
+    - name: Remove iTerm2 custom preferences folder
+      osx_defaults:
+        domain: com.googlecode.iterm2
+        key: PrefsCustomFolder
+        state: absent
+
+    - name: Ensure iTerm 2 is not installed
+      homebrew_cask:
+        name: iterm2
+        state: absent
+  when:
+      - os_is_mac

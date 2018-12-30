@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ansible-playbook --syntax-check -i ../inventory ../main.yml

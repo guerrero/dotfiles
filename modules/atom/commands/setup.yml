@@ -1,0 +1,32 @@
+---
+- name: Run task dependencies for install Atom app
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Load package configuration
+      include_vars:
+        file: "{{ playbook_dir }}/modules/atom/config.yml"
+        name: atom_config
+
+    - name: Ensure Atom is installed and up to date
+      homebrew_cask:
+        name: atom
+        state: upgraded
+  when:
+      - os_is_mac
+      - homebrew_is_installed
+
+- name: Link Atom dotfiles config
+  file:
+    src: "{{ playbook_dir }}/modules/atom/settings"
+    dest: ~/.atom
+    state: link
+
+- name: Install Atom packages
+  block:
+    - shell: "apm install {{ item }} > /dev/null"
+      loop: "{{ atom_config.packages_to_install }}"
+      ignore_errors: true

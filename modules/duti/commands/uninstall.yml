@@ -1,0 +1,15 @@
+---
+- name: Run task dependencies for uninstall duti
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- name: Ensure absence of duti binary
+  homebrew:
+    name: duti
+    state: absent
+    install_options: force
+  when:
+    - os_is_mac
+    - homebrew_is_installed

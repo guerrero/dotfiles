@@ -1,0 +1,19 @@
+---
+- name: Run task dependencies for uninstall duti
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Ensure absence of duti binary
+      homebrew:
+        name: duti
+        state: absent
+        install_options: force
+
+    - name: Ensure absence of variable for fasd cache path
+      script: "{{ playbook_dir }}/modules/fasd/scripts/remove_fasd_cache_folder"
+  when:
+    - os_is_mac
+    - homebrew_is_installed

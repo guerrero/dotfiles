@@ -1,4 +1,4 @@
-# My personal dotfiles (WIP)
+# Provider (WIP)
 
 > Highly opinionated configurations and scripts I use for my own machines.
 

@@ -1,0 +1,17 @@
+[user]
+    email = hello@alexguerrero.es
+    name = Alex Guerrero
+
+[credential]
+    helper = osxkeychain
+
+[push]
+    default = simple
+
+[core]
+    attributesfile = ~/.dotfiles/modules/git/settings/gitattributes
+    excludesfile = ~/.dotfiles/modules/git/settings/gitignore
+    editor = subl --wait
+
+[hub]
+	protocol = https

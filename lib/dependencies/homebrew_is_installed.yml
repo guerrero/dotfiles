@@ -1,0 +1,14 @@
+---
+- name: Check if Homebrew is installed
+  shell: command -v brew >/dev/null 2>&1
+  register: check_brew_command_output
+  ignore_errors: yes
+  changed_when: false
+
+- set_fact:
+    homebrew_is_installed: "{{ check_brew_command_output.rc == 0 }}"
+
+- name: Update Homebrew
+  homebrew:
+    update_homebrew: yes
+  when: homebrew_is_installed

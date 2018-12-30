@@ -1,0 +1,5 @@
+#!/usr/local/bin/fish
+
+# Set path for fasd cache data
+set -l cache_file "$HOME/.cache/fasd/data"
+set -U _FASD_DATA $cache_file

@@ -1,0 +1,81 @@
+---
+repositories_to_install:
+  - caskroom/versions # Repository for alternate app versions
+  - caskroom/fonts # Repository for binary font files
+  # end_of_repositories
+
+binaries_to_install:
+  - ansible
+  - elm
+  - ffmpeg
+  - gist
+  - hub
+  - lua
+  - mongodb
+  - nvm
+  - postgresql
+  - pyenv
+  - rename
+  - rust
+  - sqlite
+  - tccutil
+  - tree
+  - unrar
+  - youtube-dl
+  # end_of_binaries
+
+# From Homebrew-cask
+apps_to_install:
+  - 1password
+  - adobe-acrobat-reader # 🤦‍
+  - alfred
+  - cyberduck
+  - dash
+  - docker
+  - doxie
+  - figma
+  - firefox
+  - flinto
+  - google-chrome
+  - iconjar
+  - imageoptim
+  # - logitech-options
+  # - logitech-unifying
+  - mactracker
+  - marvel
+  - microsoft-teams # 🤦‍
+  - onedrive # 🤦‍
+  - qlcolorcode
+  - qlmarkdown
+  - qlstephen
+  # - rightfont
+  - sketch
+  - slack
+  - spotify
+  - telegram
+  - torbrowser
+  - transmission
+  # - virtualbox
+  - vlc
+  # - zeplin
+  # end_of_casks
+
+
+# From Homebrew-fonts
+fonts_to_install:
+  - font-cabin
+  - font-fira-sans
+  - font-inconsolata
+  - font-lato
+  - font-merriweather
+  - font-merriweather-sans
+  - font-open-sans
+  - font-oxygen
+  - font-pt-sans
+  - font-pt-serif
+  - font-roboto
+  - font-source-sans-pro
+  - font-source-serif-pro
+  - font-varela
+  - font-varela-round
+  # end_of_casks

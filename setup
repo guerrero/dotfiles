@@ -1,5 +1,12 @@
 #!/bin/sh
 
+pushd $(dirname $0) > /dev/null
+
+CURRENT_DIR=`pwd`
+
+popd > /dev/null
+
+
 function is_osx {
   [[ "$OSTYPE" =~ ^darwin ]] || return 1
 }
@@ -38,24 +45,40 @@ function install_homebrew {
   fi
 
   brew doctor
-  brew update
 }
+
+function ansible_is_installed {
+  [[ ! "$(type -P ansible)" ]] && return 1
+}
+
+function install_ansible {
+  if [[ ansible_is_installed ]]; then
+    echo "Ansible is already installed"
+  else
+    echo "Installing Ansible..."
+    brew install ansible
+  fi
+}
+
 
 function main {
   if [[ is_osx ]]; then
     echo "Running Mac OS installation..."
 
     install_command_line_tools &&
-    install_homebrew ||
+    install_homebrew &&
+    install_ansible ||
     exit 1
 
   elif [[ is_ubuntu ]]; then
-    echo echo "Running Ubuntu installation..."
+    echo "This machine is using a Ubuntu system. None of the tools has been installed"
     exit 1
   else
     echo "This machine is using a system different from Ubuntu or Mac OS. None of the tools has been installed"
     exit 1
   fi
+
+  ansible-playbook -i "$CURRENT_DIR/inventory" "$CURRENT_DIR/main.yml" --ask-become-pass
 }
 
 main
@@ -67,4 +90,6 @@ unset -f \
   install_command_line_tools \
   homebrew_is_installed \
   install_homebrew \
+  ansible_is_installed \
+  install_ansible \
   main

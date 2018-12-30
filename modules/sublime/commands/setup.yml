@@ -1,0 +1,34 @@
+---
+- name: Run task dependencies for install Sublime Text app
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Ensure Sublime Text is installed and up to date
+      homebrew_cask:
+        name: sublime-text
+        state: upgraded
+
+    - name: Install Package Control
+      block:
+        - file:
+            path: ~/Library/Application Support/Sublime Text 3/Installed Packages/
+            state: directory
+        - command: subl --background
+        - command: subl --command install_package_control
+
+    - name: Ensure Sublime Text User directory exists.
+      file:
+        path: ~/Library/Application Support/Sublime Text 3/Packages
+        state: directory
+
+    - name: Link Sublime dotfiles config
+      file:
+        src: "{{ playbook_dir }}/modules/sublime/settings"
+        dest: ~/Library/Application Support/Sublime Text 3/Packages/User
+        state: link
+  when:
+      - os_is_mac
+      - homebrew_is_installed

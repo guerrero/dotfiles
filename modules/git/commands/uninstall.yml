@@ -1,0 +1,20 @@
+---
+- name: Run task dependencies for uninstall git
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Ensure git is not installed
+      homebrew:
+        name: git
+        state: absent
+
+    - name: Ensure .gitconfig is absent
+      file:
+        path: ~/.gitconfig
+        state: absent
+  when:
+      - os_is_mac
+      - homebrew_is_installed

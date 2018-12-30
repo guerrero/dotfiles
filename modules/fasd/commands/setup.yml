@@ -1,0 +1,23 @@
+---
+- name: Run task dependencies for install fasd
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Ensure fasd is installed and up to date
+      homebrew:
+        name: fasd
+        state: upgraded
+
+    - name: Ensure cache directory for fasd exists
+      file:
+        path: ~/.cache/fasd
+        state: directory
+
+    - name: Set custom cache folder for fasd
+      script: "{{ playbook_dir }}/modules/fasd/scripts/set_fasd_cache_folder"
+  when:
+      - os_is_mac
+      - homebrew_is_installed
