@@ -39,8 +39,8 @@ apps_to_install:
   - google-chrome
   - iconjar
   - imageoptim
-  # - logitech-options
-  # - logitech-unifying
+  - logitech-options
+  - logitech-unifying
   - mactracker
   - marvel
   - microsoft-teams # 🤦‍
@@ -48,16 +48,16 @@ apps_to_install:
   - qlcolorcode
   - qlmarkdown
   - qlstephen
-  # - rightfont
+  - rightfont
   - sketch
   - slack
   - spotify
   - telegram
   - torbrowser
   - transmission
-  # - virtualbox
+  - virtualbox
   - vlc
-  # - zeplin
+  - zeplin
   # end_of_casks
 
 
