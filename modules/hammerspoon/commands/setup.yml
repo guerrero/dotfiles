@@ -16,6 +16,7 @@
         src: "{{ playbook_dir }}/modules/hammerspoon/settings"
         dest: ~/.hammerspoon
         state: link
+        force: yes
   when:
       - os_is_mac
       - homebrew_is_installed
