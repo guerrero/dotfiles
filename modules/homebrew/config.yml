@@ -14,7 +14,6 @@ binaries_to_install:
   - hub
   - lua
   - mongodb
-  - nvm
   - postgresql
   - pyenv
   - rename
