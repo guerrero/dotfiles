@@ -29,6 +29,7 @@ binaries_to_install:
 # will be installed directly from other modules commands
 apps_to_install:
   - 1password
+  - abstract
   - adobe-acrobat-reader # 🤦‍
   - alfred
   - cyberduck
