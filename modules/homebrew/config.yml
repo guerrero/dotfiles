@@ -4,6 +4,8 @@ repositories_to_install:
   - caskroom/fonts # Repository for binary font files
   # end_of_repositories
 
+# Some binaries aren't listed here due they will be installed directly from
+# other modules commands
 binaries_to_install:
   - ansible
   - elm
@@ -24,7 +26,8 @@ binaries_to_install:
   - youtube-dl
   # end_of_binaries
 
-# From Homebrew-cask
+# Apps installed using Homebrew-cask. Some apps aren't listed here due they
+# will be installed directly from other modules commands
 apps_to_install:
   - 1password
   - adobe-acrobat-reader # 🤦‍
@@ -33,6 +36,7 @@ apps_to_install:
   - dash
   - docker
   - doxie
+  - dropbox
   - figma
   - firefox
   - flinto
@@ -48,14 +52,11 @@ apps_to_install:
   - qlcolorcode
   - qlmarkdown
   - qlstephen
-  - rightfont
   - sketch
   - slack
   - spotify
   - telegram
   - torbrowser
-  - transmission
-  - virtualbox
   - vlc
   - zeplin
   # end_of_casks
