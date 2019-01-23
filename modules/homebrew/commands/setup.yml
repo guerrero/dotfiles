@@ -20,7 +20,7 @@
         loop_var: homebrew_repository
 
     - name: Install Homebrew binaries
-      homebrew_cask:
+      homebrew:
         name: "{{ homebrew_binary }}"
         state: present
       loop: "{{ homebrew_config.binaries_to_install }}"
