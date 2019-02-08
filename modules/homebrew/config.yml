@@ -1,7 +1,7 @@
 ---
 repositories_to_install:
-  - caskroom/versions # Repository for alternate app versions
-  - caskroom/fonts # Repository for binary font files
+  - homebrew/cask-versions # Repository for alternate app versions
+  - homebrew/cask-fonts # Repository for binary font files
   # end_of_repositories
 
 # Some binaries aren't listed here due they will be installed directly from
