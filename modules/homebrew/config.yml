@@ -44,7 +44,6 @@ apps_to_install:
   - iconjar
   - imageoptim
   - logitech-options
-  - logitech-unifying
   - mactracker
   - marvel
   - microsoft-teams # 🤦‍
