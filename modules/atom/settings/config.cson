@@ -19,7 +19,6 @@
     ]
     telemetryConsent: "no"
   editor:
-    fontSize: 13
     showIndentGuide: true
   "exception-reporting":
     userId: "e2c17e7a-6562-482a-b326-cd43e0f43b75"
