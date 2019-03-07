@@ -58,6 +58,7 @@ apps_to_install:
   - spotify
   - telegram
   - torbrowser
+  - visual-studio-code
   - vlc
   - zeplin
   # end_of_casks
