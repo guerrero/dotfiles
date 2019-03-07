@@ -7,11 +7,8 @@
 # To know the bundle id of a specific app:
 # osascript -e "id of app \"<app_name>\""
 
-# To know the UTI from a specific file:
-# mdls <filepath> | awk '/kMDItemContentType /{print $NF}'
-
-# List of Uniform Type Identifiers in OS X:
-# https://developer.apple.com/library/mac/#documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html
+# List of Uniform Type Identifiers in mac OS:
+# /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -dump > UTIs
 
 # Format:
 # [Bundle ID] [ UTI | ext | MIME type ] [role]
@@ -24,7 +21,7 @@
 # shell   app can execute the item.
 # none    app cannot open the item, but provides an icon for the given UTI.
 
-com.github.atom net.daringfireball.markdown all
+com.github.atom markdown all
 com.github.atom public.plain-text all
 com.github.atom public.source-code  all
 
