@@ -31,5 +31,3 @@ for path in $modules_dir/*
     end
   end
 end
-
-status --is-interactive; and source (pyenv init -|psub)
