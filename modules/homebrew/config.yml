@@ -47,6 +47,7 @@ apps_to_install:
   - mactracker
   - marvel
   - microsoft-teams # 🤦‍
+  - nextcloud
   - notion
   - onedrive # 🤦‍
   - qlcolorcode
