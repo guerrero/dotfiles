@@ -14,22 +14,23 @@
     disabledPackages: [
       "metrics"
       "welcome"
-      "language-javascript"
       "markdown-preview"
+      "language-javascript"
     ]
     telemetryConsent: "no"
   editor:
     showIndentGuide: true
   "exception-reporting":
     userId: "e2c17e7a-6562-482a-b326-cd43e0f43b75"
+  "language-babel":
+    autoIndentJSX: true
   linter:
     disabledProviders: [
       "ESLint"
     ]
   "linter-eslint":
-    disableWhenNoEslintConfig: true
-    globalNodePath: "/usr/local"
-    useGlobalEslint: false
+    global:
+      globalNodePath: "/usr/local"
   "linter-ui-default":
     panelHeight: 69
   "markdown-preview":
