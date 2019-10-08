@@ -3,5 +3,5 @@
     "telemetry.enableTelemetry": false,
     "workbench.activityBar.visible": false,
     "workbench.colorTheme": "Atom One Dark",
-    "editor.fontSize": 14,
+    "editor.fontSize": 14
 }
