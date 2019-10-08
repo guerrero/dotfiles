@@ -1,4 +1,0 @@
-'.text.html':
-  'Viewport meta':
-    'prefix': 'viewport'
-    'body': '<meta name="viewport" content="width=device-width, initial-scale=1, ${1:user-scalable=no}">'

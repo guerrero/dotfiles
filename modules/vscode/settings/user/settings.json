@@ -1,0 +1,7 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "workbench.activityBar.visible": false,
+    "workbench.colorTheme": "Atom One Dark",
+    "editor.fontSize": 14,
+}

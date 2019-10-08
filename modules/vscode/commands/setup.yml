@@ -1,0 +1,44 @@
+---
+- name: Run task dependencies for install Visual Studio app
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Load package configuration
+      include_vars:
+        file: "{{ playbook_dir }}/modules/vscode/config.yml"
+        name: vscode_config
+
+    - name: Ensure Visual Studio Code is installed and up to date
+      homebrew_cask:
+        name: visual-studio-code
+        state: upgraded
+
+  when:
+    - os_is_mac
+    - homebrew_is_installed
+
+- name: Ensure Visual Studio Code settings is linked into Application Support
+  file:
+    src: "{{ playbook_dir }}/modules/vscode/settings/user"
+    dest: ~/Library/Application Support/Code/User
+    state: link
+    force: yes
+  
+  when:
+    - os_is_mac
+
+- block:
+    - name: Ensure duti is installed and up to date
+      homebrew:
+        name: duti
+        state: upgraded
+
+    - name: Set handlers to open source files with Visual Studio Code
+      shell: "duti {{ playbook_dir }}/modules/vscode/settings/handlers"
+
+  when:
+      - os_is_mac
+      - homebrew_is_installed

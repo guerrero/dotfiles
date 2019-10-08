@@ -24,7 +24,3 @@
 com.microsoft.VSCode markdown all
 com.microsoft.VSCode public.plain-text all
 com.microsoft.VSCode public.source-code  all
-
-org.videolan.vlc .avi all
-org.videolan.vlc .mkv all
-org.videolan.vlc .mp4 all
