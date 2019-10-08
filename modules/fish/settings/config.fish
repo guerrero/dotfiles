@@ -1,5 +1,7 @@
 # Init fish modules
 
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+
 set -l fish_settings_dir (readlink (dirname (status -f)))
 set -l modules_dir (dirname (dirname $fish_settings_dir))
 
