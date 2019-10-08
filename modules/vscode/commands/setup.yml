@@ -20,13 +20,18 @@
     - os_is_mac
     - homebrew_is_installed
 
+- name: Ensure Visual Studio Code directory exists in Library.
+  file:
+    path: ~/Library/Application Support/Code
+    state: directory
+
 - name: Ensure Visual Studio Code settings is linked into Application Support
   file:
     src: "{{ playbook_dir }}/modules/vscode/settings/user"
     dest: ~/Library/Application Support/Code/User
     state: link
     force: yes
-  
+
   when:
     - os_is_mac
 
@@ -42,3 +47,8 @@
   when:
       - os_is_mac
       - homebrew_is_installed
+
+- name: Install Visual Studio Code packages
+  shell: "code --install-extension {{ item }} > /dev/null"
+  loop: "{{ vscode_config.packages_to_install }}"
+  ignore_errors: true

@@ -1,2 +1,5 @@
 ---
 packages_to_install:
+  - redhat.vscode-yaml
+  - bmalehorn.vscode-fish
+  - akamud.vscode-theme-onedark
