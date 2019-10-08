@@ -1,7 +1,12 @@
 # Sensitive data
 .private
 private
-license.plist
 .ssh
 id_rsa
 id_rsa.pub
+
+# Sensitive data (mac OS)
+license.plist
+
+# System files (mac OS)
+.DS_Store
