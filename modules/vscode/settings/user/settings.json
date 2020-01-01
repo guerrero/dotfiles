@@ -3,5 +3,9 @@
     "telemetry.enableTelemetry": false,
     "workbench.activityBar.visible": false,
     "workbench.colorTheme": "Atom One Dark",
-    "editor.fontSize": 14
+    "editor.fontSize": 14,
+    "editor.minimap.enabled": false,
+    "editor.tabSize": 2,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always"
 }
