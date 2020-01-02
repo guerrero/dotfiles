@@ -15,23 +15,23 @@
       homebrew_cask:
         name: visual-studio-code
         state: upgraded
-
   when:
     - os_is_mac
     - homebrew_is_installed
 
-- name: Ensure Visual Studio Code directory exists in Library.
-  file:
-    path: ~/Library/Application Support/Code
-    state: directory
+- block:  
+    - name: Ensure Visual Studio Code directory exists in Library.
+      file:
+        path: ~/Library/Application Support/Code
+        state: directory
 
-- name: Ensure Visual Studio Code settings is linked into Application Support
-  file:
-    src: "{{ playbook_dir }}/modules/vscode/settings/user"
-    dest: ~/Library/Application Support/Code/User
-    state: link
-    force: yes
-
+    - name: Ensure Visual Studio Code settings is linked into Application Support
+      file:
+        src: "{{ playbook_dir }}/modules/vscode/settings/user"
+        dest: ~/Library/Application Support/Code/User
+        state: link
+        force: yes
+  
   when:
     - os_is_mac
 
