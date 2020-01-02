@@ -35,16 +35,18 @@ function install_homebrew {
   if [[ homebrew_is_installed ]]; then
     echo "Homebrew is already installed"
   else
-    echo "\033[0;32mInstalling Homebrew\033[0m"
+    echo "\033[0;32mInstalling Homebrew...\033[0m"
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     if [[ homebrew_is_not_installed ]]; then
-      echo "Homebrew failed to install"
+      echo "\033[0;31mError:\033[0m Homebrew failed to install"
       return 1
     fi
   fi
 
-  brew doctor
+  brew doctor ||
+  echo '\033[0;31mError:\033[0m Fix the problems reported by brew doctor and run the install command again' &&
+  return 1
 }
 
 function ansible_is_installed {
@@ -67,7 +69,8 @@ function main {
 
     install_command_line_tools &&
     install_homebrew &&
-    install_ansible ||
+    install_ansible &&
+    ansible-playbook -i "$CURRENT_DIR/inventory" "$CURRENT_DIR/main.yml" --ask-become-pass ||
     exit 1
 
   elif [[ is_ubuntu ]]; then
@@ -77,8 +80,6 @@ function main {
     echo "This machine is using a system different from Ubuntu or Mac OS. None of the tools has been installed"
     exit 1
   fi
-
-  ansible-playbook -i "$CURRENT_DIR/inventory" "$CURRENT_DIR/main.yml" --ask-become-pass
 }
 
 main
