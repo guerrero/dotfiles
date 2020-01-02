@@ -8,3 +8,19 @@
 - name: Run defaults script to configure mac OS preferences
   script: "{{ playbook_dir }}/modules/macos/scripts/defaults"
   when: os_is_mac
+
+- block:  
+    - name: Ensure Folder Actions exists in Library.
+      file:
+        path: ~/Library/Workflows/Applications/Folder\ Actions
+        state: directory
+
+    - name: Custom folder actions is linked to system folder
+      file:
+        src: "{{ playbook_dir }}/modules/macos/settings/Folder\ Actions"
+        dest: ~/Library/Workflows/Applications/Folder\ Actions
+        state: link
+        force: yes
+  
+  when:
+    - os_is_mac
