@@ -69,6 +69,7 @@ fonts_to_install:
   - font-cabin
   - font-fira-sans
   - font-inconsolata
+  - font-inter
   - font-lato
   - font-merriweather
   - font-merriweather-sans
