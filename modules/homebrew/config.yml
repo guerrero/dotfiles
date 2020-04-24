@@ -45,7 +45,6 @@ apps_to_install:
   - imageoptim
   - logitech-options
   - mactracker
-  - marvel
   - microsoft-teams # 🤦‍
   - nextcloud
   - notion
