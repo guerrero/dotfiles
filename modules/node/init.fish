@@ -9,7 +9,7 @@ end
 
 set nvm_binary (echo (brew --prefix nvm)/nvm.sh)
 
-# Load package manager installed NVM into the shell session.
+# Load NVM package manager installed into the shell session.
 if type -q brew; and test -f $nvm_binary
 
   mkdir -p "$HOME/.nvm"
