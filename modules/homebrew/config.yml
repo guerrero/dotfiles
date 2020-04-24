@@ -53,7 +53,7 @@ apps_to_install:
   - qlmarkdown
   - qlstephen
   - sketch
-  - skype-for-business
+  - skype-for-business # 🤦‍
   - slack
   - spotify
   - telegram
