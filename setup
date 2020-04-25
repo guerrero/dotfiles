@@ -31,6 +31,10 @@ function homebrew_is_installed {
   [[ ! "$(type -P brew)" ]] && return 1
 }
 
+function show_brew_doctor_error_message {
+  echo '\033[0;31mError:\033[0m Fix the problems reported by brew doctor and run the install command again'
+}
+
 function install_homebrew {
   if [[ homebrew_is_installed ]]; then
     echo "Homebrew is already installed"
@@ -44,9 +48,7 @@ function install_homebrew {
     fi
   fi
 
-  brew doctor ||
-  echo '\033[0;31mError:\033[0m Fix the problems reported by brew doctor and run the install command again' &&
-  return 1
+  # brew doctor || (show_brew_doctor_error_message  && return 1)
 }
 
 function ansible_is_installed {
