@@ -27,7 +27,7 @@ binaries_to_install:
   # end_of_binaries
 
 # Apps installed using Homebrew-cask. Some apps aren't listed here due they
-# will be installed directly from other modules commands
+# will be installed directly from its own module commands
 apps_to_install:
   - 1password
   - abstract
@@ -37,7 +37,6 @@ apps_to_install:
   - dash
   - docker
   - doxie
-  - dropbox
   - figma
   - firefox
   - flinto
