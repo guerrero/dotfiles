@@ -29,6 +29,7 @@
         src: "{{ playbook_dir }}/modules/sublime/settings"
         dest: ~/Library/Application Support/Sublime Text 3/Packages/User
         state: link
+        force: yes
   when:
       - os_is_mac
       - homebrew_is_installed
