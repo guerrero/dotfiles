@@ -65,20 +65,13 @@ apps_to_install:
 
 # From Homebrew-fonts
 fonts_to_install:
-  - font-cabin
-  - font-fira-sans
-  - font-inconsolata
+  - font-chivo
+  - font-crimson-pro
+  - font-crimson-text
+  - font-ibm-plex
   - font-inter
-  - font-lato
-  - font-merriweather
-  - font-merriweather-sans
-  - font-open-sans
-  - font-oxygen
-  - font-pt-sans
-  - font-pt-serif
+  - font-libre-baskerville
+  - font-lora
   - font-roboto
-  - font-source-sans-pro
-  - font-source-serif-pro
-  - font-varela
-  - font-varela-round
+  - font-spectral
   # end_of_casks
