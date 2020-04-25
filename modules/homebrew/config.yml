@@ -2,6 +2,7 @@
 repositories_to_install:
   - homebrew/cask-versions # Repository for alternate app versions
   - homebrew/cask-fonts # Repository for binary font files
+  - mongodb/brew # Repository needed to install mongodb
   # end_of_repositories
 
 # Some binaries aren't listed here due they will be installed directly from
@@ -13,7 +14,7 @@ binaries_to_install:
   - gist
   - hub
   - lua
-  - mongodb
+  - mongodb-community
   - postgresql
   - pyenv
   - rename
