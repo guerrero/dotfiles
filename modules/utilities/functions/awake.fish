@@ -2,5 +2,5 @@ function awake -d "Prevent the system from sleeping during specified time in hou
   set hours $argv[1]
   set seconds (math $hours \* 3600)
 
-  caffeinate -t $seconds
+  caffeinate -ut $seconds
 end
