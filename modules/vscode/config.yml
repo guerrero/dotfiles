@@ -2,4 +2,6 @@
 packages_to_install:
   - redhat.vscode-yaml
   - bmalehorn.vscode-fish
+  - mrmlnc.vscode-scss
   - akamud.vscode-theme-onedark
+  - wmaurer.vscode-jumpy
