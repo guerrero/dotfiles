@@ -30,7 +30,6 @@ binaries_to_install:
 # will be installed directly from its own module commands
 apps_to_install:
   - 1password
-  - abstract
   - adobe-acrobat-reader # 🤦‍
   - alfred
   - cyberduck
@@ -41,19 +40,15 @@ apps_to_install:
   - firefox
   - flinto
   - google-chrome
-  - iconjar
   - imageoptim
   - logitech-options
   - mactracker
-  - microsoft-teams # 🤦‍
   - nextcloud
   - notion
-  - onedrive # 🤦‍
   - qlcolorcode
   - qlmarkdown
   - qlstephen
   - sketch
-  - skype-for-business # 🤦‍
   - slack
   - spotify
   - telegram
