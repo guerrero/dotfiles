@@ -1,6 +1,6 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.renameOnType": true,
   "editor.snippetSuggestions": "top",
   "editor.suggest.localityBonus": true,
