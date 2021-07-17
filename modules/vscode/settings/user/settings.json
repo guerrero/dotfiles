@@ -23,7 +23,6 @@
     "**/coverage": true,
     "**/dist": true,
     "**/build": true,
-    "**/.build": true,
-    "**/.gh-pages": true
+    "**/.build": true
   }
 }
