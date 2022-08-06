@@ -9,20 +9,9 @@ repositories_to_install:
 # other modules commands
 binaries_to_install:
   - ansible
-  - elm
   - ffmpeg
-  - gist
-  - hub
-  - lua
-  - mongodb-community
-  - postgresql
-  - pyenv
   - rename
-  - rust
-  - sqlite
-  - tccutil
   - tree
-  - unrar
   - youtube-dl
   # end_of_binaries
 
