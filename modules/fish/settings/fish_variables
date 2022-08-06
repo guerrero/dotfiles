@@ -10,6 +10,10 @@ SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
 SETUVAR __fish_initialized:3400
+SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
+SETUVAR _fisher_fishgretel_2F_fasd_files:\x7e/\x2econfig/fish/functions/__fasd_print_completion\x2efish\x1e\x7e/\x2econfig/fish/functions/a\x2efish\x1e\x7e/\x2econfig/fish/functions/d\x2efish\x1e\x7e/\x2econfig/fish/functions/f\x2efish\x1e\x7e/\x2econfig/fish/functions/fasd_cd\x2efish\x1e\x7e/\x2econfig/fish/functions/s\x2efish\x1e\x7e/\x2econfig/fish/functions/sd\x2efish\x1e\x7e/\x2econfig/fish/functions/sf\x2efish\x1e\x7e/\x2econfig/fish/functions/z\x2efish\x1e\x7e/\x2econfig/fish/functions/zz\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/__fasd_run\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/aliases\x2efish\x1e\x7e/\x2econfig/fish/completions/a\x2efish\x1e\x7e/\x2econfig/fish/completions/d\x2efish\x1e\x7e/\x2econfig/fish/completions/f\x2efish\x1e\x7e/\x2econfig/fish/completions/fasd\x2efish\x1e\x7e/\x2econfig/fish/completions/s\x2efish\x1e\x7e/\x2econfig/fish/completions/sd\x2efish\x1e\x7e/\x2econfig/fish/completions/sf\x2efish\x1e\x7e/\x2econfig/fish/completions/z\x2efish\x1e\x7e/\x2econfig/fish/completions/zz\x2efish
+SETUVAR _fisher_plugins:edc/bass\x1efishgretel/fasd
+SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:767676
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:afd787
