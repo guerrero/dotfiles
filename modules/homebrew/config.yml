@@ -42,7 +42,6 @@ apps_to_install:
   - telegram
   - tor-browser
   - vlc
-  - zeplin
   # end_of_casks
 
 
