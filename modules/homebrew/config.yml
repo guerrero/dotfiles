@@ -30,7 +30,6 @@ apps_to_install:
   - flinto
   - google-chrome
   - imageoptim
-  - logitech-options
   - mactracker
   - nextcloud
   - notion
