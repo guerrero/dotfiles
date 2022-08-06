@@ -1,4 +1,4 @@
-#!/usr/local/bin/fish
+#!/opt/homebrew/bin/fish
 
 # Set path for fasd cache data
 set -U _FASD_DATA "$HOME/.cache/fasd/data"

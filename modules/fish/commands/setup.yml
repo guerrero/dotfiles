@@ -15,14 +15,14 @@
       become: yes
       lineinfile:
         path: /etc/shells
-        line: "/usr/local/bin/fish"
+        line: "/opt/homebrew/bin/fish"
         state: present
 
     - name: Ensure fish is the default shell for current user
       become: yes
       user:
         name: "{{ ansible_env.USER }}"
-        shell: "/usr/local/bin/fish"
+        shell: "/opt/homebrew/bin/fish"
 
     - name: Ensure ~/.config directory exists
       file:

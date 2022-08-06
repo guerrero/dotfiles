@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/env bash
 
 # Set OS X defaults
 
@@ -391,8 +391,7 @@ sudo tmutil disable
 # Kill affected applications
 #
 
-for app in "Dock" "Finder" "Mail" "Safari" "Google Chrome" "SystemUIServer" "Transmission" "cfprefsd"
-  killall "$app" &> /dev/null
-end
-
+for app in "Dock" "Finder" "Mail" "Safari" "Google Chrome" "SystemUIServer" "Transmission" "cfprefsd"; do
+	killall "${app}" &> /dev/null
+done
 echo "Done. Note that some of these changes require a logout/restart to take effect."

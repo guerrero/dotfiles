@@ -1,4 +1,4 @@
-#!/usr/local/bin/fish
+#!/opt/homebrew/bin/fish
 
 if test (uname) = 'Darwin'
   set -U BROWSER 'open'

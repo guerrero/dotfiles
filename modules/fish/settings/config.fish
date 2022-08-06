@@ -1,5 +1,7 @@
 # Init fish modules
 
+eval (/opt/homebrew/bin/brew shellenv)
+
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 set -l fish_settings_dir (readlink (dirname (status -f)))

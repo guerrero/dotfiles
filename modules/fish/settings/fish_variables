@@ -3,7 +3,7 @@
 SETUVAR BROWSER:open
 SETUVAR EDITOR:subl
 SETUVAR PAGER:less
-SETUVAR --path PATH:/usr/local/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin
+SETUVAR --path PATH:/opt/homebrew/bin\x1e/opt/homebrew/sbin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin
 SETUVAR VISUAL:vim
 SETUVAR --export _FASD_DATA:/Users/alex/\x2ecache/fasd/data
 SETUVAR __fish_init_2_39_8:\x1d

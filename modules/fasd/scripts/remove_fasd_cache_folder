@@ -1,4 +1,4 @@
-#!/usr/local/bin/fish
+#!/opt/homebrew/bin/fish
 
 # Remove variable to specify path for fasd cache data
 set -e _FASD_DATA
