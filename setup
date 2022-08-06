@@ -1,98 +1,182 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-pushd $(dirname $0) > /dev/null
+DOTFILES_REPO_URL="https://github.com/guerrero/dotfiles.git"
+DOTFILES_PATH="$HOME/.dotfiles"
 
-CURRENT_DIR=`pwd`
-
-popd > /dev/null
-
-
-function is_osx {
-  [[ "$OSTYPE" =~ ^darwin ]] || return 1
+function main() {
+  ask_for_sudo
+  install_xcode_command_line_tools
+  clone_dotfiles_repo
+  install_homebrew
+  install_ansible
+  run_modules_tasks
 }
 
-function is_ubuntu {
-  [[ "$(cat /etc/issue 2> /dev/null)" =~ Ubuntu ]] || return 1
-}
+function ask_for_sudo() {
+    info "Checking for \`sudo\` access (which may request your password)..."
+    
+    if sudo --validate &> /dev/null; then
+        # Update `sudo` timestamp until script has finished
+        # More info: https://gist.github.com/cowboy/3118588
+        while true; do
+          sudo --non-interactive true;
+          sleep 60;
+          kill -0 "$$" || exit
+        done 2>/dev/null &
 
-function command_line_tools_are_installed {
-  [[ ! "$(type -P brew)" ]] || return 1
-}
-
-function install_command_line_tools {
-  if [[ command_line_tools_are_installed ]]; then
-    echo "XCode Command Line Tools are already installed"
-  else
-    echo "Installing XCode Command Line Tools"
-  fi
-}
-
-function homebrew_is_installed {
-  [[ ! "$(type -P brew)" ]] && return 1
-}
-
-function show_brew_doctor_error_message {
-  echo '\033[0;31mError:\033[0m Fix the problems reported by brew doctor and run the install command again'
-}
-
-function install_homebrew {
-  if [[ homebrew_is_installed ]]; then
-    echo "Homebrew is already installed"
-  else
-    echo "\033[0;32mInstalling Homebrew...\033[0m"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-    if [[ homebrew_is_not_installed ]]; then
-      echo "\033[0;31mError:\033[0m Homebrew failed to install"
-      return 1
+        success "Running script using \`sudo\` credentials..."
+    else
+        error "Request for \`sudo\` access failed"
+        exit 1
     fi
-  fi
-
-  # brew doctor || (show_brew_doctor_error_message  && return 1)
 }
 
-function ansible_is_installed {
-  [[ ! "$(type -P ansible)" ]] && return 1
+function install_xcode_command_line_tools() {
+  info "Installing Xcode command line tools"
+
+    if [[ ! -d "$('xcode-select' -print-path 2>/dev/null)" ]]; then
+      xcode-select --install
+
+      while true; do
+          if [[ -d "$('xcode-select' -print-path 2>/dev/null)" ]]; then
+              success "Xcode command line tools installed successfully"
+              finish_installing_message
+              break
+          else
+              init_installing_message "Installing"
+          fi
+      done
+    else
+        success "Xcode command line tools are already installed"
+    fi
 }
 
-function install_ansible {
-  if [[ ansible_is_installed ]]; then
-    echo "Ansible is already installed"
+function clone_dotfiles_repo() {
+  info "Cloning dotfiles repository into ${DOTFILES_PATH}"
+
+  if [[ ! -e "$DOTFILES_PATH" ]]; then
+    if git clone $DOTFILES_REPO_URL "$DOTFILES_PATH"; then
+        success "Repository cloned successfully"
+    else
+        error "Cloning into ${DOTFILES_PATH} failed"
+        exit 1
+    fi
   else
-    echo "Installing Ansible..."
-    brew install ansible
+    info "${DOTFILES_PATH} already exists"
+    update_local_dotfiles $DOTFILES_PATH
   fi
 }
 
-
-function main {
-  if [[ is_osx ]]; then
-    echo "Running Mac OS installation..."
-
-    install_command_line_tools &&
-    install_homebrew &&
-    install_ansible &&
-    ansible-playbook -i "$CURRENT_DIR/inventory" "$CURRENT_DIR/main.yml" --ask-become-pass ||
-    exit 1
-
-  elif [[ is_ubuntu ]]; then
-    echo "This machine is using a Ubuntu system. None of the tools has been installed"
-    exit 1
-  else
-    echo "This machine is using a system different from Ubuntu or Mac OS. None of the tools has been installed"
-    exit 1
-  fi
+function update_local_dotfiles() {
+    info "Pulling latest changes in dotfiles repository"
+    
+    if git -C $1 pull origin main &> /dev/null; then
+      success "Newer repository changes pulled successfuly"
+      return
+    else
+      error "Please pull the latest changes manually"
+      exit 1
+    fi
 }
 
-main
+function install_homebrew() {
+    info "Installing Homebrew"
+    if [[ ! "$(type -P brew)" ]]; then
+        url=https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+        if yes | /bin/bash -c "$(curl -fsSL ${url})"; then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+            success "Homebrew installed successfully"
+        else
+            error "Homebrew installation failed"
+            exit 1
+        fi
+    else
+        success "Homebrew is already installed"
+    fi
+}
+
+function install_ansible() {
+    info "Installing Ansible"
+    if [[ ! "$(type -P ansible)" ]]; then
+      if /opt/homebrew/bin/brew install ansible; then
+          success "Ansible installed successfully"
+      else
+          error "Ansible installation failed"
+          exit 1
+      fi
+    else
+        success "Ansible is already installed"
+    fi
+}
+
+function run_modules_tasks() {
+  /opt/homebrew/bin/ansible-playbook -i "$DOTFILES_PATH/inventory" "$DOTFILES_PATH/main.yml" --ask-become-pass || exit 1
+}
+
+#
+# Utilities
+# 
+
+function init_installing_message() {
+  text[0]="$1   \r"
+  text[1]="$1.  \r"
+  text[2]="$1.. \r"
+  text[3]="$1...\r"
+
+  for i in "${text[@]}"
+  do
+      echo -ne "$i"
+      sleep 1
+  done
+}
+
+function finish_installing_message() {
+  echo -ne '\n'
+}
+
+# Adapted from https://github.com/Sajjadhosn/dotfiles
+function colored_echo() {
+    local color="$1";
+    local exp="$2";
+    local arrow="$3";
+    if ! [[ $color =~ '^[0-9]$' ]] ; then
+      case $(echo $color | tr '[:upper:]' '[:lower:]') in
+        black) color=0 ;;
+        red) color=1 ;;
+        green) color=2 ;;
+        yellow) color=3 ;;
+        blue) color=4 ;;
+        magenta) color=5 ;;
+        cyan) color=6 ;;
+        white|*) color=7 ;; # white or invalid color
+      esac
+    fi
+    tput bold;
+    tput setaf "$color";
+    echo "$arrow $exp";
+    tput sgr0;
+}
+
+function info() {
+    colored_echo blue "$1" "========>"
+}
+
+function success() {
+    colored_echo green "$1" "========>"
+}
+
+function error() {
+    colored_echo red "$1" "========>"
+}
+
+main "$@"
 
 unset -f \
-  is_osx \
-  is_ubuntu \
-  command_line_tools_are_installed \
-  install_command_line_tools \
-  homebrew_is_installed \
+  ask_for_sudo \
+  install_xcode_command_line_tools \
+  clone_dotfiles_repo \
+  update_local_dotfiles \
   install_homebrew \
-  ansible_is_installed \
   install_ansible \
+  run_modules_tasks \
   main
