@@ -1,5 +1,5 @@
 [user]
-    email = hello@alexguerrero.es
+    email = hola@alexguerrero.es
     name = Alex Guerrero
 
 [credential]
@@ -15,5 +15,6 @@
 
 [hub]
 	protocol = https
+    
 [init]
 	defaultBranch = main
