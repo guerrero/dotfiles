@@ -21,6 +21,4 @@ set -x _FASD_DATA "$HOME/.cache/fasd/data"
 # Aliases
 #
 
-alias ao 'fasd -a -e atom' # find files/dirs with fasd and open them in Atom
-alias so 'fasd -a -e subl' # find files/dirs with fasd and open them in Sublime
-alias z  'fasd_cd -d'      # jump to a directory that contains the given argument string
+alias oc 'fasd -a -e code' # find files/dirs with fasd and open them in Atom
