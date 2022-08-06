@@ -5,11 +5,11 @@ SETUVAR EDITOR:subl
 SETUVAR PAGER:less
 SETUVAR --path PATH:/opt/homebrew/bin\x1e/opt/homebrew/sbin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin
 SETUVAR VISUAL:vim
-SETUVAR --export _FASD_DATA:/Users/alex/\x2ecache/fasd/data
+SETUVAR --export _FASD_DATA:/Users/Alex/\x2ecache/fasd/data
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
-SETUVAR __fish_initialized:3100
+SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:767676
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:afd787
@@ -39,3 +39,4 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:555\x1eyellow
 SETUVAR fish_pager_color_prefix:cyan
 SETUVAR fish_pager_color_progress:cyan
+SETUVAR fish_pager_color_selected_background:\x2dr
