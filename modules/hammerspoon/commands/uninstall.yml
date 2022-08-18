@@ -18,7 +18,7 @@
         path: '{{ item }}'
         state: absent
       loop:
-        - "/usr/local/Caskroom/hammerspoon/"
+        - "/opt/homebrew/Caskroom/hammerspoon/"
         - "~/.hammerspoon"
         - "~/Library/Application Support/com.crashlytics/org.hammerspoon.Hammerspoon"
         - "~/Library/Caches/org.hammerspoon.Hammerspoon"

@@ -16,7 +16,7 @@
       become: yes
       lineinfile:
         path: /etc/shells
-        line: "/usr/local/bin/fish"
+        line: "/opt/homebrew/bin/fish"
         state: absent
 
     - name: Ensure absence of fish binary

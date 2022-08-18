@@ -1,9 +1,10 @@
+
 #
 # Loads the Node Version Manager
 #
 
 # Return if requirements are not found.
-if not type -q node; and not contains nvm (ls /usr/local/Cellar/)
+if not type -q node; and not brew list nvm &>/dev/null;
   exit
 end
 
