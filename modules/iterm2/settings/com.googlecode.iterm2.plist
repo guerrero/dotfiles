@@ -1168,7 +1168,7 @@
 				<key>action</key>
 				<string>best editor</string>
 				<key>editor</key>
-				<string>com.sublimetext.3</string>
+				<string>com.microsoft.VSCode</string>
 				<key>text</key>
 				<string></string>
 			</dict>

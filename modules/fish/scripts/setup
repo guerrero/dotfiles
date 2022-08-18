@@ -8,10 +8,8 @@ end
 # Editors
 #
 
-if type -q subl
-  set -U EDITOR 'subl'
-else if type -q atom
-  set -U EDITOR 'atom'
+if type -q code
+  set -U EDITOR 'code'
 else
   set -U EDITOR 'vim'
 end

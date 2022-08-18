@@ -1,7 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR BROWSER:open
-SETUVAR EDITOR:subl
+SETUVAR EDITOR:code
 SETUVAR PAGER:less
 SETUVAR --path PATH:/opt/homebrew/bin\x1e/opt/homebrew/sbin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin
 SETUVAR VISUAL:vim

@@ -11,7 +11,7 @@
 [core]
     attributesfile = ~/.dotfiles/modules/git/settings/gitattributes
     excludesfile = ~/.dotfiles/modules/git/settings/gitignore
-    editor = subl --wait
+    editor = code --wait
 
 [hub]
 	protocol = https
