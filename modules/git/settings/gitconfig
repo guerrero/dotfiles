@@ -1,6 +1,6 @@
 [user]
-    email = hola@alexguerrero.es
-    name = Alex Guerrero
+	email = hola@alexguerrero.es
+	name = Alex Guerrero
 
 [credential]
     helper = osxkeychain
@@ -18,3 +18,6 @@
     
 [init]
 	defaultBranch = main
+
+[pull]
+    ff = only
