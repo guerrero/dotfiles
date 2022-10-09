@@ -2,7 +2,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontSize": 13.8,
   "editor.lineHeight": 20,
-  "editor.renameOnType": true,
+  "editor.linkedEditing": true,
   "editor.snippetSuggestions": "top",
   "editor.suggest.localityBonus": true,
   "editor.suggestSelection": "recentlyUsed",
@@ -11,12 +11,6 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "search.useGlobalIgnoreFiles": true,
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "Atom One Dark",
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
@@ -24,5 +18,11 @@
     "**/dist": true,
     "**/build": true,
     "**/.build": true
-  }
+  },
+  "search.useGlobalIgnoreFiles": true,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.activityBar.visible": false,
+  "workbench.colorTheme": "Atom One Dark"
 }
