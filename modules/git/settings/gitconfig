@@ -3,21 +3,21 @@
 	name = Alex Guerrero
 
 [credential]
-    helper = osxkeychain
+	helper = osxkeychain
 
 [push]
-    default = simple
+	default = simple
 
 [core]
-    attributesfile = ~/.dotfiles/modules/git/settings/gitattributes
-    excludesfile = ~/.dotfiles/modules/git/settings/gitignore
-    editor = code --wait
+	attributesfile = ~/.dotfiles/modules/git/settings/gitattributes
+	excludesfile = ~/.dotfiles/modules/git/settings/gitignore
+	editor = code --wait
 
 [hub]
 	protocol = https
-    
+
 [init]
 	defaultBranch = main
 
 [pull]
-    ff = only
+	ff = only
