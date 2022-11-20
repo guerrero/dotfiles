@@ -24,5 +24,8 @@
   "telemetry.enableTelemetry": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "workbench.activityBar.visible": false,
-  "workbench.colorTheme": "Atom One Dark"
+  "workbench.colorTheme": "Atom One Dark",
+  "editor.quickSuggestions": {
+    "strings": "on"
+  }
 }
