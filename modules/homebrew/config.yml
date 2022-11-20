@@ -18,9 +18,9 @@ binaries_to_install:
 # Apps installed using Homebrew-cask. Some apps aren't listed here due they
 # will be installed directly from its own module commands
 apps_to_install:
-  - 1password
   - adobe-acrobat-reader # 🤦‍
   - alfred
+  - bitwarden
   - cyberduck
   - dash
   - docker
