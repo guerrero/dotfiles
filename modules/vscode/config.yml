@@ -1,7 +1,13 @@
 ---
 packages_to_install:
-  - redhat.vscode-yaml
-  - bmalehorn.vscode-fish
-  - mrmlnc.vscode-scss
   - akamud.vscode-theme-onedark
+  - bmalehorn.vscode-fish
+  - bradlc.vscode-tailwindcss
+  - christian-kohler.path-intellisense
+  - dbaeumer.vscode-eslint
+  - esbenp.prettier-vscode
+  - github.copilot
+  - mrmlnc.vscode-scss
+  - ms-azuretools.vscode-docker
+  - redhat.vscode-yaml
   - wmaurer.vscode-jumpy
