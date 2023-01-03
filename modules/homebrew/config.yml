@@ -20,6 +20,7 @@ binaries_to_install:
 apps_to_install:
   - adobe-acrobat-reader # 🤦‍
   - alfred
+  - basecamp
   - bitwarden
   - cyberduck
   - dash
