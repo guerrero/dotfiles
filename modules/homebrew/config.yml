@@ -22,6 +22,8 @@ apps_to_install:
   - alfred
   - basecamp
   - bitwarden
+  - brave
+  - calibre
   - cyberduck
   - dash
   - docker
