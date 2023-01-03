@@ -32,6 +32,7 @@ apps_to_install:
   - firefox
   - google-chrome
   - imageoptim
+  - loom
   - mactracker
   - nextcloud
   - notion
