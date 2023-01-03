@@ -44,6 +44,7 @@ apps_to_install:
   - spotify
   - telegram
   - tor-browser
+  - transmission
   - vlc
   # end_of_casks
 
