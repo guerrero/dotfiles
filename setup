@@ -9,7 +9,7 @@ function main() {
   clone_dotfiles_repo
   install_homebrew
   install_ansible
-  run_modules_tasks
+  run_modules_install_tasks
 }
 
 function ask_for_sudo() {
@@ -109,8 +109,15 @@ function install_ansible() {
     fi
 }
 
-function run_modules_tasks() {
-  /opt/homebrew/bin/ansible-playbook -i "$DOTFILES_PATH/inventory" "$DOTFILES_PATH/main.yml" --ask-become-pass || exit 1
+function run_modules_install_tasks() {
+  info "Executing Ansible setup tasks"
+
+  /opt/homebrew/bin/ansible-playbook \
+    -i "$DOTFILES_PATH/inventory" \
+    "$DOTFILES_PATH/main.yml" \
+    --extra-vars "command=setup" \
+    --ask-become-pass \
+  || exit 1
 }
 
 #
@@ -172,11 +179,17 @@ function error() {
 main "$@"
 
 unset -f \
+  colored_echo \
+  info \
+  success \
+  error \
+  init_installing_message \
+  finish_installing_message \
   ask_for_sudo \
   install_xcode_command_line_tools \
   clone_dotfiles_repo \
   update_local_dotfiles \
   install_homebrew \
   install_ansible \
-  run_modules_tasks \
+  run_modules_install_tasks \
   main
