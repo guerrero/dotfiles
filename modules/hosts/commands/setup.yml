@@ -6,6 +6,7 @@
 
 - block:
   - name: Ensure hosts are set
+    become: yes
     template:
       src: "{{ playbook_dir }}/modules/hosts/settings/hosts"
       dest: /etc/hosts
