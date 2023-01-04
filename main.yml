@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  become: yes
   tasks:
     - name: Find all available modules directories except those that starts with an underscore
       find:
