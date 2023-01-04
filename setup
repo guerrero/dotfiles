@@ -158,15 +158,15 @@ function colored_echo() {
 }
 
 function info() {
-    colored_echo blue "$1" "========>"
+    colored_echo blue "$1" "==>"
 }
 
 function success() {
-    colored_echo green "$1" "========>"
+    colored_echo green "$1" "==>"
 }
 
 function error() {
-    colored_echo red "$1" "========>"
+    colored_echo red "$1" "==>"
 }
 
 main "$@"
