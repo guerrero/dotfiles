@@ -4,29 +4,47 @@
 
 ## Requirements
 
-- Mac OS 10.11 or earlier
+- Mac OS 13 with Apple Silicon processor
 
 ## Installation
 
-Clone the repo into your home folder and call it `~/.dotfiles`
+Clone the repo into your home folder and call it `~/.dotfiles`.
 
 ```shell
 git clone https://github.com/guerrero/dotfiles "$HOME/.dotfiles"
 ```
 
-Open a Terminal.app window and write the following command to set `~/.dotfiles` as the working directory
+Open a Terminal.app window and write the following command to set `~/.dotfiles` as the working directory.
 
 ```shell
 cd "$HOME/.dotfiles"
 ```
 
-Execute `setup` script to start the provision. To execute it, write the following command in the previously opened Terminal.app window
+Execute `setup` script to start the provision. To execute it, write the following command in the previously opened Terminal.app window.
 
 ```shell
-`./setup`
+./setup
 ```
 
-This script will install all the apps and commands needed and set the configuration I use to work on my daily routine. Note that this process may take between 15-30 min to finish
+This script will install all the apps and commands needed and set the configuration I use to work on my daily routine. Note that this process may take between 5-20 min to finish.
+
+## Uninstall
+
+If you want to uninstall these dotfiles and revert all changes to the state prior to installation you can execute the `uninstall` command.
+
+Open Terminal.app and write the following command to set `~/.dotfiles` as the working directory.
+
+```shell
+cd "$HOME/.dotfiles"
+```
+
+Execute `uninstall` script to revert all changes. To execute it, write the following command in the previously opened Terminal.app window.
+
+```shell
+./uninstall
+```
+
+This script will remove all previously installed apps and commands and undo the updates in configuration from the `setup` script. Note that this process may take between 5-20 min to finish.
 
 
 ## License

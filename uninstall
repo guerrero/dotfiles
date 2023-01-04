@@ -1,0 +1,153 @@
+#!/usr/bin/env bash
+
+DOTFILES_PATH="$HOME/.dotfiles"
+
+function main() {
+  ask_for_sudo
+  run_modules_uninstall_tasks
+  uninstall_ansible
+  uninstall_homebrew
+  uninstall_xcode_command_line_tools
+  remove_dotfiles_repo
+}
+
+function ask_for_sudo() {
+    info "Checking for \`sudo\` access (which may request your password)..."
+    
+    if sudo --validate &> /dev/null; then
+        # Update `sudo` timestamp until script has finished
+        # More info: https://gist.github.com/cowboy/3118588
+        while true; do
+          sudo --non-interactive true;
+          sleep 60;
+          kill -0 "$$" || exit
+        done 2>/dev/null &
+
+        success "Running script using \`sudo\` credentials..."
+    else
+        error "Request for \`sudo\` access failed"
+        exit 1
+    fi
+}
+
+function run_modules_uninstall_tasks() {
+  info "Executing Ansible uninstall tasks"
+
+  /opt/homebrew/bin/ansible-playbook \
+    -i "$DOTFILES_PATH/inventory" \
+    "$DOTFILES_PATH/main.yml" \
+    --extra-vars "command=uninstall" \
+    --ask-become-pass \
+  || exit 1
+}
+
+function uninstall_ansible() {
+    info "Uninstalling Ansible"
+    if [[ "$(type -P ansible)" ]]; then
+      if /opt/homebrew/bin/brew uninstall ansible; then
+          success "Ansible uninstalled successfully"
+      else
+          error "Ansible uninstall process failed"
+          exit 1
+      fi
+    else
+        success "Ansible is not installed"
+    fi
+}
+
+function uninstall_homebrew() {
+    info "Uninstalling Homebrew"
+    if [[ "$(type -P brew)" ]]; then
+        url=https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh
+        if yes | /bin/bash -c "$(curl -fsSL ${url})"; then
+            success "Homebrew uninstalled successfully"
+        else
+            error "Homebrew uninstall process failed"
+            exit 1
+        fi
+    else
+        success "Homebrew is not installed"
+    fi
+}
+
+function uninstall_xcode_command_line_tools() {
+  info "Uninstalling Xcode command line tools"
+
+    if [[ -d "$('xcode-select' -print-path 2>/dev/null)" ]]; then
+      if sudo rm -rf "$('xcode-select' -print-path)"; then
+          success "Xcode command line tools uninstalled successfully"
+      else
+          error "Fail trying to uninstall Xcode command line tools"
+          exit 1
+      fi
+    else
+        success "Xcode command line tools are not installed"
+    fi
+}
+
+function remove_dotfiles_repo() {
+  info "Removing dotfiles repository from ${DOTFILES_PATH}"
+
+  if [[ -e "$DOTFILES_PATH" ]]; then
+    if rm -rf "$DOTFILES_PATH"; then
+        success "Dotfiles repo removed successfully"
+    else
+        error "Fail trying to remove ${DOTFILES_PATH}"
+        exit 1
+    fi
+  fi
+}
+
+#
+# Utilities
+# 
+
+# Adapted from https://github.com/Sajjadhosn/dotfiles
+function colored_echo() {
+    local color="$1";
+    local exp="$2";
+    local arrow="$3";
+    if ! [[ $color =~ '^[0-9]$' ]] ; then
+      case $(echo $color | tr '[:upper:]' '[:lower:]') in
+        black) color=0 ;;
+        red) color=1 ;;
+        green) color=2 ;;
+        yellow) color=3 ;;
+        blue) color=4 ;;
+        magenta) color=5 ;;
+        cyan) color=6 ;;
+        white|*) color=7 ;; # white or invalid color
+      esac
+    fi
+    tput bold;
+    tput setaf "$color";
+    echo "$arrow $exp";
+    tput sgr0;
+}
+
+function info() {
+    colored_echo blue "$1" "==>"
+}
+
+function success() {
+    colored_echo green "$1" "==>"
+}
+
+function error() {
+    colored_echo red "$1" "==>"
+}
+
+main "$@"
+
+unset -f \
+  colored_echo \
+  info \
+  success \
+  error \
+  ask_for_sudo \
+  run_modules_uninstall_tasks \
+  uninstall_ansible \
+  uninstall_homebrew \
+  uninstall_xcode_command_line_tools \
+  remove_dotfiles_repo \
+  main
