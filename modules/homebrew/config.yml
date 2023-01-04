@@ -30,6 +30,7 @@ apps_to_install:
   - eloston-chromium
   - figma
   - firefox
+  - google-chrome
   - imageoptim
   - loom
   - mactracker
