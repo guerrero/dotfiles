@@ -25,12 +25,14 @@
         latest_backup: "{{ (find_backup.files | sort(attribute='mtime') | last).path }}"
 
     - name: "Restore latest backup of {{ hosts_file }}"
+      become: yes
       copy:
         src: "{{ latest_backup }}"
         remote_src: true
         dest: "{{ hosts_file }}"
 
     - name: "Ensure absence of the latest backup called \"{{ latest_backup }}\""
+      become: yes
       file:
         path: '{{ latest_backup }}'
         state: absent
