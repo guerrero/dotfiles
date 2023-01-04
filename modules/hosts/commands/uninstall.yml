@@ -1,0 +1,32 @@
+---
+- name: Set hosts file
+  set_fact:
+    hosts_file: '/etc/hosts'
+
+- name: "Find all backups for {{ hosts_file }}"
+  find:
+    recurse: no
+    paths:
+      - "{{ hosts_file | dirname }}"
+    patterns:
+      - '{{ hosts_file | basename }}\..*~'
+    use_regex: true
+  register: find_backup
+
+- block:
+  - name: "Retrieve the latest backups created for {{ hosts_file }}"
+    set_fact:
+      latest_backup: "{{ (find_backup.files | sort(attribute='mtime') | last).path }}"
+
+  - name: "Restore latest backup of {{ hosts_file }}"
+    copy:
+      src: "{{ latest_backup }}"
+      remote_src: true
+      dest: "{{ hosts_file }}"
+
+  - name: "Ensure absence of the latest backup called \"{{ latest_backup }}\""
+    file:
+      path: '{{ latest_backup }}'
+      state: absent
+
+  when: find_backup.files | length > 0

@@ -1,0 +1,8 @@
+---
+
+- name: Ensure hosts are set
+  template:
+    src: "{{ playbook_dir }}/modules/hosts/settings/hosts"
+    dest: /etc/hosts
+    mode: 0644
+    backup: yes
