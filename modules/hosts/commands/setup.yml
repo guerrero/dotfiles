@@ -1,8 +1,15 @@
 ---
+- name: Run task dependencies for install git
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
 
-- name: Ensure hosts are set
-  template:
-    src: "{{ playbook_dir }}/modules/hosts/settings/hosts"
-    dest: /etc/hosts
-    mode: 0644
-    backup: yes
+- block:
+  - name: Ensure hosts are set
+    template:
+      src: "{{ playbook_dir }}/modules/hosts/settings/hosts"
+      dest: /etc/hosts
+      mode: 0644
+      backup: yes
+  when:
+    - os_is_mac

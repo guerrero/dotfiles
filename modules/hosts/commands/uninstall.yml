@@ -1,32 +1,41 @@
 ---
-- name: Set hosts file
-  set_fact:
-    hosts_file: '/etc/hosts'
-
-- name: "Find all backups for {{ hosts_file }}"
-  find:
-    recurse: no
-    paths:
-      - "{{ hosts_file | dirname }}"
-    patterns:
-      - '{{ hosts_file | basename }}\..*~'
-    use_regex: true
-  register: find_backup
+- name: Run task dependencies for install git
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
 
 - block:
-  - name: "Retrieve the latest backups created for {{ hosts_file }}"
+  - name: Set hosts file
     set_fact:
-      latest_backup: "{{ (find_backup.files | sort(attribute='mtime') | last).path }}"
+      hosts_file: '/etc/hosts'
 
-  - name: "Restore latest backup of {{ hosts_file }}"
-    copy:
-      src: "{{ latest_backup }}"
-      remote_src: true
-      dest: "{{ hosts_file }}"
+  - name: "Find all backups for {{ hosts_file }}"
+    find:
+      recurse: no
+      paths:
+        - "{{ hosts_file | dirname }}"
+      patterns:
+        - '{{ hosts_file | basename }}\..*~'
+      use_regex: true
+    register: find_backup
 
-  - name: "Ensure absence of the latest backup called \"{{ latest_backup }}\""
-    file:
-      path: '{{ latest_backup }}'
-      state: absent
+  - block:
+    - name: "Retrieve the latest backups created for {{ hosts_file }}"
+      set_fact:
+        latest_backup: "{{ (find_backup.files | sort(attribute='mtime') | last).path }}"
 
-  when: find_backup.files | length > 0
+    - name: "Restore latest backup of {{ hosts_file }}"
+      copy:
+        src: "{{ latest_backup }}"
+        remote_src: true
+        dest: "{{ hosts_file }}"
+
+    - name: "Ensure absence of the latest backup called \"{{ latest_backup }}\""
+      file:
+        path: '{{ latest_backup }}'
+        state: absent
+
+    when: find_backup.files | length > 0
+
+  when:
+    - os_is_mac
