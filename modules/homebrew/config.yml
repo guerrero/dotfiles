@@ -22,15 +22,14 @@ apps_to_install:
   - alfred
   - basecamp
   - bitwarden
-  - brave
   - calibre
   - cyberduck
   - dash
   - docker
   - doxie
+  - eloston-chromium
   - figma
   - firefox
-  - google-chrome
   - imageoptim
   - loom
   - mactracker
