@@ -13,6 +13,7 @@ binaries_to_install:
   - rename
   - tree
   - youtube-dl
+  - fzf
   # end_of_binaries
 
 # Apps installed using Homebrew-cask. Some apps aren't listed here due they
