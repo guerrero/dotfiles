@@ -16,9 +16,19 @@
         file_type: directory
       register: command_dirs
 
+    - name: "Store given module {{ command }} command"
+      set_fact:
+        target_command_dirs: "{{ command_dirs.files | map(attribute='path') | select('match', '.*/' + module + '/commands') | list }}"
+      when: module is defined
+
+    - name: "Store all modules {{ command }} commands"
+      set_fact:
+        target_command_dirs: "{{ command_dirs.files | map(attribute='path') | list }}"
+      when: module is undefined
+
     - name: "Find all available {{ command }} tasks"
       find:
-        paths: "{{ command_dirs.files | map(attribute='path') | list }}"
+        paths: "{{ target_command_dirs }}"
         patterns: "{{ command }}.yml"
       register: command_tasks
 
