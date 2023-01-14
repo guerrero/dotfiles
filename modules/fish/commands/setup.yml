@@ -47,6 +47,9 @@
     - name: Execute fisher
       shell: "fish -c fisher"
 
+    - name: Ensure fisher plugins are updated
+      shell: "fish -c 'fisher update'"
+
   when:
       - os_is_mac
       - homebrew_is_installed
