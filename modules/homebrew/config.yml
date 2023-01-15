@@ -10,11 +10,13 @@ repositories_to_install:
 binaries_to_install:
   - ansible
   - ffmpeg
+  - fzf
+  - lf
   - rename
+  - thefuck
+  - tldr
   - tree
   - youtube-dl
-  - fzf
-  - tldr
   # end_of_binaries
 
 # Apps installed using Homebrew-cask. Some apps aren't listed here due they
