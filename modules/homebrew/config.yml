@@ -14,6 +14,7 @@ binaries_to_install:
   - tree
   - youtube-dl
   - fzf
+  - tldr
   # end_of_binaries
 
 # Apps installed using Homebrew-cask. Some apps aren't listed here due they
