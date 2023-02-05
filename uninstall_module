@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+DOTFILES_REPO_URL="https://github.com/guerrero/dotfiles.git"
+DOTFILES_PATH="$HOME/.dotfiles"
+
+function main() {
+  run_modules_install_tasks "$1"
+}
+
+function run_modules_install_tasks() {
+  info "Executing Ansible setup tasks"
+
+  /opt/homebrew/bin/ansible-playbook \
+    -i "$DOTFILES_PATH/inventory" \
+    "$DOTFILES_PATH/main.yml" \
+    --extra-vars "command=uninstall module=$1" \
+    --ask-become-pass \
+  || exit 1
+}
+
+#
+# Utilities
+# 
+
+# Adapted from https://github.com/Sajjadhosn/dotfiles
+function colored_echo() {
+    local color="$1";
+    local exp="$2";
+    local arrow="$3";
+    if ! [[ $color =~ '^[0-9]$' ]] ; then
+      case $(echo $color | tr '[:upper:]' '[:lower:]') in
+        black) color=0 ;;
+        red) color=1 ;;
+        green) color=2 ;;
+        yellow) color=3 ;;
+        blue) color=4 ;;
+        magenta) color=5 ;;
+        cyan) color=6 ;;
+        white|*) color=7 ;; # white or invalid color
+      esac
+    fi
+    tput bold;
+    tput setaf "$color";
+    echo "$arrow $exp";
+    tput sgr0;
+}
+
+function info() {
+    colored_echo blue "$1" "==>"
+}
+
+main "$@"
+
+unset -f \
+  colored_echo \
+  info \
+  run_modules_install_tasks \
+  main
