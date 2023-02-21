@@ -1,13 +1,18 @@
 ---
 packages_to_install:
   - akamud.vscode-theme-onedark
+  - astro-build.astro-vscode
   - bmalehorn.vscode-fish
   - bradlc.vscode-tailwindcss
   - christian-kohler.path-intellisense
   - dbaeumer.vscode-eslint
+  - deerawan.vscode-dash
   - esbenp.prettier-vscode
-  - github.copilot
+  - GitHub.copilot
+  - GitHub.copilot-labs
   - mrmlnc.vscode-scss
   - ms-azuretools.vscode-docker
+  - ms-vscode-remote.remote-containers
+  - Prisma.prisma
   - redhat.vscode-yaml
-  - wmaurer.vscode-jumpy
+  - yzhang.markdown-all-in-one
