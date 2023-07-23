@@ -23,7 +23,6 @@
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "workbench.activityBar.visible": false,
   "workbench.colorTheme": "Atom One Dark",
   "editor.quickSuggestions": {
     "strings": "on"
@@ -34,5 +33,17 @@
     "yaml": false,
     "plaintext": false,
     "markdown": false
+  },
+  "redhat.telemetry.enabled": false,
+  "workbench.activityBar.visible": false,
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "git.openRepositoryInParentFolders": "always",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[fish]": {
+    "editor.defaultFormatter": "bmalehorn.vscode-fish"
   }
 }
