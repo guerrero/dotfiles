@@ -1,4 +1,4 @@
-function diskformat -d "Format a disk with MS-DOS (FAT) format"
+function diskformat --description "Format a disk with MS-DOS (FAT) format"
   set disk_number $argv[1]
   set disk_name $argv[2]
 
