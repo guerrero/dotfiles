@@ -9,7 +9,7 @@ SETUVAR FZF_PREVIEW_DIR_CMD:ls
 SETUVAR FZF_PREVIEW_FILE_CMD:head\x20\x2dn\x2010
 SETUVAR FZF_TMUX_HEIGHT:40\x25
 SETUVAR PAGER:less
-SETUVAR --path PATH:/usr/local/bin\x1e/opt/homebrew/bin\x1e/opt/homebrew/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin
+SETUVAR --path PATH:/usr/local/bin\x1e/opt/homebrew/bin\x1e/opt/homebrew/sbin\x1e/Users/Alex/Library/pnpm\x1e/opt/homebrew/bin\x1e/opt/homebrew/sbin\x1e/usr/local/bin\x1e/System/Cryptexes/App/usr/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/local/bin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/bin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/appleinternal/bin
 SETUVAR VISUAL:vim
 SETUVAR --export _FASD_DATA:/Users/Alex/\x2ecache/fasd/data
 SETUVAR __fish_init_2_39_8:\x1d

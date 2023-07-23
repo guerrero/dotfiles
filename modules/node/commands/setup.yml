@@ -10,10 +10,16 @@
     path: ~/.nvm
     state: directory
 
-- name: Install nvm
-  homebrew:
-    name: nvm
-    state: latest
+- block:
+  - name: Install nvm
+    homebrew:
+      name: nvm
+      state: latest
+
+  - name: Install pnpm
+    homebrew:
+      name: pnpm
+      state: latest
   when:
     - os_is_mac
     - homebrew_is_installed
