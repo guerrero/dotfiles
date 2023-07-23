@@ -9,8 +9,8 @@ SETUVAR FZF_PREVIEW_DIR_CMD:ls
 SETUVAR FZF_PREVIEW_FILE_CMD:head\x20\x2dn\x2010
 SETUVAR FZF_TMUX_HEIGHT:40\x25
 SETUVAR PAGER:less
-SETUVAR --path PATH:/usr/local/bin\x1e/opt/homebrew/bin\x1e/opt/homebrew/sbin\x1e/Users/Alex/Library/pnpm\x1e/opt/homebrew/bin\x1e/opt/homebrew/sbin\x1e/usr/local/bin\x1e/System/Cryptexes/App/usr/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/local/bin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/bin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/appleinternal/bin
-SETUVAR VISUAL:vim
+SETUVAR --path PATH:/usr/local/bin\x1e/opt/homebrew/bin\x1e/opt/homebrew/sbin\x1e/usr/local/bin\x1e/System/Cryptexes/App/usr/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/local/bin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/bin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/appleinternal/bin
+SETUVAR VISUAL:code\x20\x2d\x2dwait\x20\x2d\x2dnew\x2dwindow
 SETUVAR --export _FASD_DATA:/Users/Alex/\x2ecache/fasd/data
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
@@ -20,7 +20,7 @@ SETUVAR _fisher_abysmalbiscuit_2F_fasd_files:\x7e/\x2econfig/fish/functions/__fa
 SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
 SETUVAR _fisher_plugins:edc/bass\x1eabysmalbiscuit/fasd\x1ejunegunn/fzf\x1ewfxr/forgit
 SETUVAR _fisher_upgraded_to_4_4:\x1d
-SETUVAR _fisher_wfxr_2F_forgit_files:\x7e/\x2econfig/fish/conf\x2ed/bin\x1e\x7e/\x2econfig/fish/conf\x2ed/forgit\x2eplugin\x2efish\x1e\x7e/\x2econfig/fish/completions/git\x2dforgit\x2ebash
+SETUVAR _fisher_wfxr_2F_forgit_files:\x7e/\x2econfig/fish/conf\x2ed/bin\x1e\x7e/\x2econfig/fish/conf\x2ed/forgit\x2eplugin\x2efish\x1e\x7e/\x2econfig/fish/completions/_git\x2dforgit\x1e\x7e/\x2econfig/fish/completions/git\x2dforgit\x2ebash\x1e\x7e/\x2econfig/fish/completions/git\x2dforgit\x2ezsh
 SETUVAR fish_color_autosuggestion:767676
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:afd787

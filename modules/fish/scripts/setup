@@ -14,7 +14,7 @@ else
   set -U EDITOR 'vim'
 end
 
-set -U VISUAL 'vim'
+set -U VISUAL 'code --wait --new-window'
 set -U PAGER 'less'
 
 #
