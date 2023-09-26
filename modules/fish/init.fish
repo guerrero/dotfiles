@@ -1,25 +1,25 @@
 # Quicker navigation (.. is included by default in Fish)
-alias ... "cd ../.."
-alias .... "cd ../../.."
-alias ..... "cd ../../../.."
+abbr -a ... "cd ../.."
+abbr -a .... "cd ../../.."
+abbr -a ..... "cd ../../../.."
 
 # Directories
-alias docs "cd $HOME/Documents"
-alias dl "cd $HOME/Downloads"
-alias dt "cd $HOME/Desktop"
-alias ws "cd $HOME/Workspace"
+abbr -a docs "cd $HOME/Documents"
+abbr -a dl "cd $HOME/Downloads"
+abbr -a dt "cd $HOME/Desktop"
+abbr -a ws "cd $HOME/Workspace"
 
-#List aliases
-alias lsdir 'ls -lF {$colorflag} | grep "^d"'
-alias ll "ls -alGh"
-alias ls "ls -Gh"
-alias df "df -h"
-alias du "du -h -d 2"
+#List
+abbr -a lsdir 'ls -lF {$colorflag} | grep "^d"'
+abbr -a ll "ls -alGh"
+abbr -a ls "ls -Gh"
+abbr -a df "df -h"
+abbr -a du "du -h -d 2"
 
 # Common shell functions
-alias tf 'tail -f'
-alias lh 'ls -alt | head' # see the last modified files
-alias cl 'clear'
+abbr -a tf 'tail -f'
+abbr -a lh 'ls -alt | head' # see the last modified files
+abbr -a cl 'clear'
 
-# Compress files aliases
-alias gz='tar -zcvf'
+# Compress files
+abbr -a gz 'tar -zcvf'

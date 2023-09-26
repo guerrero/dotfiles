@@ -18,7 +18,7 @@ mkdir -p "$HOME/.cache/fasd"
 set -x _FASD_DATA "$HOME/.cache/fasd/data"
 
 #
-# Aliases
+# Abbreviations
 #
 
-alias oc 'fasd -a -e code' # find files/dirs with fasd and open them in Atom
+abbr -a oc 'fasd -a -e code' # find files/dirs with fasd and open them in VS Code
