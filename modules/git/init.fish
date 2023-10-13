@@ -8,12 +8,13 @@ if not type -q git
 end
 
 abbr -a g 'git'
+abbr -a gs 'git status'
 abbr -a gd 'git diff'
 abbr -a gc 'git commit'
 abbr -a gcp 'git commit --patch'
 abbr -a gca 'git commit --amend'
 abbr -a gcm 'git commit --message'
-abbr -a gcam 'git commit --amend --message'
+abbr -a gcma 'git commit --amend --message'
 abbr -a gco 'git checkout'
 abbr -a gp 'git push'
 abbr -a gitc 'git commit --verbose'
