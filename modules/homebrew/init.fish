@@ -13,9 +13,11 @@ end
 #
 
 # Homebrew Cask
-abbr -a bi 'brew install'
+abbr -a bi  'brew install'
 abbr -a bic 'brew install --cask'
-abbr -a bup 'brew upgrade'
-abbr -a bl 'brew list'
-abbr -a bs 'brew search --cask'
+abbr -a bl  'brew list'
+abbr -a bs  'brew search'
 abbr -a bsc 'brew search --cask'
+abbr -a buc 'brew list --cask | xargs brew upgrade --cask'
+abbr -a bup 'brew upgrade'
+
