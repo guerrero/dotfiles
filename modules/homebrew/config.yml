@@ -9,14 +9,19 @@ repositories_to_install:
 # other modules commands
 binaries_to_install:
   - ansible
+  - exiftool
   - ffmpeg
   - fzf
   - lf
+  - p7zip
+  - postgresql
   - rename
+  - rust
   - thefuck
   - tldr
   - tree
-  - youtube-dl
+  - webp
+  - yt-dlp
   # end_of_binaries
 
 # Apps installed using Homebrew-cask. Some apps aren't listed here due they
