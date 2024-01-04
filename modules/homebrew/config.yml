@@ -22,14 +22,12 @@ binaries_to_install:
   - tree
   - webp
   - yt-dlp
-  # end_of_binaries
 
 # Apps installed using Homebrew-cask. Some apps aren't listed here due they
-# will be installed directly from its own module commands
+# will be installed directly from the App store or they come preinstalled
 apps_to_install:
   - adobe-acrobat-reader # 🤦‍
   - alfred
-  - basecamp
   - bitwarden
   - calibre
   - cyberduck
@@ -39,34 +37,29 @@ apps_to_install:
   - eloston-chromium
   - figma
   - firefox
+  - framer
   - google-chrome
   - imageoptim
+  - insomnia
   - loom
   - mactracker
+  - mullvadvpn
   - nextcloud
   - notion
+  - obsidian
+  - ogdesign-eagle
   - qlcolorcode
   - qlmarkdown
   - qlstephen
-  - sketch
   - slack
   - spotify
   - telegram
   - tor-browser
   - transmission
   - vlc
-  # end_of_casks
-
 
 # From Homebrew-fonts
 fonts_to_install:
-  - font-chivo
-  - font-crimson-pro
-  - font-crimson-text
-  - font-ibm-plex
   - font-inter
   - font-libre-baskerville
-  - font-lora
-  - font-roboto
-  - font-spectral
-  # end_of_casks
+  - font-sf-pro
