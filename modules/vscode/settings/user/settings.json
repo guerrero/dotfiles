@@ -7,7 +7,7 @@
   "editor.suggest.localityBonus": true,
   "editor.suggestSelection": "recentlyUsed",
   "editor.tabSize": 2,
-  "editor.wordBasedSuggestions": false,
+  "editor.wordBasedSuggestions": "off",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -35,7 +35,6 @@
     "markdown": false
   },
   "redhat.telemetry.enabled": false,
-  "workbench.activityBar.visible": false,
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
@@ -45,5 +44,8 @@
   },
   "[fish]": {
     "editor.defaultFormatter": "bmalehorn.vscode-fish"
-  }
+  },
+  "workbench.activityBar.location": "hidden",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.lineHeight": 1.42
 }
