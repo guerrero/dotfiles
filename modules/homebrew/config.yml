@@ -40,14 +40,15 @@ apps_to_install:
   - framer
   - google-chrome
   - imageoptim
-  - insomnia
   - loom
   - mactracker
   - mullvadvpn
   - nextcloud
+  - ngrok
   - notion
   - obsidian
   - ogdesign-eagle
+  - postman
   - qlcolorcode
   - qlmarkdown
   - qlstephen
@@ -57,9 +58,15 @@ apps_to_install:
   - tor-browser
   - transmission
   - vlc
+  - yubico-authenticator
 
 # From Homebrew-fonts
 fonts_to_install:
+  - font-geist
+  - font-geist-mono
+  - font-instrument-sans
+  - font-instrument-serif
   - font-inter
   - font-libre-baskerville
+  - font-roboto
   - font-sf-pro
