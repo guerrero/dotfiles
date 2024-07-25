@@ -47,5 +47,6 @@
   },
   "workbench.activityBar.location": "hidden",
   "terminal.integrated.fontSize": 14,
-  "terminal.integrated.lineHeight": 1.42
+  "terminal.integrated.lineHeight": 1.42,
+  "editor.minimap.enabled": false
 }
