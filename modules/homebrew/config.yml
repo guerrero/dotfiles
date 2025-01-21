@@ -13,6 +13,7 @@ binaries_to_install:
   - fzf
   - lf
   - p7zip
+  - pnpm
   - postgresql
   - rename
   - rust

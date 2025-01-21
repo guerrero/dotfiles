@@ -5,17 +5,12 @@
     - os_is_mac
     - homebrew_is_installed
 
-- name: Ensure ~/.nvm directory exists.
+- name: Ensure ~/Library/pnpm directory exists.
   file:
-    path: ~/.nvm
+    path: ~/Library/pnpm
     state: directory
 
 - block:
-  - name: Install nvm
-    homebrew:
-      name: nvm
-      state: latest
-
   - name: Install pnpm
     homebrew:
       name: pnpm
