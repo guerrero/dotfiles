@@ -29,6 +29,12 @@ end
 # Paths
 #
 
+# Set XDG Base Directory Specification
+set -U XDG_DATA_HOME $HOME/.local/share
+set -U XDG_CONFIG_HOME $HOME/.config
+set -U XDG_STATE_HOME $HOME/.local/state
+set -U XDG_CACHE_HOME $HOME/.cache
+
 # Set the list of directories
 set -U PATH /usr/local/bin $PATH
 
