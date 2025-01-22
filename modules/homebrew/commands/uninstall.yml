@@ -38,6 +38,9 @@
         state: absent
         loop: "{{ homebrew_config.repositories_to_install }}"
 
+    - name: Ensure absence of Homebrew's env variables
+      script: "{{ playbook_dir }}/modules/fasd/scripts/remove_homebrew_env_vars"
+
   when:
       - os_is_mac
       - homebrew_is_installed

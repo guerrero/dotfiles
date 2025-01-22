@@ -46,6 +46,9 @@
     - name: Remove outdated versions from Homebrew's Cellar
       command: brew cleanup
 
+    - name: Set Homebrew's env variables
+      script: "{{ playbook_dir }}/modules/fasd/scripts/set_homebrew_env_vars"
+
   when:
       - os_is_mac
       - homebrew_is_installed

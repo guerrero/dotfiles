@@ -1,0 +1,4 @@
+#!/opt/homebrew/bin/fish
+
+# Set Homebrew to auto-update every 24 hours (86400 seconds)
+set -U HOMEBREW_AUTO_UPDATE_SECS 86400

@@ -1,0 +1,4 @@
+#!/opt/homebrew/bin/fish
+
+# Remove homebrew environment variables
+set -e HOMEBREW_AUTO_UPDATE_SECS
