@@ -1,0 +1,4 @@
+#!/opt/homebrew/bin/fish
+
+# Remove variable to specify path for fasd cache data
+set -e PNPM_HOME

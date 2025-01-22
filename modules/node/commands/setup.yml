@@ -5,16 +5,25 @@
     - os_is_mac
     - homebrew_is_installed
 
-- name: Ensure ~/Library/pnpm directory exists.
-  file:
-    path: ~/Library/pnpm
-    state: directory
-
 - block:
-  - name: Install pnpm
+  - name: Ensure Node.js is installed
+    homebrew:
+      name: node
+      state: latest
+
+  - name: Ensure ~/Library/pnpm directory exists.
+    file:
+      path: ~/Library/pnpm
+      state: directory
+
+  - name: Ensure pnpm is installed
     homebrew:
       name: pnpm
       state: latest
+
+  - name: Set Node.js env variables
+    script: "{{ playbook_dir }}/modules/fasd/scripts/set_node_env_vars"
+
   when:
     - os_is_mac
     - homebrew_is_installed

@@ -5,15 +5,25 @@
     - os_is_mac
     - homebrew_is_installed
 
-- name: Ensure ~/.nvm directory doesn't exist.
-  file:
-    path: ~/.nvm
-    state: absent
+- block:
+  - name: Uninstall node
+    homebrew:
+      name: node
+      state: absent
 
-- name: Uninstall nvm
-  homebrew:
-    name: nvm
-    state: absent
+  - name: Ensure ~/Library/pnpm directory doesn't exist.
+    file:
+      path: ~/Library/pnpm
+      state: absent
+
+  - name: Uninstall pnpm
+    homebrew:
+      name: pnpm
+      state: absent
+
+  - name: Ensure absence of Node.js' env variables
+    script: "{{ playbook_dir }}/modules/fasd/scripts/remove_node_env_vars"
+
   when:
     - os_is_mac
     - homebrew_is_installed

@@ -11,6 +11,7 @@ SETUVAR FZF_TMUX_HEIGHT:40\x25
 SETUVAR HOMEBREW_AUTO_UPDATE_SECS:86400
 SETUVAR PAGER:less
 SETUVAR --path PATH:/usr/local/bin\x1e/opt/homebrew/bin\x1e/opt/homebrew/sbin\x1e/usr/local/bin\x1e/System/Cryptexes/App/usr/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/local/bin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/bin\x1e/var/run/com\x2eapple\x2esecurity\x2ecryptexd/codex\x2esystem/bootstrap/usr/appleinternal/bin
+SETUVAR PNPM_HOME:/Users/Alex/Library/pnpm
 SETUVAR VISUAL:code\x20\x2d\x2dwait\x20\x2d\x2dnew\x2dwindow
 SETUVAR --export _FASD_DATA:/Users/Alex/\x2ecache/fasd/data
 SETUVAR __fish_init_2_39_8:\x1d
