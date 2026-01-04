@@ -20,8 +20,7 @@
     "**/.build": true
   },
   "search.useGlobalIgnoreFiles": true,
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
+  "telemetry.telemetryLevel": "off",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "workbench.colorTheme": "Atom One Dark",
   "editor.quickSuggestions": {
@@ -30,9 +29,10 @@
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
     "*": true,
-    "yaml": false,
     "plaintext": false,
-    "markdown": false
+    "markdown": false,
+    "scminput": false,
+    "yaml": false
   },
   "redhat.telemetry.enabled": false,
   "[astro]": {
@@ -48,5 +48,23 @@
   "workbench.activityBar.location": "hidden",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.lineHeight": 1.42,
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "window.newWindowDimensions": "maximized",
+  "editor.rulers": [
+    80
+  ],
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  }
 }
