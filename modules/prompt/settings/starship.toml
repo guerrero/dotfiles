@@ -2,7 +2,7 @@
 # See https://starship.rs/config/ for full documentation
 
 # Directory module - shows the current directory
-add_newline = true
+add_newline = false
 command_timeout = 200
 format = "[$directory$git_branch$git_status]($style)$character"
 
