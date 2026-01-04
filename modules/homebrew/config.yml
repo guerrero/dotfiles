@@ -1,9 +1,4 @@
 ---
-repositories_to_install:
-  - homebrew/cask-versions # Repository for alternate app versions
-  - homebrew/cask-fonts # Repository for binary font files
-  # end_of_repositories
-
 # Some binaries aren't listed here due they will be installed directly from
 # other modules commands
 binaries_to_install:
@@ -20,13 +15,14 @@ binaries_to_install:
   - tldr
   - tree
   - webp
-  - yt-dlp
+  - youtube-dl
 
 # Apps installed using Homebrew-cask. Some apps aren't listed here due they
 # will be installed directly from the App store or they come preinstalled
 apps_to_install:
   - adobe-acrobat-reader # 🤦‍
-  - alfred
+  - affinity
+  - autofirma # 🤦‍
   - bitwarden
   - calibre
   - cyberduck
@@ -38,12 +34,12 @@ apps_to_install:
   - firefox
   - framer
   - google-chrome
+  - handbrake-app
   - imageoptim
+  - logi-options+
   - loom
-  - mactracker
-  - mullvadvpn
+  - mullvad-vpn
   - nextcloud
-  - ngrok
   - notion
   - obsidian
   - ogdesign-eagle
@@ -51,9 +47,13 @@ apps_to_install:
   - qlcolorcode
   - qlmarkdown
   - qlstephen
+  - raycast
+  - screen-studio
   - slack
   - spotify
+  - stremio
   - telegram
+  - topaz
   - tor-browser
   - transmission
   - vlc
@@ -63,6 +63,8 @@ apps_to_install:
 fonts_to_install:
   - font-geist
   - font-geist-mono
+  - font-host-grotesk
+  - font-ibm-plex
   - font-instrument-sans
   - font-instrument-serif
   - font-inter
