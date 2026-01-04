@@ -2,28 +2,25 @@
 # See https://starship.rs/config/ for full documentation
 
 # Directory module - shows the current directory
+add_newline = true
+command_timeout = 200
+format = "[$directory$git_branch$git_status]($style)$character"
+
+# Directory module - shows the current directory
 [directory]
 truncation_length = 3
 truncate_to_repo = true
-format = "[$path]($style) "
-
-# Git module - shows git branch and status
-[git_branch]
-format = "on [$symbol$branch(:$remote_branch)]($style) "
-style = "bold purple"
-
-[git_status]
-format = '([\[$all_status$ahead_behind\]]($style) )'
-style = "bold red"
+format = "[$path](bold purple) "
 
 # Character module - shows the prompt character
 [character]
-success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
+error_symbol = "[✗](#56c4af)"
+success_symbol = "[❯](#56c4af)"
 
-# Add a newline before the prompt
-format = """
-$directory\
-$git_branch\
-$git_status\
-$character"""
+# Git branch module - shows the current git branch
+[git_branch]
+style = "bold #E2C08D"
+
+# Git status module - shows the git status
+[git_status]
+disabled = true
