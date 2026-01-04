@@ -1,0 +1,21 @@
+---
+- name: Run task dependencies for uninstall starship
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Ensure absence of starship config symlink
+      file:
+        path: ~/.config/starship.toml
+        state: absent
+
+    - name: Ensure absence of starship binary
+      homebrew:
+        name: starship
+        state: absent
+
+  when:
+      - os_is_mac
+      - homebrew_is_installed

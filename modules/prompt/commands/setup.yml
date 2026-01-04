@@ -1,0 +1,28 @@
+---
+- name: Run task dependencies for install starship
+  include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
+  loop:
+    - os_is_mac
+    - homebrew_is_installed
+
+- block:
+    - name: Ensure starship is installed and up to date
+      homebrew:
+        name: starship
+        state: upgraded
+
+    - name: Ensure ~/.config directory exists
+      file:
+        path: ~/.config
+        state: directory
+
+    - name: Ensure starship config is linked into ~/.config
+      file:
+        src: "{{ playbook_dir }}/modules/prompt/settings/starship.toml"
+        dest: ~/.config/starship.toml
+        state: link
+        force: yes
+
+  when:
+      - os_is_mac
+      - homebrew_is_installed
