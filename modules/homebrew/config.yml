@@ -26,7 +26,6 @@ apps_to_install:
   - calibre
   - cyberduck
   - dash
-  - docker
   - doxie
   - ungoogled-chromium
   - figma
