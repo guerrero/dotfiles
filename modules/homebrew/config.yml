@@ -19,14 +19,11 @@ binaries_to_install:
 # Apps installed using Homebrew-cask. Some apps aren't listed here due they
 # will be installed directly from the App store or they come preinstalled
 apps_to_install:
-  - adobe-acrobat-reader # 🤦‍
   - affinity
-  - autofirma # 🤦‍
   - bitwarden
   - calibre
   - cyberduck
   - dash
-  - docker
   - doxie
   - ungoogled-chromium
   - figma
@@ -37,8 +34,6 @@ apps_to_install:
   - imageoptim
   - logi-options+
   - loom
-  - mullvad-vpn
-  - nextcloud
   - notion
   - obsidian
   - ogdesign-eagle
@@ -52,11 +47,20 @@ apps_to_install:
   - spotify
   - stremio
   - telegram
-  - topaz
   - tor-browser
   - transmission
   - vlc
   - yubico-authenticator
+
+# Apps installed using Homebrew-cask that require sudo privileges.
+# Some apps aren't listed here due they will be installed directly from the
+# App store or they come preinstalled
+apps_pkg_to_install:
+  - adobe-acrobat-reader # 🤦‍
+  - docker
+  - logi-options+
+  - mullvad-vpn
+  - nextcloud
 
 # From Homebrew-fonts
 fonts_to_install:
