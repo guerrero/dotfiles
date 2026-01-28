@@ -1,5 +1,7 @@
 settings/completions/
 settings/functions/
-settings/conf.d
 settings/themes/
 settings/fishd.*
+settings/conf.d
+!settings/conf.d/fish_frozen_key_bindings.fish
+!settings/conf.d/fish_frozen_theme.fish
