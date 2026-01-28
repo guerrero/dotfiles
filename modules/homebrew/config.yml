@@ -50,6 +50,7 @@ apps_to_install:
   - tor-browser
   - transmission
   - vlc
+  - whatsapp
   - yubico-authenticator
 
 # Apps installed using Homebrew-cask that require sudo privileges.
