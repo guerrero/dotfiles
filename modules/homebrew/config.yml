@@ -24,6 +24,9 @@ apps_to_install:
   - affinity
   - bitwarden
   - calibre
+  - claude
+  - claude-code
+  - cursor
   - cyberduck
   - dash
   - doxie
@@ -56,6 +59,7 @@ apps_to_install:
   - vlc
   - whatsapp
   - yubico-authenticator
+  - zed
 
 # From Homebrew-fonts
 fonts_to_install:
