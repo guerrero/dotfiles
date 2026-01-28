@@ -2,7 +2,6 @@
 # Some binaries aren't listed here due they will be installed directly from
 # other modules commands
 binaries_to_install:
-  - ansible
   - exiftool
   - ffmpeg
   - fzf
