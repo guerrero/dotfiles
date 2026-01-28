@@ -28,7 +28,7 @@ apps_to_install:
   - dash
   - docker
   - doxie
-  - eloston-chromium
+  - ungoogled-chromium
   - figma
   - firefox
   - framer
