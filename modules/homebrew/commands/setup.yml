@@ -11,14 +11,6 @@
         file: "{{ playbook_dir }}/modules/homebrew/config.yml"
         name: homebrew_config
 
-    - name: Add Homebrew repositories
-      homebrew_tap:
-        name: "{{ homebrew_repository }}"
-        state: present
-      loop: "{{ homebrew_config.repositories_to_install }}"
-      loop_control:
-        loop_var: homebrew_repository
-
     - name: Install Homebrew binaries
       homebrew:
         name: "{{ homebrew_binary }}"
