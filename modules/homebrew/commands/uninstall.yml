@@ -13,19 +13,19 @@
 
     - name: Uninstall Homebrew binaries
       homebrew_tap:
-        name: {{ item }}
+        name: { { item } }
         state: absent
       loop: "{{ homebrew_config.binaries_to_install }}"
 
     - name: Uninstall apps
       homebrew_cask:
-        name: {{ item }}
+        name: { { item } }
         state: absent
       loop: "{{ homebrew_config.apps_to_install }}"
 
     - name: Uninstall fonts
       homebrew_cask:
-        name: {{ item }}
+        name: { { item } }
         state: absent
       loop: "{{ homebrew_config.apps_to_install }}"
 
@@ -34,13 +34,13 @@
 
     - name: Remove Homebrew repositories
       homebrew_tap:
-        name: {{ item }}
+        name: { { item } }
         state: absent
         loop: "{{ homebrew_config.repositories_to_install }}"
 
     - name: Ensure absence of Homebrew's env variables
-      script: "{{ playbook_dir }}/modules/fasd/scripts/remove_homebrew_env_vars"
+      script: "{{ playbook_dir }}/modules/fasd/scripts/remove_fasd_cache_folder"
 
   when:
-      - os_is_mac
-      - homebrew_is_installed
+    - os_is_mac
+    - homebrew_is_installed
