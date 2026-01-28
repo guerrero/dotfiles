@@ -20,11 +20,13 @@ binaries_to_install:
 # Some apps aren't listed here due they will be installed directly from
 # the App store or they come preinstalled
 apps_to_install:
+  - adobe-acrobat-reader # 🤦‍
   - affinity
   - bitwarden
   - calibre
   - cyberduck
   - dash
+  - docker
   - doxie
   - ungoogled-chromium
   - figma
@@ -33,7 +35,10 @@ apps_to_install:
   - google-chrome
   - handbrake-app
   - imageoptim
+  - logi-options+
   - loom
+  - mullvad-vpn
+  - nextcloud
   - notion
   - obsidian
   - ogdesign-eagle
@@ -52,16 +57,6 @@ apps_to_install:
   - vlc
   - whatsapp
   - yubico-authenticator
-
-# Apps installed using Homebrew-cask that require sudo privileges.
-# Some apps aren't listed here due they will be installed directly from the
-# App store or they come preinstalled
-apps_pkg_to_install:
-  - adobe-acrobat-reader # 🤦‍
-  - docker
-  - logi-options+
-  - mullvad-vpn
-  - nextcloud
 
 # From Homebrew-fonts
 fonts_to_install:
