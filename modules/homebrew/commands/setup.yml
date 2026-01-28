@@ -19,11 +19,20 @@
       loop_control:
         loop_var: homebrew_binary
 
-    - name: Install and upgrade apps
+    - name: Install and upgrade apps (no sudo)
       homebrew_cask:
         name: "{{ homebrew_app }}"
         state: upgraded
       loop: "{{ homebrew_config.apps_to_install }}"
+      loop_control:
+        loop_var: homebrew_app
+
+    - name: Install and upgrade apps (requires sudo)
+      become: true
+      homebrew_cask:
+        name: "{{ homebrew_app }}"
+        state: upgraded
+      loop: "{{ homebrew_config.apps_pkg_to_install }}"
       loop_control:
         loop_var: homebrew_app
 
