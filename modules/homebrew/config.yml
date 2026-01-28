@@ -14,7 +14,7 @@ binaries_to_install:
   - tldr
   - tree
   - webp
-  - youtube-dl
+  - yt-dlp
 
 # Apps installed using Homebrew-cask. Some apps aren't listed here due they
 # will be installed directly from the App store or they come preinstalled
