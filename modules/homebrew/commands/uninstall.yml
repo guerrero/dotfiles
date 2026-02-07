@@ -32,12 +32,6 @@
     - name: Remove outdated versions from Homebrew's Cellar
       command: brew cleanup
 
-    - name: Remove Homebrew repositories
-      homebrew_tap:
-        name: { { item } }
-        state: absent
-        loop: "{{ homebrew_config.repositories_to_install }}"
-
   when:
     - os_is_mac
     - homebrew_is_installed
