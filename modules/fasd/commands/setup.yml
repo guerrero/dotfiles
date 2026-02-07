@@ -6,9 +6,14 @@
     - homebrew_is_installed
 
 - block:
+    - name: Ensure personal tap is added
+      homebrew_tap:
+        name: guerrero/tap
+        state: present
+
     - name: Ensure fasd is installed and up to date
       homebrew:
-        name: fasd
+        name: whjvenyl-fasd # Forked up-to-date version of fasd
         state: upgraded
 
     - name: Ensure cache directory for fasd exists
