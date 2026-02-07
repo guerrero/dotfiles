@@ -1,4 +1,4 @@
 ---
-- when: ansible_os_family == "Darwin"
+- when: ansible_facts["os_family"] == "Darwin"
   set_fact:
     os_is_mac: true
