@@ -21,7 +21,7 @@
     - name: Ensure fish is the default shell for current user
       become: yes
       user:
-        name: "{{ ansible_env.USER }}"
+        name: "{{ ansible_facts['env']['USER'] }}"
         shell: "/opt/homebrew/bin/fish"
 
     - name: Ensure ~/.config directory exists

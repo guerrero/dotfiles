@@ -9,7 +9,7 @@
     - name: Ensure the default shell for Mac is enabled
       become: yes
       user:
-        name: "{{ ansible_env.USER }}"
+        name: "{{ ansible_facts['env']['USER'] }}"
         shell: "/bin/bash"
 
     - name: Remove fish shell from /etc/shells
