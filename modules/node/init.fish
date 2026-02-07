@@ -8,8 +8,7 @@ if not type -q node; and not brew list pnpm &>/dev/null;
   exit
 end
 
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
+# Ensure PNPM_HOME is on PATH
+if set -q PNPM_HOME; and test -d $PNPM_HOME; and not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
-

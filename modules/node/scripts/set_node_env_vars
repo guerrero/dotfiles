@@ -1,4 +1,4 @@
 #!/opt/homebrew/bin/fish
 
 # Set path for pnpm
-set -U PNPM_HOME "$HOME/Library/pnpm"
+set -U PNPM_HOME "$HOME/.local/share/pnpm"

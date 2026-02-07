@@ -2,64 +2,17 @@
   include_tasks: "{{ playbook_dir }}/lib/dependencies/{{ item }}.yml"
   loop:
     - os_is_mac
-
-- name: Print current shell
-  debug:
-    msg: "Current shell is: {{ ansible_env.SHELL }}"
+    - homebrew_is_installed
 
 - block:
-  - name: Ensure pnpm is installed
-    block:
-    - name: Check if pnpm is already installed
-      shell: command -v pnpm
-      register: pnpm_exists
-      ignore_errors: true
-      changed_when: false
+    - name: Ensure pnpm is installed and up to date
+      homebrew:
+        name: pnpm
+        state: upgraded
+      when: homebrew_is_installed
 
-    - name: Set pnpm environment
-      set_fact:
-        pnpm_env:
-          PNPM_HOME: "{{ ansible_env.HOME }}/.local/share/pnpm"
-          XDG_DATA_HOME: "{{ ansible_env.HOME }}/.local/share"
-          XDG_CONFIG_HOME: "{{ ansible_env.HOME }}/.config"
-          XDG_STATE_HOME: "{{ ansible_env.HOME }}/.local/state"
-          XDG_CACHE_HOME: "{{ ansible_env.HOME }}/.cache"
-          PATH: "{{ ansible_env.HOME }}/.local/share/pnpm:{{ ansible_env.PATH }}"
-
-    - name: Backup config.fish before pnpm install
-      copy:
-        src: "{{ playbook_dir }}/modules/fish/settings/config.fish"
-        dest: "{{ playbook_dir }}/modules/fish/settings/config.fish.backup"
-      when: ansible_env.SHELL is search('fish')
-
-    - name: Install pnpm
-      shell: curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=10.0.0 sh -
-      environment: "{{ pnpm_env }}"
-      register: pnpm_install
-      failed_when: pnpm_install.rc != 0
-
-    - name: Verify pnpm installation and version
-      shell: pnpm --version
-      register: pnpm_check
-      changed_when: false
-      failed_when: pnpm_check.rc != 0
-      environment: "{{ pnpm_env }}"
-
-    - name: Restore config.fish
-      copy:
-        src: "{{ playbook_dir }}/modules/fish/settings/config.fish.backup"
-        dest: "{{ playbook_dir }}/modules/fish/settings/config.fish"
-        remote_src: yes
-      when: ansible_env.SHELL is search('fish')
-
-    - name: Remove backup
-      file:
-        path: "{{ playbook_dir }}/modules/fish/settings/config.fish.backup"
-        state: absent
-      when: ansible_env.SHELL is search('fish')
-
-  - name: Set Node.js env variables
-    script: "{{ playbook_dir }}/modules/node/scripts/set_node_env_vars"
+    - name: Set Node.js env variables
+      script: "{{ playbook_dir }}/modules/node/scripts/set_node_env_vars"
 
   when:
     - os_is_mac
