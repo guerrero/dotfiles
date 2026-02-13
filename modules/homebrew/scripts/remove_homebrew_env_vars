@@ -2,3 +2,4 @@
 
 # Remove homebrew environment variables
 set -e HOMEBREW_AUTO_UPDATE_SECS
+set -e HOMEBREW_NO_INSTALL_CLEANUP

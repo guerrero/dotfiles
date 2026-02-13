@@ -2,3 +2,6 @@
 
 # Set Homebrew to auto-update every 24 hours (86400 seconds)
 set -U HOMEBREW_AUTO_UPDATE_SECS 86400
+
+# Disable hint for automatic cleanup after installing packages
+set -U HOMEBREW_NO_INSTALL_CLEANUP 0
