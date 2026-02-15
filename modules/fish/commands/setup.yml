@@ -36,6 +36,18 @@
         state: link
         force: yes
 
+    - name: Ensure starship is installed and up to date
+      homebrew:
+        name: starship
+        state: upgraded
+
+    - name: Ensure starship config is linked into ~/.config
+      file:
+        src: "{{ playbook_dir }}/modules/fish/settings/starship.toml"
+        dest: ~/.config/starship.toml
+        state: link
+        force: yes
+
     - name: Run setup script to configure custom fish environment
       script: "{{ playbook_dir }}/modules/fish/scripts/setup"
 

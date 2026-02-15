@@ -24,6 +24,16 @@
         name: fish
         state: absent
 
+    - name: Ensure absence of starship config symlink
+      file:
+        path: ~/.config/starship.toml
+        state: absent
+
+    - name: Ensure absence of starship binary
+      homebrew:
+        name: starship
+        state: absent
+
     - name: Ensure absence of fish settings folder
       file:
         path: ~/.config/fish

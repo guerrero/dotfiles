@@ -1,3 +1,8 @@
+# Starship prompt
+if type -q starship
+  starship init fish | source
+end
+
 # Quicker navigation (.. is included by default in Fish)
 abbr -a ... "cd ../.."
 abbr -a .... "cd ../../.."
