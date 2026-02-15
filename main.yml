@@ -32,8 +32,31 @@
         patterns: "{{ command }}.yml"
       register: command_tasks
 
-    - name: Include tasks files from all available modules
+    - name: Store all discovered command task paths
+      set_fact:
+        command_task_paths: "{{ command_tasks.files | map(attribute='path') | list }}"
+
+    - name: Initialize prioritized command task paths list
+      set_fact:
+        prioritized_command_task_paths: []
+
+    - name: Set default priority modules
+      set_fact:
+        default_priority_modules: [
+          'fish',
+        ]
+
+    - name: Append task paths from priority modules in given order
+      set_fact:
+        prioritized_command_task_paths: "{{ prioritized_command_task_paths + (command_task_paths | select('match', '.*/' + item + '/commands/' + command + '\\.yml$') | list) }}"
+      loop: "{{ priority_modules | default(default_priority_modules) }}"
+
+    - name: Build final ordered command task paths (priority first, then rest)
+      set_fact:
+        ordered_command_task_paths: "{{ prioritized_command_task_paths + (command_task_paths | reject('in', prioritized_command_task_paths) | list) }}"
+
+    - name: Include tasks files from all available modules in resolved order
       include_tasks: "{{ playbook_tasks }}"
-      loop: "{{ command_tasks.files | map(attribute='path') | list }}"
+      loop: "{{ ordered_command_task_paths }}"
       loop_control:
         loop_var: playbook_tasks
